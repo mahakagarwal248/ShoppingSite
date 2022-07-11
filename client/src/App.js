@@ -14,7 +14,7 @@ function App() {
           <Footer/>
         </div>
         }/>
-        <Route exact path='/login' component={<Login/>}/>
+        <Route exact path='/login' element={<Login/>}/>
       </Routes>
     </BrowserRouter>
     
