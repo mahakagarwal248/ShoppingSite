@@ -5,7 +5,7 @@ import panda from '../../../assets/panda.jpg'
 
 function Cards() {
   return (
-    <div>
+    <div style={{margin:'20px'}}>
       <Card style={{ width: "16rem" }}>
         <Card.Img variant="top" src={panda} style={{height:'200px', width:'16rem'}} />
         <Card.Body>

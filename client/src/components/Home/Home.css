@@ -1,5 +1,5 @@
 .home-container{
-    justify-content: space-between;
+    justify-content: center;
     padding: 50px 150px;
     display: flex;
     flex-wrap: wrap;
