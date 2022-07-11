@@ -11,7 +11,7 @@ function Navbar() {
         <Link to="/" className='nav-items'>
             About
         </Link>
-        <Link to="/" className='nav-items'>
+        <Link to="/login" className='nav-items'>
             Login
         </Link>
     </div>
