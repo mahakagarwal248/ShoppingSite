@@ -1,12 +1,13 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import panda from '../../../assets/panda.jpg'
 
 function Cards() {
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card style={{ width: "16rem" }}>
+        <Card.Img variant="top" src={panda} style={{height:'200px', width:'16rem'}} />
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>
