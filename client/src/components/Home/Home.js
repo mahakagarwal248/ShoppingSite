@@ -4,7 +4,16 @@ import './Home.css';
 
 function Home() {
   return (
-    <div>
+    <div className='home-container'>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
         <Cards/>
     </div>
   )
