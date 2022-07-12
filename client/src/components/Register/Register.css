@@ -1,16 +1,22 @@
 .register-container{
     text-align: center;
+    margin-top: 50px;
 }
 .register-form{
     border: 2px double brown;
     border-radius: 10px;
-    width: 18%;
+    width: 25%;
     margin: auto;
     padding: 30px;
     text-align: left;
 }
+.register-form label{
+    font-weight: bold;
+}
 .register-form input{
     margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid black;
 }
 .register-form-btn{
     margin-top: 15px;
