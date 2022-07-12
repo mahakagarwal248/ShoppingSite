@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import './Login.css'
 
 function Login() {
@@ -6,7 +8,9 @@ function Login() {
     <div className='login-container'>
         <h1>Welcome to the <i>Shopping Site</i></h1>
         <div style={{marginTop:'25px'}}>
-          <button>Sign up</button>
+          <Link to="/register">
+            Sign up
+          </Link>
           <p>or</p>
           <form className='login-form'>
             <label>Email</label><br/>
