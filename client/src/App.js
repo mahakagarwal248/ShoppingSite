@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
+import Register from './components/Register/Register';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         </div>
         }/>
         <Route exact path='/login' element={<Login/>}/>
+        <Route exact path='/register' element={<Register/>}/>
       </Routes>
     </BrowserRouter>
     
