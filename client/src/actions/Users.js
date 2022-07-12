@@ -9,3 +9,13 @@ export const signup = (userData, navigate) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const login = (loginData, navigate) => async (dispatch) => {
+    try {
+        const {data} = await api.login(loginData);
+        dispatch({type:'AUTH', data})
+        navigate('/')
+    } catch (error) {
+        console.log(error)
+    }
+}
