@@ -1,16 +1,34 @@
 import React, { useState } from "react";
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+
 import "./Register.css";
+import {signup} from '../../actions/Users'
 
 function Register() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
 
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      if(!email){
+        alert('Email is neccessary')
+      }
+      if(!name){
+        alert("Enter a name to continue")
+      }
+      dispatch(signup({name, email, password, mobile, address}, navigate))
+  }
   return (
     <div className="register-container">
-      <form className="register-form">
+      <form className="register-form" onSubmit={handleSubmit}>
         <label>Name</label>
         <br />
         <input type="name" placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
