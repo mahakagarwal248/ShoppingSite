@@ -1,11 +1,18 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import './Navbar.css';
-import {Link} from 'react-router-dom'
 
 function Navbar() {
 
-  if(localStorage.getItem('Profile') === null){
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    dispatch({type:'LOGOUT'});
+    navigate('/');
   }
   return (
     <div className='navbar'>
@@ -15,9 +22,16 @@ function Navbar() {
         <Link to="/" className='nav-items'>
             About
         </Link>
-        <Link to="/login" className='nav-items'>
-            {localStorage.getItem('Profile') === null ? "Login" : "Logout"}
-        </Link>
+        {localStorage.getItem('Profile') === null ? 
+          <Link to="/login" className='nav-items'>
+              Login
+          </Link>
+          :
+          <>
+            <button type='button' className='logout-btn' onClick={handleLogout}>Logout</button>
+          </>
+        }
+        
     </div>
   )
 }
