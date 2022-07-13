@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 import userRoutes from './routes/user.js';
-import productRoutes from './routes/products.js'
+import productRoutes from './routes/products.js';
+import cartRoutes from './routes/cart.js'
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ app.get('/',(req,res)=>{
 
 app.use('/user',userRoutes);
 app.use('/products', productRoutes);
+app.use('/cart', cartRoutes)
 
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.CONNECTION_URL;
