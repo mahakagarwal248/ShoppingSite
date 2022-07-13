@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
+import Cart from './components/Cart/Cart'
 import { fetchAllProducts } from './actions/Products';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         }/>
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
+        <Route exact path="/cart" element={<Cart/>}/>
       </Routes>
     </BrowserRouter>
     
