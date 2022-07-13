@@ -4,7 +4,8 @@ import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
 import './Login.css';
-import {login} from '../../actions/Users'
+import Navbar from '../Navbar/Navbar'
+import {login} from '../../actions/Users';
 
 function Login() {
 
@@ -24,6 +25,7 @@ function Login() {
 
   return (
     <div className='login-container'>
+      <Navbar/>
         <h1>Welcome to the <i>Shopping Site</i></h1>
         <div style={{marginTop:'25px'}}>
           <Link to="/register">

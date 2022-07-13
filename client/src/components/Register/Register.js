@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 import "./Register.css";
 import {signup} from '../../actions/Users'
+import Navbar from "../Navbar/Navbar";
 
 function Register() {
 
@@ -28,6 +29,8 @@ function Register() {
   }
   return (
     <div className="register-container">
+      <Navbar/>
+      <br/>
       <form className="register-form" onSubmit={handleSubmit}>
         <label>Name</label>
         <br />
