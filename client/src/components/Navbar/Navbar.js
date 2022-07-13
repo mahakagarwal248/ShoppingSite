@@ -15,6 +15,9 @@ function Navbar() {
     dispatch({type:'LOGOUT'});
     navigate('/');
   }
+
+  var User = JSON.parse(localStorage.getItem('Profile'))
+
   return (
     <div className='navbar'>
         <Link to="/" className='nav-items'>
@@ -29,7 +32,7 @@ function Navbar() {
           </Link>
           :
           <div style={{marginLeft:'auto', display:'flex'}}>
-            <Avatar style={{height:'34px', width:'34px',color:'black'}}>H</Avatar>
+            <Avatar style={{height:'34px', width:'34px',color:'black'}}>{User.result.name.charAt(0).toUpperCase()}</Avatar>
             <button type='button' className='logout-btn' onClick={handleLogout}>Logout</button>
           </div>
         }
