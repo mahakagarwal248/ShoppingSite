@@ -19,11 +19,9 @@ function Cards() {
         <Card.Img variant="top" src={panda} style={{height:'200px', width:'16rem'}} />
         <Card.Body>
           <Card.Title>{products.name}</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Card.Text>{products.description}</Card.Text>
+          <Card.Text><b>INR {products.price}</b></Card.Text>
+          <Button variant="primary">Add to Cart</Button>
         </Card.Body>
       </Card>
     </div>
