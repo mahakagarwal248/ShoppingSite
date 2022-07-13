@@ -6,15 +6,7 @@ function Home() {
   return (
     <div className='home-container'>
         <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
+        
     </div>
   )
 }
