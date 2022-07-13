@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-import userRoutes from './routes/user.js'
+import userRoutes from './routes/user.js';
+import productRoutes from './routes/products.js'
 
 const app = express();
 dotenv.config();
@@ -15,7 +16,8 @@ app.get('/',(req,res)=>{
     res.send("This is a stack overflow clone API");
 })
 
-app.use('/user',userRoutes)
+app.use('/user',userRoutes);
+app.use('/products', productRoutes);
 
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.CONNECTION_URL;
