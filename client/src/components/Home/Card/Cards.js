@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 
 function Cards() {
   const productList = useSelector((state) => state.productReducer)
+  console.log(productList)
 
   return (
     <>
