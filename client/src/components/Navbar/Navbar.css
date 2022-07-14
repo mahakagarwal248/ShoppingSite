@@ -12,6 +12,13 @@
     font-size: 22px;
     margin-right: 30px;
 }
+.nav-icons{
+    margin:auto 45px auto 0px;
+    font-size:28px !important;
+    color:white;
+    vertical-align:-webkit-baseline-middle;
+}
+
 .logout-btn{
     background: transparent;
     border: none;
