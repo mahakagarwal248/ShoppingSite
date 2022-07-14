@@ -17,12 +17,20 @@ function Cards() {
 
   const handleAddToCart = (e, id, productName, productDescription, productBrand, productPrice) => {
     e.preventDefault();
+    if(localStorage.getItem('Profile') === null){
+      alert("You need yo login first");
+      navigate('/login')
+    }
     dispatch(addToCart(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice, quantity:2}, navigate))
     navigate('/cart')
   }
 
   const handleAddToWishlist = (e, id, productName, productDescription, productBrand, productPrice) => {
     e.preventDefault();
+    if(localStorage.getItem('Profile') === null){
+      alert("You need yo login first");
+      navigate('/login')
+    }
     dispatch(addToWishlist(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice}, navigate))
     navigate('/wishlist')
   }
