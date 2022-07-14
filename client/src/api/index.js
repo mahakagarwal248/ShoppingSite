@@ -7,4 +7,4 @@ export const login = (loginData) => API.post('user/login', loginData);
 
 export const getAllProducts = () => API.get('/products/getAllProducts');
 
-export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, productData)
+export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, {productData})

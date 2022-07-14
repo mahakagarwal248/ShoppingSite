@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import cart from "../models/cart.js";
-import products from '../models/products.js'
 
 export const addToCart = async (req, res) => {
     const {id: _id} = req.params;
@@ -9,8 +8,9 @@ export const addToCart = async (req, res) => {
         return res.status(404).send('product unavailable...')
     }
 
-    const productData = req.body;
-    const addProductToCart = new cart(productData);
+    const {productData} = req.body;
+    const {name, description, brand, price, quantity, userId} = productData
+    const addProductToCart = new cart({name, description, brand, price, quantity, userId});
 
     try {
         await addProductToCart.save();

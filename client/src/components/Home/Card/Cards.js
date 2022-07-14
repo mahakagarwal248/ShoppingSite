@@ -2,12 +2,23 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import panda from '../../../assets/panda.jpg';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+import {addToCart} from '../../../actions/Cart';
 
 function Cards() {
   const productList = useSelector((state) => state.productReducer)
-  console.log(productList)
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  var User = JSON.parse(localStorage.getItem('Profile'))
+
+  const handleAddToCart = (e, id, productName, productDescription, productBrand, productPrice) => {
+    e.preventDefault();
+    dispatch(addToCart(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice, quantity:2}, navigate))
+    navigate('/cart')
+  }
   return (
     <>
     {productList.data === null ? <h1>Loading...</h1> 
@@ -21,7 +32,7 @@ function Cards() {
           <Card.Title>{products.name}</Card.Title>
           <Card.Text>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
-          <Button variant="primary">Add to Cart</Button>
+          <Button variant="primary" onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
         </Card.Body>
       </Card>
     </div>
