@@ -9,3 +9,12 @@ export const addToCart = (id, productData, navigate) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const fetchCartProduct = (userId) => async (dispatch) => {
+    try {
+        const {data} = await api.getCartProducts(userId);
+        dispatch({type: 'FETCH_CART_PRODUCTS', payload:data})
+      } catch (error) {
+        console.log(error)
+      }
+}

@@ -5,6 +5,6 @@ import { addToCart, getCartProduct } from '../controllers/Cart.js';
 const router = express.Router();
 
 router.post('/addToCart/:id', addToCart);
-router.get('/getCartProduct', getCartProduct);
+router.get('/getCartProduct/:id', getCartProduct);
 
 export default router;
