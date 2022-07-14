@@ -19,3 +19,14 @@ export const addToCart = async (req, res) => {
         res.status(400).json("Couldn't add product to cart")
     }
 }
+
+export const getCartProduct = async (req, res) => {
+    const {userId} = req.body;
+    try {
+        const cartProductList = await cart.find({userId});
+        res.status(200).json(cartProductList);
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({message: error.message})
+    }
+}
