@@ -14,18 +14,18 @@ export const addToWishlist = async (req, res) => {
 
     try {
         await addProductToWishlist.save();
-        res.status(200).json("Added to cart successfully")
+        res.status(200).json("Added to Wishlist successfully")
     } catch (error) {
-        res.status(400).json("Couldn't add product to cart")
+        res.status(400).json("Couldn't add product to Wishlist")
     }
 }
 
-export const getCartProduct = async (req, res) => {
+export const getWishlistProduct = async (req, res) => {
     const {id} = req.params;
     try {
-        const cartProductList = await cart.find();
-        const cartProducts = cartProductList.filter((cart) => cart.userId === id)
-        res.status(200).json(cartProducts);
+        const wishlistProductList = await wishlist.find();
+        const wishlistProducts = wishlistProductList.filter((wishlist) => wishlist.userId === id)
+        res.status(200).json(wishlistProducts);
     } catch (error) {
         console.log(error)
         res.status(404).json({message: error.message})

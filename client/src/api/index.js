@@ -9,3 +9,6 @@ export const getAllProducts = () => API.get('/products/getAllProducts');
 
 export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, {productData});
 export const getCartProducts = (id) => API.get(`/cart/getCartProduct/${id}`)
+
+export const addToWishlist = (id, productData) => API.post(`/cart/addToWishlist/${id}`, {productData});
+export const getWishlistProducts = (id) => API.get(`/cart/getWishlistProduct/${id}`)
