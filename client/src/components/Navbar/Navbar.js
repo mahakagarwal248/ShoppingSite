@@ -26,6 +26,17 @@ function Navbar() {
         <Link to="/" className='nav-items'>
             About
         </Link>
+        {
+          localStorage.getItem('Profile') !== null && 
+          <>
+            <Link to="/cart" className="nav-items">
+              Cart
+            </Link>
+            <Link to="/wishlist" className="nav-items">
+              My Wishlist
+            </Link>
+          </>
+        }
         {localStorage.getItem('Profile') === null ? 
           <Link to="/login" className='nav-items'>
               Login
@@ -33,6 +44,7 @@ function Navbar() {
           :
           <div style={{marginLeft:'auto', display:'flex'}}>
             <Avatar style={{height:'34px', width:'34px',color:'black'}}>{User.result.name.charAt(0).toUpperCase()}</Avatar>
+            <p style={{margin:'auto 70px auto 10px', fontSize:'22px'}}>Hi, {User.result.name.split(" ")}</p>
             <button type='button' className='logout-btn' onClick={handleLogout}>Logout</button>
           </div>
         }
