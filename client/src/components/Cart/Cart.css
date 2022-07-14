@@ -18,3 +18,11 @@
     padding-left: 10px;
     text-align: left;
 }
+.cart-btn{
+    border: none;
+    background-color: brown;
+    border-radius: 5px;
+    color:white;
+    padding: 5px 15px;
+    font-size: 14px;
+}
