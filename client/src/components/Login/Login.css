@@ -21,3 +21,11 @@
     color: white;
     padding: 5px 0;
 }
+.signup-btn{
+    padding: 5px;
+    border: none;
+    background: transparent;
+    margin-left: auto;
+    color: blue;
+    text-decoration: underline;
+}

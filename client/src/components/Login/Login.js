@@ -28,10 +28,6 @@ function Login() {
       <Navbar/>
         <h1>Welcome to the <i>Shopping Site</i></h1>
         <div style={{marginTop:'25px'}}>
-          <Link to="/register">
-            Sign up
-          </Link>
-          <p>or</p>
           <form className='login-form' onSubmit={handleSubmit}>
             <label>Email</label><br/>
             <input type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
@@ -40,6 +36,13 @@ function Login() {
             <input type="password" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)}/>
             <br/>
             <button type='submit' className='login-form-btn'>Login</button>
+            <div>
+              <span>New User?</span>
+              <Link to="/register">
+                <button className='signup-btn'>Sign up</button>
+              </Link>
+              <span>now.</span>
+            </div>
           </form>
         </div>
     </div>
