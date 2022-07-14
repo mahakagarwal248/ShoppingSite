@@ -39,8 +39,9 @@ function Cards() {
           <Card.Title>{products.name}</Card.Title>
           <Card.Text>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
-          <Button variant="primary" onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
-          <Button variant="primary" onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Wishlist</Button>
+          <Button variant="primary" style={{width:'150px'}} onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
+          <br/>
+          <Button variant="secondary" size="sm" style={{marginTop:'8px'}} onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Wishlist</Button>
         </Card.Body>
       </Card>
     </div>
