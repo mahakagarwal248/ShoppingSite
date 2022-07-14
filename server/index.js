@@ -6,7 +6,7 @@ import cors from 'cors';
 import userRoutes from './routes/user.js';
 import productRoutes from './routes/products.js';
 import cartRoutes from './routes/cart.js';
-import wishlistRoutes from './routes/wishlist.ja'
+import wishlistRoutes from './routes/wishlist.js'
 
 const app = express();
 dotenv.config();

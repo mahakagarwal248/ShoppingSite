@@ -5,6 +5,7 @@ import panda from '../../../assets/panda.jpg';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom'
 import {addToCart} from '../../../actions/Cart';
+import { addToWishlist } from "../../../actions/Wishlist";
 
 function Cards() {
   const productList = useSelector((state) => state.productReducer)
@@ -18,6 +19,12 @@ function Cards() {
     e.preventDefault();
     dispatch(addToCart(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice, quantity:2}, navigate))
     navigate('/cart')
+  }
+
+  const handleAddToWishlist = (e, id, productName, productDescription, productBrand, productPrice) => {
+    e.preventDefault();
+    dispatch(addToWishlist(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice}, navigate))
+    navigate('/wishlist')
   }
   return (
     <>
@@ -33,6 +40,7 @@ function Cards() {
           <Card.Text>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
           <Button variant="primary" onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
+          <Button variant="primary" onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Wishlist</Button>
         </Card.Body>
       </Card>
     </div>

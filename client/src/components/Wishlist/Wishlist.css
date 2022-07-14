@@ -1,0 +1,20 @@
+.wishlist-container{
+    text-align: center;
+}
+.display-wishlist-items-container{  
+    width: 75%;
+    margin: auto;
+}
+.display-wishlist-items-container >div{
+    display: flex;
+    margin-bottom: 25px;
+    border: 1px solid black;
+}
+.display-wishlist-items-container-1 img{
+    height: 150px;
+    width: 150px;
+}
+.display-wishlist-items-container-2{
+    padding-left: 10px;
+    text-align: left;
+}
