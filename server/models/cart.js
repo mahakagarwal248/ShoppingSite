@@ -6,7 +6,8 @@ const cartSchema = mongoose.Schema({
     price:{type:Number, required: true},
     quantity:{type:Number, required: true},
     brand:{type:String},
-    userId:{type:String, required:true}
+    userId:{type:String, required:true},
+    productId:{type:String, required:true}
 })
 
 export default mongoose.model("Cart", cartSchema);

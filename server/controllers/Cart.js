@@ -9,8 +9,8 @@ export const addToCart = async (req, res) => {
     }
 
     const {productData} = req.body;
-    const {name, description, brand, price, quantity, userId} = productData
-    const addProductToCart = new cart({name, description, brand, price, quantity, userId});
+    const {name, description, brand, price, quantity, userId, productId} = productData
+    const addProductToCart = new cart({name, description, brand, price, quantity, userId, productId});
 
     try {
         await addProductToCart.save();

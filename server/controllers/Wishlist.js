@@ -9,8 +9,8 @@ export const addToWishlist = async (req, res) => {
     }
 
     const {productData} = req.body;
-    const {name, description, brand, price, userId} = productData
-    const addProductToWishlist = new wishlist({name, description, brand, price, userId});
+    const {name, description, brand, price, userId, productId} = productData
+    const addProductToWishlist = new wishlist({name, description, brand, price, userId, productId});
 
     try {
         await addProductToWishlist.save();

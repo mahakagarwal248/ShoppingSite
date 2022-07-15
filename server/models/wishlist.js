@@ -5,7 +5,8 @@ const wishlistSchema = mongoose.Schema({
     description:{type:String, required: true},
     price:{type:Number, required: true},
     brand:{type:String},
-    userId:{type:String, required:true}
+    userId:{type:String, required:true},
+    productId:{type:String, required:true}
 })
 
 export default mongoose.model("Wishlist", wishlistSchema);
