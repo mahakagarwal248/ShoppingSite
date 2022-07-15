@@ -81,7 +81,11 @@ function Cart() {
                       
                     </TableCell>
                     <TableCell align="left">{products.description}</TableCell>
-                    <TableCell align="left">{products.quantity}</TableCell>
+                    <TableCell align="left">
+                      <button className="quantity-btn">-</button>
+                      {products.quantity}
+                      <button className="quantity-btn">+</button>
+                    </TableCell>
                     <TableCell align="left">{products.price}</TableCell>
                     <TableCell align="left" style={{width:'22%'}}>
                       <button className="cart-btn" style={{marginRight:'25px'}}>Buy Now</button>

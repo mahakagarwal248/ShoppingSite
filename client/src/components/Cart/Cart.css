@@ -32,5 +32,11 @@
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
-    
+}
+.quantity-btn{
+    margin: auto 7px;
+    padding: 0px 5px;
+    font-size: 18px;
+    border: none;
+    align-content: center;
 }
