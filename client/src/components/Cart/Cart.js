@@ -70,10 +70,10 @@ function Cart() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead style={{border:'2px solid black',backgroundColor:'darkgrey'}}>
                 <TableRow >
-                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600'}}>Name</TableCell>
-                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600'}}>Description</TableCell>
-                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600'}}>Quantity</TableCell>
-                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600'}}>Price</TableCell>
+                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'28%'}}>Name</TableCell>
+                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'28%'}}>Description</TableCell>
+                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'15%'}}>Quantity</TableCell>
+                  <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'7%'}}>Price</TableCell>
                   <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'22%'}}>Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -86,18 +86,18 @@ function Cart() {
                   >
                     <TableCell component="th" scope="row">
                       <>
-                      <img src={panda} alt="product" style={{height:'70px', width:'70px', marginRight:'10px'}}/>
+                      <img src={panda} alt="product" style={{height:'70px', width:'70px', marginRight:'10px', width:'28%'}}/>
                       {products.name}
                       </>
                       
                     </TableCell>
-                    <TableCell align="left">{products.description}</TableCell>
-                    <TableCell align="left">
+                    <TableCell align="left" style={{width:'28%'}}>{products.description}</TableCell>
+                    <TableCell align="left" style={{width:'15%'}}>
                       <button className="quantity-btn" onClick={() => handleMinus(products._id, products.quantity)}>-</button>
                       {products.quantity}
                       <button className="quantity-btn" onClick={() => handlePlus(products._id, products.quantity)}>+</button>
                     </TableCell>
-                    <TableCell align="left">{products.price}</TableCell>
+                    <TableCell align="left" style={{width:'7%'}}>{ products.quantity * products.price}</TableCell>
                     <TableCell align="left" style={{width:'22%'}}>
                       <button className="cart-btn" style={{marginRight:'25px'}}>Buy Now</button>
                       <button className="cart-btn" onClick={() => handleDelete(products._id)}>Delete</button>
@@ -108,7 +108,7 @@ function Cart() {
             </Table>
             <div style={{display:'none'}}>
             {cartProductList.data.map((products) => (
-                <span key={products._id}>{total= total + products.price}</span>
+                <span key={products._id}>{total= total + products.quantity * products.price}</span>
             ))}
             </div>
             <Table style={{border:'2px solid black'}}>
@@ -116,7 +116,7 @@ function Cart() {
               <TableRow>
                 <TableCell>Total Amount</TableCell>
                 <TableCell align="right" style={{fontSize:'18px'}}><b>{total}</b></TableCell>
-                <TableCell align="center" style={{width:'26%'}}>
+                <TableCell align="center" style={{width:'21%'}}>
                   <button className="checkout-btn">Checkout</button>
                 </TableCell>
               </TableRow>
