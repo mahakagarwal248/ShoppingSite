@@ -28,3 +28,12 @@ export const deleteCartProduct = (id, navigate) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updateQuantity = (id, quantity) => async (dispatch) => {
+    try {
+        api.updateQuantity(id, quantity)
+        dispatch(fetchCartProduct())
+    } catch (error) {
+        console.log(error)
+    }
+}

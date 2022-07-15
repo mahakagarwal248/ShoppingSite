@@ -10,6 +10,7 @@ export const getAllProducts = () => API.get('/products/getAllProducts');
 export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, {productData});
 export const getCartProducts = (id) => API.get(`/cart/getCartProduct/${id}`);
 export const deleteCartProducts = (id) => API.patch(`/cart/deleteProduct/${id}`);
+export const updateQuantity = (id, quantity) => API.patch(`/cart/updateQuantity/${id}`, quantity)
 
 export const addToWishlist = (id, productData) => API.post(`/wishlist/addToWishlist/${id}`, {productData});
 export const getWishlistProducts = (id) => API.get(`/wishlist/getWishlistProduct/${id}`)

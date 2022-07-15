@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
 import panda from "../../assets/panda.jpg";
-import { deleteCartProduct, fetchCartProduct } from "../../actions/Cart";
+import { deleteCartProduct, fetchCartProduct, updateQuantity } from "../../actions/Cart";
 import { Link, useNavigate } from "react-router-dom";
 
 function Cart() {
@@ -35,6 +35,17 @@ function Cart() {
 
   const handleDelete = (id) => {
     dispatch(deleteCartProduct(id, navigate))
+  }
+
+  const handleMinus = (id, quantity) =>{
+    if(quantity === 1 ){
+      dispatch(deleteCartProduct(id, navigate))
+    }
+    dispatch(updateQuantity(id, {quantity:quantity-1}))
+  }
+
+  const handlePlus = (id, quantity) =>{
+    dispatch(updateQuantity(id, {quantity:quantity+1}))
   }
 
   return (
@@ -82,9 +93,9 @@ function Cart() {
                     </TableCell>
                     <TableCell align="left">{products.description}</TableCell>
                     <TableCell align="left">
-                      <button className="quantity-btn">-</button>
+                      <button className="quantity-btn" onClick={() => handleMinus(products._id, products.quantity)}>-</button>
                       {products.quantity}
-                      <button className="quantity-btn">+</button>
+                      <button className="quantity-btn" onClick={() => handlePlus(products._id, products.quantity)}>+</button>
                     </TableCell>
                     <TableCell align="left">{products.price}</TableCell>
                     <TableCell align="left" style={{width:'22%'}}>
