@@ -13,6 +13,10 @@ function Cards() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleClick = (id) => {
+    navigate(`/productDetails/${id}`)
+  }
+
   var User = JSON.parse(localStorage.getItem('Profile'))
 
   const handleAddToCart = (e, id, productName, productDescription, productBrand, productPrice) => {
@@ -40,8 +44,8 @@ function Cards() {
     : 
     <>
     {productList.data.map((products)=> (
-      <div style={{margin:'20px'}} key={products._id}>
-      <Card style={{ width: "16rem" }}>
+      <div style={{margin:'20px', cursor:'pointer'}} key={products._id}>
+      <Card style={{ width: "16rem" }} onClick={() => handleClick(products._id)}>
         <Card.Img variant="top" src={panda} style={{height:'200px', width:'16rem'}} />
         <Card.Body>
           <Card.Title>{products.name}</Card.Title>
