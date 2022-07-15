@@ -46,3 +46,19 @@ export const deleteProductFromCart = async (req,res) => {
         res.status(404).json({message: error.message});
     }
 }
+
+export const updateQuantity = async (req, res) => {
+    const {id: _id} = req.params;
+    const {quantity} = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)){
+        return res.status(404).send('product unavailable...')
+    }
+
+    try {
+        await cart.findByIdAndUpdate(_id, {$set: {'quantity': quantity}});
+        res.status(200).json({message: 'Successfully updated'});
+    } catch (error) {
+        console.log(error)
+    }
+}
