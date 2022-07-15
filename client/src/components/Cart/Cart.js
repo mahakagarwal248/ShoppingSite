@@ -68,7 +68,6 @@ function Cart() {
               </TableHead>
               <TableBody style={{border:'2px solid black'}}>
               {cartProductList.data.map((products) => (
-                <>
                   <TableRow
                     key={products._id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -89,8 +88,6 @@ function Cart() {
                       <button className="cart-btn" onClick={() => handleDelete(products._id)}>Delete</button>
                     </TableCell>
                   </TableRow>
-                  {/* <span style={{display:'none'}}>{total = total + products.price} </span> */}
-                  </>
                 ))}
               </TableBody>
             </Table>

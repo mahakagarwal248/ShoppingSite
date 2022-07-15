@@ -140,11 +140,9 @@ function Wishlist() {
                 </TableRow>
               </TableHead>
               <TableBody style={{ border: "2px solid black" }}>
-                {wishlistProductList.data.map((products, index) => (
-                  
-                  <>
+                {wishlistProductList.data.map((products) => (
                     <TableRow
-                      key={index}
+                      key={products._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       style={{ borderBottom: "1px solid black" }}
                     >
@@ -193,9 +191,6 @@ function Wishlist() {
                         </button>
                       </TableCell>
                     </TableRow>
-                    {index = index + 1}
-                  </>
-                  
                 ))}
               </TableBody>
             </Table>
