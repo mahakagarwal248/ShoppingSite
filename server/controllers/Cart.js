@@ -9,13 +9,14 @@ export const addToCart = async (req, res) => {
     }
 
     const {productData} = req.body;
-    const {name, description, brand, price, quantity, userId, productId} = productData
-    const addProductToCart = new cart({name, description, brand, price, quantity, userId, productId});
+    const {name, description, brand, price, quantity, userId} = productData
+    const addProductToCart = new cart({name, description, brand, price, quantity, userId, productId: _id});
 
     try {
         await addProductToCart.save();
         res.status(200).json("Added to cart successfully")
     } catch (error) {
+        console.log(error)
         res.status(400).json("Couldn't add product to cart")
     }
 }

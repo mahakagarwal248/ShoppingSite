@@ -3,14 +3,14 @@ import wishlist from "../models/wishlist.js";
 
 export const addToWishlist = async (req, res) => {
     const {id: _id} = req.params;
-
+    
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).send('product unavailable...')
     }
 
     const {productData} = req.body;
-    const {name, description, brand, price, userId, productId} = productData
-    const addProductToWishlist = new wishlist({name, description, brand, price, userId, productId});
+    const {name, description, brand, price, userId} = productData
+    const addProductToWishlist = new wishlist({name, description, brand, price, userId, productId: _id});
 
     try {
         await addProductToWishlist.save();
