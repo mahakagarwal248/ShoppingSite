@@ -21,7 +21,7 @@ function Cards() {
       alert("You need to login first");
       navigate('/login')
     }
-    dispatch(addToCart(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice, quantity:2}, navigate))
+    dispatch(addToCart(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice, quantity:1}, navigate))
     navigate('/cart')
   }
 
