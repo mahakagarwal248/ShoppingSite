@@ -51,6 +51,10 @@ function Cart() {
     dispatch(fetchCartProduct(userId))
   }
 
+  const handleClick = (id) => {
+    navigate(`/productDetails/${id}`)
+  }
+
   return (
     <div className="cart-container">
       <Navbar />
@@ -87,7 +91,7 @@ function Cart() {
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     style={{borderBottom:'1px solid black', cursor:'pointer'}}
                   >
-                    <TableCell component="th" scope="row" style={{width:'28%'}}>
+                    <TableCell component="th" scope="row" style={{width:'28%'}} onClick={() => handleClick(products.productId)}>
                       <>
                       <img src={panda} alt="product" style={{height:'70px', width:'70px', marginRight:'10px'}}/>
                       {products.name}

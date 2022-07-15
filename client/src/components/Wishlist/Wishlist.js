@@ -64,6 +64,10 @@ function Wishlist() {
     dispatch(deleteWishlistProduct(id, navigate));
   };
 
+  const handleClick = (id) => {
+    navigate(`/productDetails/${id}`)
+  }
+  
   return (
     <div className="wishlist-container">
       <Navbar />
@@ -150,6 +154,7 @@ function Wishlist() {
                         component="th"
                         scope="row"
                         style={{ width: "27%" }}
+                        onClick={() => handleClick(products.productId)}
                       >
                         <>
                           <img
