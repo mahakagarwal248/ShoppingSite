@@ -26,3 +26,11 @@
     padding: 5px 15px;
     font-size: 14px;
 }
+.checkout-btn{
+    border: none;
+    background-color: blue;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    
+}
