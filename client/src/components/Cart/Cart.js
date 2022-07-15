@@ -17,7 +17,6 @@ import { Link, useNavigate } from "react-router-dom";
 function Cart() {
 
   const cartProductList = useSelector((state) => state.cartReducer);
-  console.log(cartProductList)
 
   var User = JSON.parse(localStorage.getItem("Profile"));
   const userId = User.result._id;
@@ -86,7 +85,7 @@ function Cart() {
                   <TableRow
                     key={products._id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    style={{borderBottom:'1px solid black'}}
+                    style={{borderBottom:'1px solid black', cursor:'pointer'}}
                   >
                     <TableCell component="th" scope="row" style={{width:'28%'}}>
                       <>
