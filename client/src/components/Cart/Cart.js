@@ -84,9 +84,9 @@ function Cart() {
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     style={{borderBottom:'1px solid black'}}
                   >
-                    <TableCell component="th" scope="row">
+                    <TableCell component="th" scope="row" style={{width:'28%'}}>
                       <>
-                      <img src={panda} alt="product" style={{height:'70px', width:'70px', marginRight:'10px', width:'28%'}}/>
+                      <img src={panda} alt="product" style={{height:'70px', width:'70px', marginRight:'10px'}}/>
                       {products.name}
                       </>
                       
