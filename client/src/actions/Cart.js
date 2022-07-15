@@ -18,3 +18,13 @@ export const fetchCartProduct = (userId) => async (dispatch) => {
         console.log(error)
       }
 }
+
+export const deleteCartProduct = (id, navigate) => async (dispatch) => {
+    try {
+        api.deleteCartProducts(id)
+        dispatch(fetchCartProduct())
+        navigate('/cart')
+    } catch (error) {
+        console.log(error)
+    }
+}

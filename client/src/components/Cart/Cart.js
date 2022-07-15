@@ -11,8 +11,8 @@ import Paper from '@mui/material/Paper';
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
 import panda from "../../assets/panda.jpg";
-import { fetchCartProduct } from "../../actions/Cart";
-import { Link } from "react-router-dom";
+import { deleteCartProduct, fetchCartProduct } from "../../actions/Cart";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cart() {
 
@@ -27,10 +27,15 @@ function Cart() {
   // ))}
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCartProduct(userId));
   }, [dispatch, userId]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteCartProduct(id, navigate))
+  }
 
   return (
     <div className="cart-container">
@@ -81,7 +86,7 @@ function Cart() {
                     <TableCell align="left">{products.price}</TableCell>
                     <TableCell align="left" style={{width:'22%'}}>
                       <button className="cart-btn" style={{marginRight:'25px'}}>Buy Now</button>
-                      <button className="cart-btn">Delete</button>
+                      <button className="cart-btn" onClick={() => handleDelete(products._id)}>Delete</button>
                     </TableCell>
                   </TableRow>
                   {/* <span style={{display:'none'}}>{total = total + products.price} </span> */}
