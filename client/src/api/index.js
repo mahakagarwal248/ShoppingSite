@@ -13,3 +13,4 @@ export const deleteCartProducts = (id) => API.delete(`/cart/deleteProduct/${id}`
 
 export const addToWishlist = (id, productData) => API.post(`/wishlist/addToWishlist/${id}`, {productData});
 export const getWishlistProducts = (id) => API.get(`/wishlist/getWishlistProduct/${id}`)
+export const deleteWishlistProducts = (id) => API.delete(`/wishlist/deleteFromWishlist/${id}`)

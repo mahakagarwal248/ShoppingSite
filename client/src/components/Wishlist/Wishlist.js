@@ -13,7 +13,8 @@ import "./Wishlist.css";
 import Navbar from "../Navbar/Navbar";
 import panda from "../../assets/panda.jpg";
 import { fetchWishlistProduct } from "../../actions/Wishlist";
-import {addToCart} from '../../actions/Cart'
+import { addToCart } from "../../actions/Cart";
+import {deleteWishlistProduct} from '../../actions/Wishlist'
 
 function Wishlist() {
   const wishlistProductList = useSelector((state) => state.wishlistReducer);
@@ -55,7 +56,12 @@ function Wishlist() {
         navigate
       )
     );
+    handleDelete(id);
     navigate("/cart");
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteWishlistProduct(id, navigate));
   };
 
   return (
@@ -178,7 +184,12 @@ function Wishlist() {
                         >
                           Add To Cart
                         </button>
-                        <button className="cart-btn">Delete</button>
+                        <button
+                          className="cart-btn"
+                          onClick={() => handleDelete(products._id)}
+                        >
+                          Delete
+                        </button>
                       </TableCell>
                     </TableRow>
                   </>

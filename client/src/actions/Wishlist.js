@@ -18,3 +18,13 @@ export const fetchWishlistProduct = (userId) => async (dispatch) => {
         console.log(error)
       }
 }
+
+export const deleteWishlistProduct = (id, navigate) => async (dispatch) => {
+    try {
+        api.deleteWishlistProducts(id)
+        dispatch(fetchWishlistProduct())
+        navigate('/wishlist')
+    } catch (error) {
+        console.log(error)
+    }
+}
