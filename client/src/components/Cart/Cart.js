@@ -17,6 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Cart() {
 
   const cartProductList = useSelector((state) => state.cartReducer);
+  console.log(cartProductList)
 
   var User = JSON.parse(localStorage.getItem("Profile"));
   const userId = User.result._id;
@@ -40,12 +41,15 @@ function Cart() {
   const handleMinus = (id, quantity) =>{
     if(quantity === 1 ){
       dispatch(deleteCartProduct(id, navigate))
+      dispatch(fetchCartProduct(userId))
     }
     dispatch(updateQuantity(id, {quantity:quantity-1}))
+    dispatch(fetchCartProduct(userId))
   }
 
   const handlePlus = (id, quantity) =>{
     dispatch(updateQuantity(id, {quantity:quantity+1}))
+    dispatch(fetchCartProduct(userId))
   }
 
   return (
