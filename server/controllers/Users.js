@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 
         const isPasswordCrt = await bcrypt.compare(password, existingUser.password);
         if(!isPasswordCrt){
-            alert('Invalid Credentials')
+            res.status(400).json({message:"Wrong Password"})
         }
 
         const token = jwt.sign({email: existingUser.email, id:existingUser._id}, process.env.JWT_SECRET ,{expiresIn:'1h'})
