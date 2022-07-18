@@ -86,7 +86,7 @@ function Wishlist() {
             <button
               style={{
                 border: "none",
-                backgroundColor: "blue",
+                background: '#800000',
                 color: "white",
                 height: "40px",
                 width: "150px",
@@ -106,7 +106,7 @@ function Wishlist() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead
                 style={{
-                  border: "2px solid black",
+                  border: "2px solid #800000",
                   backgroundColor: "darkgrey",
                 }}
               >
@@ -145,7 +145,7 @@ function Wishlist() {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody style={{ border: "2px solid black" }}>
+              <TableBody style={{ border: "2px solid #800000" }}>
                 {wishlistProductList.data.map((products) => (
                     <TableRow
                       key={products._id}

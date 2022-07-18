@@ -70,14 +70,14 @@ function Cart() {
           <h4>You have nothing in Cart</h4>
           <br/>
           <Link to="/">
-            <button style={{border:'none', backgroundColor:'blue', color:'white',height:'40px', width:'150px', borderRadius:'5px'}}>Shop Now</button>
+            <button style={{border:'none', background: '#800000', color:'white',height:'40px', width:'150px', borderRadius:'5px'}}>Shop Now</button>
           </Link>
         </>
       ) : (
         <>
             <TableContainer component={Paper} style={{width:'70%', margin:'auto',marginTop:'25px'}}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead style={{border:'2px solid black',backgroundColor:'darkgrey'}}>
+              <TableHead style={{border:'2px solid #800000',backgroundColor:'darkgrey'}}>
                 <TableRow >
                   <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'28%'}}>Name</TableCell>
                   <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'28%'}}>Description</TableCell>
@@ -86,7 +86,7 @@ function Cart() {
                   <TableCell align="left" style={{fontSize:'17px', fontWeight:'600', width:'22%'}}>Action</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody style={{border:'2px solid black'}}>
+              <TableBody style={{border:'2px solid #800000'}}>
               {cartProductList.data.map((products) => (
                   <TableRow
                     key={products._id}
@@ -120,7 +120,7 @@ function Cart() {
                 <span key={products._id}>{total= total + products.quantity * products.price}</span>
             ))}
             </div>
-            <Table style={{border:'2px solid black'}}>
+            <Table style={{border:'2px solid #800000'}}>
               <TableBody>
               <TableRow>
                 <TableCell>Total Amount</TableCell>
