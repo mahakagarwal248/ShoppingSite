@@ -26,7 +26,8 @@ function Login() {
   return (
     <div className='login-container'>
       <Navbar/>
-        <h1>Welcome to the <i>Shopping Site</i></h1>
+      <div style={{marginTop:'80px'}}>
+      <h2>Login Here</h2>
         <div style={{marginTop:'25px'}}>
           <form className='login-form' onSubmit={handleSubmit}>
             <label>Email</label><br/>
@@ -45,6 +46,8 @@ function Login() {
             </div>
           </form>
         </div>
+      </div>
+        
     </div>
   )
 }
