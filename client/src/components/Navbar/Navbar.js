@@ -37,7 +37,7 @@ function Navbar() {
         <Link to="/" className='nav-items'>
             Home
         </Link>
-        <Link to="/" className='nav-items'>
+        <Link to="/about" className='nav-items'>
             About
         </Link>
         {localStorage.getItem('Profile') === null ? 
