@@ -62,12 +62,13 @@ function Wishlist() {
 
   const handleDelete = (id) => {
     dispatch(deleteWishlistProduct(id, navigate));
+    dispatch(fetchWishlistProduct(userId))
   };
 
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`)
   }
-  
+
   return (
     <div className="wishlist-container">
       <Navbar />

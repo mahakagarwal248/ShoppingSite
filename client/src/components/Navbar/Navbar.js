@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useEffect, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import decode from 'jwt-decode'
 import Avatar from '@mui/material/Avatar';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -13,12 +14,23 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback( () => {
     dispatch({type:'LOGOUT'});
     navigate('/');
-  }
+  }, [dispatch, navigate])
 
   var User = JSON.parse(localStorage.getItem('Profile'))
+
+  useEffect(() => {
+    const token = User?.token;
+    if(token){
+      const decodedToken = decode(token);
+      if(decodedToken.exp * 1000 < new Date().getTime()){
+        handleLogout()
+      }
+    }
+  }, [User?.token,handleLogout])
+  
 
   return (
     <div className='navbar'>

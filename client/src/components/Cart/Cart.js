@@ -53,6 +53,7 @@ function Cart() {
 
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`)
+    dispatch(fetchCartProduct(userId))
   }
 
   return (
