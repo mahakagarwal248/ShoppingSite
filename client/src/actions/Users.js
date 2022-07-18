@@ -13,9 +13,15 @@ export const signup = (userData, navigate) => async (dispatch) => {
 export const login = (loginData, navigate) => async (dispatch) => {
     try {
         const {data} = await api.login(loginData);
+        console.log(data)
         dispatch({type:'AUTH', data})
         navigate('/')
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        if(error.message === "Request failed with status code 400"){
+            window.alert("Invalid Password")
+        }else if(error.message === "Request failed with status code 404"){
+            window.alert("User doesn't exist")
+        }
     }
 }

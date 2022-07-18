@@ -32,13 +32,12 @@ export const login = async (req, res) => {
     try {
         const existingUser = await users.findOne({email});
         if(!existingUser){
-            alert('You need to signup first');
             return res.status(404).json({message: "User don't exist"});
         }
 
         const isPasswordCrt = await bcrypt.compare(password, existingUser.password);
         if(!isPasswordCrt){
-            res.status(400).json({message:"Wrong Password"})
+            return res.status(400).json({message:"Wrong Password"})
         }
 
         const token = jwt.sign({email: existingUser.email, id:existingUser._id}, process.env.JWT_SECRET ,{expiresIn:'1h'})
