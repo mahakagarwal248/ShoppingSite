@@ -1,6 +1,10 @@
 .home-container{
     justify-content: center;
-    padding: 50px 150px;
+    padding-top: 15px;
+}
+.home-container>div{
+    justify-content: center;
+    padding: 40px 50px;
     display: flex;
     flex-wrap: wrap;
 }
