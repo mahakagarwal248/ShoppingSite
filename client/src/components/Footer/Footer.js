@@ -4,7 +4,7 @@ import './Footer.css';
 
 function Footer() {
   const handleClick=()=>{
-    window.location.assign("https://github.com/mahakagarwal248")
+    window.location.assign("https://github.com/mahakagarwal248/ShoppingSite/tree/dev")
   }
   return (
     <div className='footer' >

@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={
-          <div className="App">
+          <div className="App container">
           <Navbar/>
           <Home/>
           <Footer/>
