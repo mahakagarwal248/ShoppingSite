@@ -1,0 +1,13 @@
+.about-container{
+    text-align: center;
+}
+.about-login-btn{
+    background: #800000;
+    border: none;
+    padding: 8px 15px;
+    margin-top: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 130px;
+}
