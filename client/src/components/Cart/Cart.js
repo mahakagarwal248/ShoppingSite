@@ -35,7 +35,8 @@ function Cart() {
   }, [dispatch, userId]);
 
   const handleDelete = (id) => {
-    dispatch(deleteCartProduct(id, navigate))
+    dispatch(deleteCartProduct(id))
+    dispatch(fetchCartProduct(userId))
   }
 
   const handleMinus = (id, quantity) =>{
