@@ -71,7 +71,7 @@ function Wishlist() {
   }
 
   return (
-    <div className="wishlist-container">
+    <div className="wishlist-container container">
       <Navbar />
       <br />
       <h2>Welcome to your wishlist</h2>

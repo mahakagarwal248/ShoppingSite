@@ -59,7 +59,7 @@ function Cart() {
   }
 
   return (
-    <div className="cart-container">
+    <div className="cart-container container">
       <Navbar />
       <br />
       <h2>Welcome to your cart</h2>
