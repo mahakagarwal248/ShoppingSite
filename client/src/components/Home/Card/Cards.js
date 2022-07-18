@@ -44,12 +44,12 @@ function Cards() {
     : 
     <>
     {productList.data.map((products)=> (
-      <div style={{margin:'20px', cursor:'pointer'}} key={products._id}>
-      <Card style={{ width: "16rem" }}>
-        <Card.Img variant="top" src={panda} style={{height:'200px', width:'16rem'}} onClick={() => handleClick(products._id)}/>
+      <div style={{margin:'18px', cursor:'pointer'}} key={products._id}>
+      <Card style={{ width: "16rem",border:'2px solid rgb(101,0,0)',padding:'0',margin:'0'}}>
+        <Card.Img variant="top" src={panda} style={{height:'180px', width:'100%'}} onClick={() => handleClick(products._id)}/>
         <Card.Body>
           <Card.Title>{products.name}</Card.Title>
-          <Card.Text>{products.description}</Card.Text>
+          <Card.Text style={{margin:'0'}}>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
           <Button style={{width:'150px',background: 'rgb(101,0,0,1)',border:'none'}} onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
           <br/>
