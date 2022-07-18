@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
@@ -108,7 +109,7 @@ function Cart() {
                     <TableCell align="left" style={{width:'7%'}}>{ products.quantity * products.price}</TableCell>
                     <TableCell align="left" style={{width:'22%'}}>
                       <button className="cart-btn" style={{marginRight:'25px'}}>Buy Now</button>
-                      <button className="cart-btn" onClick={() => handleDelete(products._id)}>Delete</button>
+                      <button style={{background:'transparent', border:'none'}} onClick={() => handleDelete(products._id)}><DeleteOutlinedIcon/></button>
                     </TableCell>
                   </TableRow>
                 ))}

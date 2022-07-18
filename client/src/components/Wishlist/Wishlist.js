@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 import "./Wishlist.css";
 import Navbar from "../Navbar/Navbar";
@@ -190,10 +191,10 @@ function Wishlist() {
                           Add To Cart
                         </button>
                         <button
-                          className="cart-btn"
+                          style={{background:'transparent', border:'none'}}
                           onClick={() => handleDelete(products._id)}
                         >
-                          Delete
+                          <DeleteOutlinedIcon/>
                         </button>
                       </TableCell>
                     </TableRow>
