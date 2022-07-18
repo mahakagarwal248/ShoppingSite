@@ -31,6 +31,8 @@ function Register() {
     <div className="register-container">
       <Navbar/>
       <br/>
+      <h2>Register Here</h2>
+      <br/>
       <form className="register-form" onSubmit={handleSubmit}>
         <label>Name</label>
         <br />

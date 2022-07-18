@@ -2,27 +2,31 @@
     text-align: center;
 }
 .register-form{
-    border: 2px double brown;
+    background: rgb(101,0,0);
+    background: radial-gradient(circle, rgba(101,0,0,1) 60%, rgba(0,0,0,1) 100%);
     border-radius: 10px;
     width: 25%;
     margin: auto;
     padding: 30px;
     text-align: left;
-}
-.register-form label{
-    font-weight: bold;
+    color:white
 }
 .register-form input{
     margin-bottom: 10px;
+    border: 2px solid black;
     width: 100%;
-    border: 1px solid black;
+}
+.register-form label{
+    color:rgb(227, 110, 110);
+    font-size: 17px;
+    font-weight: 600;
 }
 .register-form-btn{
     margin-top: 15px;
     width: 40%;
     border: none;
     border-radius: 5px;
-    background-color: brown;
+    background-color: rgb(227, 110, 110);
     color: white;
     padding: 5px 0;
 }
