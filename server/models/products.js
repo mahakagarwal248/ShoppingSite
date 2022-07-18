@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
     price:{type:Number, required:true},
     category:{type: String, required: true},
     brand:{type: String},
-    updated:{type:Date, default:Date.now}
+    updated:{type:Date, default:Date.now},
 })
 
 export default mongoose.model("Products", productSchema);

@@ -11,6 +11,7 @@ import Cart from './components/Cart/Cart'
 import { fetchAllProducts } from './actions/Products';
 import Wishlist from './components/Wishlist/Wishlist';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import About from './components/About/About';
 
 function App() {
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ function App() {
           <Footer/>
         </div>
         }/>
+        <Route exact path="/about" element={<About/>}/>
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path="/cart" element={<Cart/>}/>
