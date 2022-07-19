@@ -3,7 +3,9 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import panda from '../../../assets/panda.jpg';
 import {useSelector, useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import Tooltip from '@mui/material/Tooltip';
 import {addToCart} from '../../../actions/Cart';
 import { addToWishlist } from "../../../actions/Wishlist";
 
@@ -52,8 +54,11 @@ function Cards() {
           <Card.Text style={{margin:'0'}}>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
           <Button style={{width:'150px',background: 'rgb(101,0,0,1)',border:'none'}} onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
-          <br/>
-          <Button variant="secondary" size="sm" style={{marginTop:'8px'}} onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Wishlist</Button>
+          <Button size="sm" style={{background:'none', color:'black',border:'none'}} onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>
+            <Tooltip title="Add to wishlist">
+              <FavoriteBorderOutlinedIcon style={{fontSize:'28px',marginLeft:'5px'}}/>
+            </Tooltip>
+          </Button>
         </Card.Body>
       </Card>
     </div>
