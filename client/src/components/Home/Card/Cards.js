@@ -10,7 +10,7 @@ import {addToCart} from '../../../actions/Cart';
 import { addToWishlist } from "../../../actions/Wishlist";
 
 function Cards() {
-  const productList = useSelector((state) => state.productReducer)
+  const productList = useSelector((state) => state.productReducer);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,6 +40,7 @@ function Cards() {
     dispatch(addToWishlist(id, {userId: User.result._id, name:productName, description:productDescription, brand:productBrand, price:productPrice}, navigate))
     navigate('/wishlist')
   }
+  
   return (
     <>
     {productList.data === null ? <h1>Loading...</h1> 
@@ -54,7 +55,7 @@ function Cards() {
           <Card.Text style={{margin:'0'}}>{products.description}</Card.Text>
           <Card.Text><b>INR {products.price}</b></Card.Text>
           <Button style={{width:'150px',background: 'rgb(101,0,0,1)',border:'none'}} onClick={(e) => handleAddToCart(e, products._id, products.name, products.description, products.brand, products.price)}>Add to Cart</Button>
-          <Button size="sm" style={{background:'none', color:'black',border:'none'}} onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>
+          <Button size="sm" style={{background:'transparent', color:'black',border:'none'}} onClick={(e) => handleAddToWishlist(e, products._id, products.name, products.description, products.brand, products.price)}>
             <Tooltip title="Add to wishlist">
               <FavoriteBorderOutlinedIcon style={{fontSize:'28px',marginLeft:'5px'}}/>
             </Tooltip>
