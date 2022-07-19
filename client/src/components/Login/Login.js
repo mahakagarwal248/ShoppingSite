@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import buffer from 'buffer'
 
 import './Login.css';
 import Navbar from '../Navbar/Navbar'
@@ -20,7 +21,10 @@ function Login() {
     if(!email || !password){
       alert('Invalid credentials')
     }
-    dispatch(login({email, password}, navigate))
+    const data = {email, password};
+    const loginData = JSON.stringify(data)
+    const encodedText = buffer.Buffer.from(loginData).toString('base64')
+    dispatch(login(encodedText, navigate))
   }
 
   return (

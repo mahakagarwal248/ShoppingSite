@@ -24,11 +24,12 @@ export const signup = async (req,res) => {
 }
 
 export const login = async (req, res) => {
-    const {email, password} = req.body;
-    // const encodedText = buffer.Buffer.from(email).toString('base64')
-    // console.log(encodedText)
-    // const decodedText = buffer.Buffer.from(encodedText, 'base64').toString('ascii')
-    // console.log(decodedText)
+    const data = req.body;
+    const encodedText = JSON.stringify(data)
+    const decodedText = buffer.Buffer.from(encodedText, 'base64').toString('ascii')
+    const actual = JSON.parse(decodedText);
+    const {email, password} = actual;
+   
     try {
         const existingUser = await users.findOne({email});
         if(!existingUser){
