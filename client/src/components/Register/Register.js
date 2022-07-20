@@ -30,7 +30,7 @@ function Register() {
       dispatch(signup({name, email, password, mobile, address}, navigate))
   }
   return (
-    <div className="register-container">
+    <div className="register-container container">
       <Navbar/>
       <br/>
       <h2>Register Here</h2>

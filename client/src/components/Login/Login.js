@@ -30,7 +30,7 @@ function Login() {
   }
 
   return (
-    <div className='login-container'>
+    <div className='login-container container'>
       <Navbar/>
       <div style={{marginTop:'80px'}}>
       <h2>Login Here</h2>
