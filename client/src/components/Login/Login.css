@@ -5,7 +5,7 @@
     background: rgb(101,0,0);
     background: radial-gradient(circle, rgba(101,0,0,1) 60%, rgba(0,0,0,1) 100%);
     border-radius: 10px;
-    width: 18%;
+    width: 20%;
     margin: auto;
     padding:40px 30px;
     text-align: left;
@@ -14,6 +14,7 @@
 .login-form input{
     margin-bottom: 10px;
     border: 2px solid black;
+    width: 100%;
 }
 .login-form label{
     color:rgb(227, 110, 110);

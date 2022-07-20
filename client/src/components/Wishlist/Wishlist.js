@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import Tooltip from '@mui/material/Tooltip';
 
 import "./Wishlist.css";
 import Navbar from "../Navbar/Navbar";
@@ -195,7 +196,9 @@ function Wishlist() {
                           style={{background:'transparent', border:'none'}}
                           onClick={() => handleDelete(products._id)}
                         >
-                          <DeleteOutlinedIcon/>
+                          <Tooltip title="Delete" placement="top">
+                           <DeleteOutlinedIcon/>
+                          </Tooltip>
                         </button>
                       </TableCell>
                     </TableRow>

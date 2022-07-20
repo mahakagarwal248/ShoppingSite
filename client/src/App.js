@@ -37,14 +37,14 @@ function App() {
         <Route exact path="/cart" element={User !== null ? <Cart/> : <Navigate to="/" replace/>}/>
         <Route exact path="/wishlist" element={User !== null ? <Wishlist/> : <Navigate to="/" replace/>}/>
         <Route exact path="/productDetails/:id" element={<ProductDetails/>}/>
-        <Route exact path="*" element={
+        {/* <Route exact path="*" element={
           <div className="App container">
           <Navbar/>
           <Home/>
           <Footer/>
         </div>
         && <Navigate to="/" replace/>
-        }/>
+        }/> */}
       </Routes>
     </BrowserRouter>
     
