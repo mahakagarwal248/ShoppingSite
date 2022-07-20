@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 import "./Register.css";
 import {signup} from '../../actions/Users'
@@ -16,6 +17,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
+  const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -44,7 +46,8 @@ function Register() {
         <br />
         <label>Password</label>
         <br />
-        <input type="password" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} />
+        <input type={showPw ? "text" : "password"} minLength="6" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} />
+        <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{marginLeft:'2px'}}/>
         <br />
         <label>Mobile</label>
         <br />

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import buffer from 'buffer'
+import buffer from 'buffer';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 import './Login.css';
 import Navbar from '../Navbar/Navbar'
@@ -15,6 +16,7 @@ function Login() {
   
   const [email,setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +40,8 @@ function Login() {
             <input type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
             <br/>
             <label>Password</label><br/>
-            <input type="password" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)}/>
+            <input type={showPw ? "text" : "password"} minLength="6" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)}/>
+            <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{marginLeft:'2px'}}/>
             <br/>
             <button type='submit' className='login-form-btn'>Login</button>
             <div>
