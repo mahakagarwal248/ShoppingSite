@@ -17,6 +17,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
+  const [securityAns, setSecurityAns] = useState('');
   const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = (e) => {
@@ -27,7 +28,7 @@ function Register() {
       if(!name){
         alert("Enter a name to continue")
       }
-      dispatch(signup({name, email, password, mobile, address}, navigate))
+      dispatch(signup({name, email, password, mobile, address, securityAns}, navigate))
   }
   return (
     <div className="register-container container">
@@ -56,6 +57,11 @@ function Register() {
         <label>Address</label>
         <br />
         <input type="text" placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} />
+        <br />
+        <label>Security Question</label>
+        <br />
+        <span>What is the name of street that you live in?</span>
+        <input type="text" placeholder="Enter address" onChange={(e) => setSecurityAns(e.target.value)} />
         <br />
         <button type="submit" className="register-form-btn">
           Register

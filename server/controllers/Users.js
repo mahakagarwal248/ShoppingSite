@@ -5,7 +5,7 @@ import buffer from 'buffer'
 import users from '../models/user.js'
 
 export const signup = async (req,res) => {
-    const {name, email, password, mobile, address} = req.body;
+    const {name, email, password, mobile, address, securityAns} = req.body;
     try {
         const existingUser = await users.findOne({email});
         if(existingUser){
@@ -14,7 +14,7 @@ export const signup = async (req,res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 12);
-        const newUser = await users.create({name, email, password: hashedPassword, mobile, address});
+        const newUser = await users.create({name, email, password: hashedPassword, mobile, address, securityAns});
         const token = jwt.sign({email: newUser.email, id:newUser._id}, process.env.JWT_SECRET, {expiresIn:'1h'})
         res.status(200).json({result: newUser, token})
 
@@ -45,5 +45,43 @@ export const login = async (req, res) => {
         res.status(200).json({result: existingUser, token})
     } catch (error) {
         res.status(500).json("Something went wrong...");
+    }
+}
+
+export const forgotPassword = async (req, res) => {
+    const {fgEmail,securityAns} = req.body
+
+    try {
+        const existingUser = await users.findOne({fgEmail});
+        if(!existingUser){
+            return res.status(404).json({message: "User doesn't exist"});
+        }
+
+        if(securityAns !== existingUser.securityAns){
+            return res.status(400).json({message: "Answer doesn't match"});
+        }
+        res.status(200).json("answer matched")
+    } catch (error) {
+        
+    }
+}
+export const changePassword = async (req, res) => {
+    const {fgEmail,newPW} = req.body;
+    
+    try {
+        const existingUser = await users.find({fgEmail});
+        if(!existingUser){
+            return res.status(404).json({message: "User doesn't exist"});
+        }
+        const hashedPassword = await bcrypt.hash(newPW, 12);
+        
+        const user = await users.findOne({email:fgEmail})
+        const _id = user._id
+        
+        await users.findByIdAndUpdate(_id, {$set :{ password:hashedPassword}})
+        res.status(200).json({message: "Password Changed Successfully"})
+    } catch (error) {
+        console.log(error)
+        res.status(405).json({message: error.message})
     }
 }

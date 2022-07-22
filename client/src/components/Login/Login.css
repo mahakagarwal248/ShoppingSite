@@ -38,3 +38,22 @@
     color: blue;
     text-decoration: underline;
 }
+
+.cross-btn{
+    border: none;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    padding: 0px 10px;
+    margin-left: auto;
+    font-size: 16px;
+}
+.submit-btn{
+    margin-top: 15px;
+    width: 40%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(101,0,0);
+    color: white;
+    padding: 5px 0;
+}
