@@ -44,6 +44,10 @@ function Login() {
             <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{marginLeft:'2px'}}/>
             <br/>
             <button type='submit' className='login-form-btn'>Login</button>
+            <br/>
+            <Link to="/">
+              <button style={{background:'transparent', border:'none',color:'white',padding:'0'}}>Forgot Password?</button>
+            </Link>
             <div>
               <span>New User?</span>
               <Link to="/register">
