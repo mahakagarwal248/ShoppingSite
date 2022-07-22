@@ -19,3 +19,19 @@ export const getAllProducts = async (req, res) => {
         res.status(404).json({message: error.message})
     }
 }
+
+export const getProductsByCategory = async (req,res) => {
+    const {id: category} = req.params
+    
+    try {
+        if (category === "all"){
+            const productsList = await products.find()
+            res.status(200).json(productsList)
+        }else {
+        const productsList = await products.find({category: category})
+        res.status(200).json(productsList)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

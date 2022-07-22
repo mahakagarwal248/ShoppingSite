@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import panda from '../../../assets/panda.jpg';
@@ -8,12 +8,17 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import Tooltip from '@mui/material/Tooltip';
 import {addToCart} from '../../../actions/Cart';
 import { addToWishlist } from "../../../actions/Wishlist";
+import {getProductByCategory} from '../../../actions/Products'
 
-function Cards() {
+function Cards({value}) {
   const productList = useSelector((state) => state.productReducer);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getProductByCategory(value))
+  }, [dispatch, value])
 
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`)

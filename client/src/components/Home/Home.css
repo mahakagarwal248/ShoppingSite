@@ -4,7 +4,7 @@
 }
 .home-container>div{
     justify-content: center;
-    padding: 40px 50px;
+    padding: 20px 50px;
     display: flex;
     flex-wrap: wrap;
 }

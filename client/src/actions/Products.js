@@ -8,3 +8,11 @@ export const fetchAllProducts = () => async (dispatch) => {
       console.log(error)
     }
   }
+export const getProductByCategory = (value) => async (dispatch) => {
+  try {
+    const {data} = await api.getProductsByCategory(value);
+      dispatch({type: 'FETCH_PRODUCTS_BY_CATEGORY', payload:data})
+  } catch (error) {
+    console.log(error)
+  }
+}

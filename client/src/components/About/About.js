@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './About.css'
 import Navbar from '../Navbar/Navbar'
 import { Link } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {postProfilePic} from '../../actions/Images'
 
 function About() {
     var User = JSON.parse(localStorage.getItem('Profile'));
+    const userId = User?.result?._id
+    const dispatch = useDispatch()
+
+    const [data, setData] = useState('')
+    const handleFile = (e) => {
+        e.preventDefault();
+        const data = URL.createObjectURL(e.target.files[0])
+        console.log(data)
+    
+        const fileData = new FormData();
+        fileData.append("fileupload", JSON.stringify(data));
+
+        const formData = fileData.get("fileupload");
+        console.log(data)
+        
+        dispatch(postProfilePic(userId, {data}))
+    }
     
   return (
     <div className='about-container container'>
@@ -16,6 +35,11 @@ function About() {
         </Link>
         </> : <>
         <div style={{marginTop:'25px'}}>
+            <form encType="multipart/form-data">
+            <input type="file" name='file' onChange={handleFile}/>
+            <button type='submit'>go</button>
+            </form>
+            
             <h2>User Details</h2>
             <div style={{width:'50%', margin:'auto',marginTop:'45px'}}>
                 <div style={{display:'flex'}}>

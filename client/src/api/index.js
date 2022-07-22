@@ -6,6 +6,7 @@ export const signup = (userData) => API.post('/user/signup', userData);
 export const login = (loginData) => API.post('/user/login', loginData);
 
 export const getAllProducts = () => API.get('/products/getAllProducts');
+export const getProductsByCategory = (value) => API.get(`/products/getProductByCategory/${value}`)
 
 export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, {productData});
 export const getCartProducts = (id) => API.get(`/cart/getCartProduct/${id}`);
@@ -15,3 +16,7 @@ export const updateQuantity = (id, quantity) => API.patch(`/cart/updateQuantity/
 export const addToWishlist = (id, productData) => API.post(`/wishlist/addToWishlist/${id}`, {productData});
 export const getWishlistProducts = (id) => API.get(`/wishlist/getWishlistProduct/${id}`)
 export const deleteWishlistProducts = (id) => API.patch(`/wishlist/deleteFromWishlist/${id}`)
+
+export const postProfilePic = (id, formData) => API.post(`/images/postImage/${id}`, formData, {
+    headers: 'multipart/form-data'
+}).then(res => console.log(res.data));
