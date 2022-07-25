@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './About.css'
 import Navbar from '../Navbar/Navbar'
 import { Link } from 'react-router-dom';
@@ -10,16 +10,16 @@ function About() {
     const userId = User?.result?._id
     const dispatch = useDispatch()
 
-    const [data, setData] = useState('')
+    // const [data, setData] = useState('')
     const handleFile = (e) => {
         e.preventDefault();
-        const data = URL.createObjectURL(e.target.files[0])
-        console.log(data)
+        // const data = URL.createObjectURL(e.target.files[0])
+        // console.log(data)
     
-        const fileData = new FormData();
-        fileData.append("fileupload", JSON.stringify(data));
+        // const fileData = new FormData();
+        // fileData.append("fileupload", JSON.stringify(data));
 
-        const formData = fileData.get("fileupload");
+        // const formData = fileData.get("fileupload");
         
         dispatch(postProfilePic(userId, e.target.files[0]))
     }
