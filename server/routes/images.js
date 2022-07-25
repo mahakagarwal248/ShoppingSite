@@ -3,20 +3,25 @@ import multer from 'multer';
 import { postImage } from '../controllers/Images.js';
 const router = express.Router();
 import fs from 'fs'
+import request from 'request'
 const upload = multer({ dest:'../uploads'  });
 
 const uploadFile = async (req, res, next) => {
-    const data = req.body.data;
-    console.log(data);
-    
+    const data = req.body;
     try {
-        upload.single('file')
+        upload.single('file', data)
         res.send('success')
+        // var download = function(uri, filename, callback){
+        // request.head(uri, function(err, res, body){
 
-        var file = fs.writeFile('file.png', data, function (err) {
-        if (err) throw err;
-        });
-        res.send(file)
+        //     request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+        // });
+        // };
+
+        // download('https://www.google.com/images/srpr/logo3w.png', 'google.png', function(){
+        // console.log('done');
+        // });
+    
         next();
     } catch (error) {
         console.log(error);

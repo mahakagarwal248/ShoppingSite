@@ -20,9 +20,8 @@ function About() {
         fileData.append("fileupload", JSON.stringify(data));
 
         const formData = fileData.get("fileupload");
-        console.log(data)
         
-        dispatch(postProfilePic(userId, {data}))
+        dispatch(postProfilePic(userId, e.target.files[0]))
     }
     
   return (
@@ -35,12 +34,13 @@ function About() {
         </Link>
         </> : <>
         <div style={{marginTop:'25px'}}>
-            <form encType="multipart/form-data">
-            <input type="file" name='file' onChange={handleFile}/>
-            <button type='submit'>go</button>
-            </form>
             
             <h2>User Details</h2>
+            <form encType="multipart/form-data">
+            <input type="file" name='file' onChange={handleFile}/>
+            
+            </form>
+            
             <div style={{width:'50%', margin:'auto',marginTop:'45px'}}>
                 <div style={{display:'flex'}}>
                     <h4>Name:</h4>

@@ -21,4 +21,4 @@ export const deleteWishlistProducts = (id) => API.patch(`/wishlist/deleteFromWis
 
 export const postProfilePic = (id, formData) => API.post(`/images/postImage/${id}`, formData, {
     headers: 'multipart/form-data'
-}).then(res => console.log(res.data));
+}).then(console.log(formData));
