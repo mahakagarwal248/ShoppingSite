@@ -1,14 +1,14 @@
 import images from '../models/images.js';
 
 import compress_images from 'compress-images';
+import sharp from 'sharp';
 
 export const postImage =  async (req,res) => {
     // const image = req.body;
     // const img = image.data
-
-    // console.log(req.body);
-    // console.log(req.file)
-    const input_img= "D:/ShoppingSite/server/*.{jpg,JPEG,png,gif}"
+    console.log(req)
+    
+    const input_img= "D:/ShoppingSite/uploads/*.{jpg,JPEG,png,gif}"
     const output_path = "img/";
     
     try {

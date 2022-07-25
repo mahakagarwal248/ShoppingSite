@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './About.css'
 import Navbar from '../Navbar/Navbar'
 import { Link } from 'react-router-dom';
@@ -10,18 +10,19 @@ function About() {
     const userId = User?.result?._id
     const dispatch = useDispatch()
 
-    // const [data, setData] = useState('')
+    const [data, setData] = useState('')
     const handleFile = (e) => {
         e.preventDefault();
         // const data = URL.createObjectURL(e.target.files[0])
         // console.log(data)
     
-        // const fileData = new FormData();
-        // fileData.append("fileupload", JSON.stringify(data));
+        const fileData = new FormData();
+        fileData.append("file",e.target.files[0]);
+        console.log(fileData)
 
         // const formData = fileData.get("fileupload");
         
-        dispatch(postProfilePic(userId, e.target.files[0]))
+        dispatch(postProfilePic(userId, fileData))
     }
     
   return (
@@ -36,12 +37,17 @@ function About() {
         <div style={{marginTop:'25px'}}>
             
             <h2>User Details</h2>
-            <form encType="multipart/form-data">
-            <input type="file" name='file' onChange={handleFile}/>
             
-            </form>
             
             <div style={{width:'50%', margin:'auto',marginTop:'45px'}}>
+                <div>
+                    <form encType="multipart/form-data" style={{display:'flex'}} >
+                        <h4>Upload Profile Pic:</h4>
+                        <input type="file" name='file' onChange={handleFile} style={{marginLeft:'8px'}}/>
+                        <button type='submit'>Go</button>
+                    </form>
+                </div>
+                <br/>
                 <div style={{display:'flex'}}>
                     <h4>Name:</h4>
                     <span style={{fontSize:'20px', marginLeft:'8px'}}>{User?.result?.name}</span>

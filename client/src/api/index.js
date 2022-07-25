@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL:'https://your-shopping-site.herokuapp.com'})
+const API = axios.create({baseURL:'http://localhost:5000'})
 
 export const signup = (userData) => API.post('/user/signup', userData);
 export const login = (loginData) => API.post('/user/login', loginData);
@@ -20,5 +20,5 @@ export const getWishlistProducts = (id) => API.get(`/wishlist/getWishlistProduct
 export const deleteWishlistProducts = (id) => API.patch(`/wishlist/deleteFromWishlist/${id}`)
 
 export const postProfilePic = (id, formData) => API.post(`/images/postImage/${id}`, formData, {
-    headers: 'multipart/form-data'
+    headers: 'image/png'
 }).then(console.log(formData));
