@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './About.css';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
@@ -14,21 +14,23 @@ function About() {
   // const API = axios.create({ baseURL: 'http://localhost:5000' });
   const [userProfileImage, setUserProfileImage] = useState({});
 
-  axios({
-    method: 'get',
-    url: `http://localhost:5000/images/getImage/${userId}`
-  }).then(function (response) {
-    let user = response.data;
-    if (user === null) {
-      setUserProfileImage({});
-    } else {
-      setUserProfileImage(
-        `data:${user.img.contentType};base64, ${buffer.Buffer.from(user.img.data).toString(
-          'base64'
-        )}`
-      );
-    }
-  });
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: `http://localhost:5000/images/getImage/${userId}`
+    }).then(function (response) {
+      let user = response.data;
+      if (user === null) {
+        setUserProfileImage({});
+      } else {
+        setUserProfileImage(
+          `data:${user.img.contentType};base64, ${buffer.Buffer.from(user.img.data).toString(
+            'base64'
+          )}`
+        );
+      }
+    });
+  }, []);
 
   const handleFile = (e) => {
     e.preventDefault();
