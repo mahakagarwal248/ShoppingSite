@@ -1,5 +1,5 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const imageReducer = (action, state = { data: null }) => {
+const imageReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'FILE':
       return { ...state };

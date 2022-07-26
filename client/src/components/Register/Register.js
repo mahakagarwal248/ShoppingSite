@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import {useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-import "./Register.css";
-import {signup} from '../../actions/Users'
-import Navbar from "../Navbar/Navbar";
+import './Register.css';
+import { signup } from '../../actions/Users';
+import Navbar from '../Navbar/Navbar';
 
 function Register() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,21 +20,21 @@ function Register() {
   const [showPw, setShowPw] = useState(false);
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      if(!email){
-        alert('Email is neccessary')
-      }
-      if(!name){
-        alert("Enter a name to continue")
-      }
-      dispatch(signup({name, email, password, mobile, address, securityAns}, navigate))
-  }
+    e.preventDefault();
+    if (!email) {
+      alert('Email is required');
+    }
+    if (!name) {
+      alert('Enter a name to continue');
+    }
+    dispatch(signup({ name, email, password, mobile, address, securityAns }, navigate));
+  };
   return (
     <div className="register-container container">
-      <Navbar/>
-      <br/>
+      <Navbar />
+      <br />
       <h2>Register Here</h2>
-      <br/>
+      <br />
       <form className="register-form" onSubmit={handleSubmit}>
         <label>Name</label>
         <br />
@@ -47,21 +46,38 @@ function Register() {
         <br />
         <label>Password</label>
         <br />
-        <input type={showPw ? "text" : "password"} minLength="6" placeholder="Enter your password" onChange={(e) => setPassword(e.target.value)} />
-        <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{marginLeft:'2px'}}/>
+        <input
+          type={showPw ? 'text' : 'password'}
+          minLength="6"
+          placeholder="Enter your password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{ marginLeft: '2px' }} />
         <br />
         <label>Mobile</label>
         <br />
-        <input type="tel" placeholder="Enter mobile number" onChange={(e) => setMobile(e.target.value)} />
+        <input
+          type="tel"
+          placeholder="Enter mobile number"
+          onChange={(e) => setMobile(e.target.value)}
+        />
         <br />
         <label>Address</label>
         <br />
-        <input type="text" placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Enter address"
+          onChange={(e) => setAddress(e.target.value)}
+        />
         <br />
         <label>Security Question</label>
         <br />
         <span>What is the name of street that you live in?</span>
-        <input type="text" placeholder="Enter address" onChange={(e) => setSecurityAns(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Enter address"
+          onChange={(e) => setSecurityAns(e.target.value)}
+        />
         <br />
         <button type="submit" className="register-form-btn">
           Register

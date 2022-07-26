@@ -1,5 +1,5 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const wishlistReducer = (action, state = { data: null }) => {
+const wishlistReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'ADD_TO_WISHLIST':
       return { ...state };

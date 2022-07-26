@@ -1,5 +1,5 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const cartReducer = (action, state = { data: null }) => {
+const cartReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       return { ...state };

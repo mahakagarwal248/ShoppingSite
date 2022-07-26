@@ -1,5 +1,5 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const productReducer = (action, state = { data: null }) => {
+const productReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'FETCH_ALL_PRODUCTS':
       return { ...state, data: action.payload };

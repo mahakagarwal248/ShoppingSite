@@ -1,5 +1,5 @@
 /* eslint linebreak-style: ["error", "windows"] */
-const userReducer = (action, state = { data: null }) => {
+const userReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'AUTH':
       localStorage.setItem('Profile', JSON.stringify({ ...action?.data }));
