@@ -20,6 +20,7 @@ function Home() {
             Select Category
           </option>
           <option value="all">All</option>
+          <option value="bottles">Bottles</option>
           <option value="clothing">Clothing</option>
           <option value="electronics">Electronics</option>
           <option value="mobile & accessories">Mobile & accessories</option>
