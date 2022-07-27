@@ -1,0 +1,32 @@
+.register-container{
+    text-align: center;
+}
+.register-form{
+    background: rgb(101,0,0);
+    background: radial-gradient(circle, rgba(101,0,0,1) 60%, rgba(0,0,0,1) 100%);
+    border-radius: 10px;
+    width: 28%;
+    margin: auto;
+    padding: 30px;
+    text-align: left;
+    color:white
+}
+.register-form input{
+    margin-bottom: 10px;
+    border: 2px solid black;
+    width: 88%;
+}
+.register-form label{
+    color:rgb(227, 110, 110);
+    font-size: 17px;
+    font-weight: 600;
+}
+.register-form-btn{
+    margin-top: 15px;
+    width: 40%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(227, 110, 110);
+    color: white;
+    padding: 5px 0;
+}
