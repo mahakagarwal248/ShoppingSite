@@ -35,7 +35,7 @@ function Cart() {
   }, [dispatch, userId]);
 
   const handleDelete = (id) => {
-    dispatch(deleteCartProduct(id));
+    dispatch(deleteCartProduct(id, navigate));
     dispatch(fetchCartProduct(userId));
   };
 
@@ -195,6 +195,20 @@ function Cart() {
               </TableBody>
             </Table>
           </TableContainer>
+          <Link to="/">
+            <button
+              style={{
+                border: 'none',
+                background: '#800000',
+                color: 'white',
+                height: '40px',
+                width: '200px',
+                borderRadius: '5px',
+                marginTop: '50px'
+              }}>
+              Add More Products
+            </button>
+          </Link>
         </>
       )}
     </div>
