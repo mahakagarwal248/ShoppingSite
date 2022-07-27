@@ -11,13 +11,14 @@ export const changePassword = (updatedPassword) =>
 export const getAllProducts = () => API.get('/products/getAllProducts');
 export const getProductsByCategory = (value) => API.get(`/products/getProductByCategory/${value}`);
 
-export const addToCart = (id, productData) => API.post(`/cart/addToCart/${id}`, { productData });
+export const addToCart = (id, productData) =>
+  API.post(`/cart/addToCart/${id}`, { productData, headers: 'image/png' });
 export const getCartProducts = (id) => API.get(`/cart/getCartProduct/${id}`);
 export const deleteCartProducts = (id) => API.patch(`/cart/deleteProduct/${id}`);
 export const updateQuantity = (id, quantity) => API.patch(`/cart/updateQuantity/${id}`, quantity);
 
 export const addToWishlist = (id, productData) =>
-  API.post(`/wishlist/addToWishlist/${id}`, { productData });
+  API.post(`/wishlist/addToWishlist/${id}`, { productData, headers: 'image/png' });
 export const getWishlistProducts = (id) => API.get(`/wishlist/getWishlistProduct/${id}`);
 export const deleteWishlistProducts = (id) => API.patch(`/wishlist/deleteFromWishlist/${id}`);
 

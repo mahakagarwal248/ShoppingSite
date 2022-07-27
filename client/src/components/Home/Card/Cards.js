@@ -28,7 +28,15 @@ function Cards({ value }) {
 
   var User = JSON.parse(localStorage.getItem('Profile'));
 
-  const handleAddToCart = (e, id, productName, productDescription, productBrand, productPrice) => {
+  const handleAddToCart = (
+    e,
+    id,
+    productName,
+    productDescription,
+    productBrand,
+    productPrice,
+    productImg
+  ) => {
     e.preventDefault();
     if (localStorage.getItem('Profile') === null) {
       alert('You need to login first');
@@ -43,7 +51,8 @@ function Cards({ value }) {
           description: productDescription,
           brand: productBrand,
           price: productPrice,
-          quantity: 1
+          quantity: 1,
+          img: productImg
         },
         navigate
       )
@@ -57,7 +66,8 @@ function Cards({ value }) {
     productName,
     productDescription,
     productBrand,
-    productPrice
+    productPrice,
+    productImg
   ) => {
     e.preventDefault();
     if (localStorage.getItem('Profile') === null) {
@@ -72,7 +82,8 @@ function Cards({ value }) {
           name: productName,
           description: productDescription,
           brand: productBrand,
-          price: productPrice
+          price: productPrice,
+          img: productImg
         },
         navigate
       )
@@ -127,7 +138,8 @@ function Cards({ value }) {
                               products.name,
                               products.description,
                               products.brand,
-                              products.price
+                              products.price,
+                              products.img
                             )
                           }>
                           Add to Cart
@@ -142,7 +154,8 @@ function Cards({ value }) {
                               products.name,
                               products.description,
                               products.brand,
-                              products.price
+                              products.price,
+                              products.img
                             )
                           }>
                           <Tooltip title="Add to wishlist">

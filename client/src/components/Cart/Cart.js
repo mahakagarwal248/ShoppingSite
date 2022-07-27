@@ -9,10 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Tooltip from '@mui/material/Tooltip';
+import buffer from 'buffer';
 
 import './Cart.css';
 import Navbar from '../Navbar/Navbar';
-import panda from '../../assets/panda.jpg';
 import { deleteCartProduct, fetchCartProduct, updateQuantity } from '../../actions/Cart';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -57,7 +57,7 @@ function Cart() {
     navigate(`/productDetails/${id}`);
     dispatch(fetchCartProduct(userId));
   };
-
+  var image = {};
   return (
     <div className="cart-container container">
       <Navbar />
@@ -120,58 +120,65 @@ function Cart() {
                 </TableRow>
               </TableHead>
               <TableBody style={{ border: '2px solid #800000' }}>
-                {cartProductList.data.map((products) => (
-                  <TableRow
-                    key={products._id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    style={{ borderBottom: '1px solid black', cursor: 'pointer' }}>
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      style={{ width: '28%' }}
-                      onClick={() => handleClick(products.productId)}>
-                      <>
-                        <img
-                          src={panda}
-                          alt="product"
-                          style={{ height: '70px', width: '70px', marginRight: '10px' }}
-                        />
-                        {products.name}
-                      </>
-                    </TableCell>
-                    <TableCell align="left" style={{ width: '28%' }}>
-                      {products.description}
-                    </TableCell>
-                    <TableCell align="left" style={{ width: '15%' }}>
-                      <button
-                        className="quantity-btn"
-                        onClick={() => handleMinus(products._id, products.quantity)}>
-                        -
-                      </button>
-                      {products.quantity}
-                      <button
-                        className="quantity-btn"
-                        onClick={() => handlePlus(products._id, products.quantity)}>
-                        +
-                      </button>
-                    </TableCell>
-                    <TableCell align="left" style={{ width: '7%' }}>
-                      {products.quantity * products.price}
-                    </TableCell>
-                    <TableCell align="left" style={{ width: '22%' }}>
-                      <button className="cart-btn" style={{ marginRight: '25px' }}>
-                        Buy Now
-                      </button>
-                      <button
-                        style={{ background: 'transparent', border: 'none' }}
-                        onClick={() => handleDelete(products._id)}>
-                        <Tooltip title="Delete" placement="top">
-                          <DeleteOutlinedIcon />
-                        </Tooltip>
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {cartProductList.data.map(
+                  (products) => (
+                    (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
+                      products.img.data
+                    ).toString('base64')}`),
+                    (
+                      <TableRow
+                        key={products._id}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        style={{ borderBottom: '1px solid black', cursor: 'pointer' }}>
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          style={{ width: '28%' }}
+                          onClick={() => handleClick(products.productId)}>
+                          <>
+                            <img
+                              src={image}
+                              alt="product"
+                              style={{ height: '70px', width: '70px', marginRight: '10px' }}
+                            />
+                            {products.name}
+                          </>
+                        </TableCell>
+                        <TableCell align="left" style={{ width: '28%' }}>
+                          {products.description}
+                        </TableCell>
+                        <TableCell align="left" style={{ width: '15%' }}>
+                          <button
+                            className="quantity-btn"
+                            onClick={() => handleMinus(products._id, products.quantity)}>
+                            -
+                          </button>
+                          {products.quantity}
+                          <button
+                            className="quantity-btn"
+                            onClick={() => handlePlus(products._id, products.quantity)}>
+                            +
+                          </button>
+                        </TableCell>
+                        <TableCell align="left" style={{ width: '7%' }}>
+                          {products.quantity * products.price}
+                        </TableCell>
+                        <TableCell align="left" style={{ width: '22%' }}>
+                          <button className="cart-btn" style={{ marginRight: '25px' }}>
+                            Buy Now
+                          </button>
+                          <button
+                            style={{ background: 'transparent', border: 'none' }}
+                            onClick={() => handleDelete(products._id)}>
+                            <Tooltip title="Delete" placement="top">
+                              <DeleteOutlinedIcon />
+                            </Tooltip>
+                          </button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  )
+                )}
               </TableBody>
             </Table>
             <div style={{ display: 'none' }}>

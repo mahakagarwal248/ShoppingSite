@@ -11,10 +11,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Tooltip from '@mui/material/Tooltip';
+import buffer from 'buffer';
 
 import './Wishlist.css';
 import Navbar from '../Navbar/Navbar';
-import panda from '../../assets/panda.jpg';
 import { fetchWishlistProduct } from '../../actions/Wishlist';
 import { addToCart } from '../../actions/Cart';
 import { deleteWishlistProduct } from '../../actions/Wishlist';
@@ -33,7 +33,15 @@ function Wishlist() {
     dispatch(fetchWishlistProduct(userId));
   }, [dispatch, userId]);
 
-  const handleAddToCart = (e, id, productName, productDescription, productBrand, productPrice) => {
+  const handleAddToCart = (
+    e,
+    id,
+    productName,
+    productDescription,
+    productBrand,
+    productPrice,
+    productImg
+  ) => {
     e.preventDefault();
     if (localStorage.getItem('Profile') === null) {
       alert('You need to login first');
@@ -48,7 +56,8 @@ function Wishlist() {
           description: productDescription,
           brand: productBrand,
           price: productPrice,
-          quantity: 2
+          quantity: 2,
+          img: productImg
         },
         navigate
       )
@@ -65,7 +74,7 @@ function Wishlist() {
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`);
   };
-
+  var image = {};
   return (
     <div className="wishlist-container container">
       <Navbar />
@@ -131,57 +140,65 @@ function Wishlist() {
                 </TableRow>
               </TableHead>
               <TableBody style={{ border: '2px solid #800000' }}>
-                {wishlistProductList.data.map((products) => (
-                  <TableRow
-                    key={products._id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    style={{ borderBottom: '1px solid black' }}>
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      style={{ width: '27%' }}
-                      onClick={() => handleClick(products.productId)}>
-                      <>
-                        <img
-                          src={panda}
-                          alt="product"
-                          style={{
-                            height: '70px',
-                            width: '70px',
-                            marginRight: '10px'
-                          }}
-                        />
-                        {products.name}
-                      </>
-                    </TableCell>
-                    <TableCell align="left">{products.description}</TableCell>
-                    <TableCell align="left">{products.price}</TableCell>
-                    <TableCell align="left" style={{ width: '25%' }}>
-                      <button
-                        className="cart-btn"
-                        style={{ marginRight: '25px' }}
-                        onClick={(e) =>
-                          handleAddToCart(
-                            e,
-                            products._id,
-                            products.name,
-                            products.description,
-                            products.brand,
-                            products.price
-                          )
-                        }>
-                        Add To Cart
-                      </button>
-                      <button
-                        style={{ background: 'transparent', border: 'none' }}
-                        onClick={() => handleDelete(products._id)}>
-                        <Tooltip title="Delete" placement="top">
-                          <DeleteOutlinedIcon />
-                        </Tooltip>
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {wishlistProductList.data.map(
+                  (products) => (
+                    (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
+                      products.img.data
+                    ).toString('base64')}`),
+                    (
+                      <TableRow
+                        key={products._id}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        style={{ borderBottom: '1px solid black' }}>
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          style={{ width: '27%' }}
+                          onClick={() => handleClick(products.productId)}>
+                          <>
+                            <img
+                              src={image}
+                              alt="product"
+                              style={{
+                                height: '70px',
+                                width: '70px',
+                                marginRight: '10px'
+                              }}
+                            />
+                            {products.name}
+                          </>
+                        </TableCell>
+                        <TableCell align="left">{products.description}</TableCell>
+                        <TableCell align="left">{products.price}</TableCell>
+                        <TableCell align="left" style={{ width: '25%' }}>
+                          <button
+                            className="cart-btn"
+                            style={{ marginRight: '25px' }}
+                            onClick={(e) =>
+                              handleAddToCart(
+                                e,
+                                products._id,
+                                products.name,
+                                products.description,
+                                products.brand,
+                                products.price,
+                                products.img
+                              )
+                            }>
+                            Add To Cart
+                          </button>
+                          <button
+                            style={{ background: 'transparent', border: 'none' }}
+                            onClick={() => handleDelete(products._id)}>
+                            <Tooltip title="Delete" placement="top">
+                              <DeleteOutlinedIcon />
+                            </Tooltip>
+                          </button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  )
+                )}
               </TableBody>
             </Table>
           </TableContainer>
