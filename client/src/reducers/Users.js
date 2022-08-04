@@ -7,6 +7,8 @@ const userReducer = (state = { data: null }, action) => {
     case 'LOGOUT':
       localStorage.clear();
       return { ...state, data: null };
+    case 'GET_SECURITY_QUES':
+      return { ...state, data: action?.data };
     case 'FORGOT_PASSWORD':
       return { ...state };
     case 'UPDATED_PASSWORD':

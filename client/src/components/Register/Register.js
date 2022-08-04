@@ -19,6 +19,8 @@ function Register() {
   const [securityAns, setSecurityAns] = useState('');
   const [showPw, setShowPw] = useState(false);
 
+  const [securityQues, setSecurityQues] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email) {
@@ -27,7 +29,9 @@ function Register() {
     if (!name) {
       alert('Enter a name to continue');
     }
-    dispatch(signup({ name, email, password, mobile, address, securityAns }, navigate));
+    dispatch(
+      signup({ name, email, password, mobile, address, securityQues, securityAns }, navigate)
+    );
   };
   return (
     <div className="register-container container">
@@ -72,10 +76,21 @@ function Register() {
         <br />
         <label>Security Question</label>
         <br />
-        <span>What is the name of street that you live in?</span>
+        <select value={securityQues} onChange={(e) => setSecurityQues(e.target.value)}>
+          <option value="What is the name of street that you live in?">
+            What is the name of street that you live in?
+          </option>
+          <option value="What is the name of your pet?">What is the name of your pet?</option>
+          <option value="What is the name of your first school?">
+            What is the name of your first school?
+          </option>
+          <option value="Which is your favorite color?">Which is your favorite color?</option>
+        </select>
+        <br />
+        <br />
         <input
           type="text"
-          placeholder="Enter address"
+          placeholder="Enter answer"
           onChange={(e) => setSecurityAns(e.target.value)}
         />
         <br />

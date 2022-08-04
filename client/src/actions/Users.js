@@ -24,11 +24,19 @@ export const login = (loginData, navigate) => async (dispatch) => {
     }
   }
 };
-
-export const forgotPassword = (answerData) => async (dispatch) => {
+export const getSecurityQues = (email) => async (dispatch) => {
+  try {
+    const data = await api.getSecurityQues(email);
+    dispatch({ type: 'GET_SECURITY_QUES', data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const forgotPassword = (answerData, setEditPw) => async (dispatch) => {
   try {
     await api.forgotPassword(answerData);
     dispatch({ type: 'FORGOT_PASSWORD' });
+    setEditPw(true);
   } catch (error) {
     console.log(error);
     if (error.message === 'Request failed with status code 400') {

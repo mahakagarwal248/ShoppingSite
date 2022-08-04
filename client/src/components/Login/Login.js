@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import buffer from 'buffer';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -9,7 +9,7 @@ import Modal from '@mui/material/Modal';
 
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
-import { forgotPassword, login, updatedPassword } from '../../actions/Users';
+import { forgotPassword, getSecurityQues, login, updatedPassword } from '../../actions/Users';
 
 const style = {
   position: 'absolute',
@@ -28,7 +28,6 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [fgEmail, setFgEmail] = useState('');
   const [ans, setAns] = useState('');
 
   const [email, setEmail] = useState('');
@@ -36,7 +35,18 @@ function Login() {
   const [showPw, setShowPw] = useState(false);
 
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+
+  const securityData = useSelector((state) => state.userReducer);
+
+  const handleOpen = (e) => {
+    e.preventDefault();
+    if (!email) {
+      alert('Enter Email First');
+    } else {
+      setOpen(true);
+      dispatch(getSecurityQues(email));
+    }
+  };
   const handleClose = () => setOpen(false);
 
   const [editPW, setEditPw] = useState(false);
@@ -44,13 +54,13 @@ function Login() {
 
   const handleModalSubmit = (e) => {
     e.preventDefault();
-    dispatch(forgotPassword({ fgEmail, ans }));
-    setEditPw(true);
+    dispatch(forgotPassword({ email, ans }, setEditPw));
+    // setEditPw(true);
   };
 
   const handlePWSubmit = (e) => {
     e.preventDefault();
-    dispatch(updatedPassword({ fgEmail, newPW }));
+    dispatch(updatedPassword({ email, newPW }));
     setOpen(false);
     navigate('/login');
   };
@@ -72,7 +82,7 @@ function Login() {
       <div style={{ marginTop: '80px' }}>
         <h2>Login Here</h2>
         <div style={{ marginTop: '25px' }}>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form className="login-form">
             <label>Email</label>
             <br />
             <input
@@ -91,7 +101,7 @@ function Login() {
             />
             <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{ marginLeft: '2px' }} />
             <br />
-            <button type="submit" className="login-form-btn">
+            <button onClick={handleSubmit} className="login-form-btn">
               Login
             </button>
             <br />
@@ -130,7 +140,7 @@ function Login() {
               <input
                 onChange={(e) => setNewPW(e.target.value)}
                 type="text"
-                placeholder="Enter security answer here"
+                placeholder="Enter password"
                 style={{
                   width: '90%',
                   border: '2px solid black',
@@ -151,22 +161,7 @@ function Login() {
                 </button>
               </div>
               <p style={{ fontSize: '18px', fontWeight: '500', marginBottom: '0' }}>
-                Enter your email Id
-              </p>
-              <input
-                onChange={(e) => setFgEmail(e.target.value)}
-                type="text"
-                placeholder="Enter email here"
-                style={{
-                  width: '90%',
-                  border: '2px solid black',
-                  borderRadius: '5px',
-                  marginBottom: '15px'
-                }}
-              />
-              <br />
-              <p style={{ fontSize: '18px', fontWeight: '500', marginBottom: '0' }}>
-                What is the name of the street that you live in?
+                {securityData?.data?.data}
               </p>
               <input
                 onChange={(e) => setAns(e.target.value)}

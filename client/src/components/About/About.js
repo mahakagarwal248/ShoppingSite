@@ -39,11 +39,6 @@ function About() {
     fileData.append('file', e.target.files[0]);
     dispatch(postProfilePic(userId, fileData));
   };
-  // const imageList = useSelector((state) => state.imageReducer);
-  // console.log(imageList);
-  // useEffect(() => {
-  //   dispatch(getProfilePic(userId));
-  // }, [dispatch]);
 
   return (
     <div className="about-container container">
