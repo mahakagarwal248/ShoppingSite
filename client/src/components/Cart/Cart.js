@@ -123,7 +123,7 @@ function Cart() {
                 {cartProductList.data.map(
                   (products) => (
                     (image = `data:${products?.img?.contentType};base64, ${buffer.Buffer.from(
-                      products.img.data
+                      products?.img?.data
                     ).toString('base64')}`),
                     (
                       <TableRow
