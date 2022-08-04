@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://your-shopping-site.herokuapp.com/' });
+const API = axios.create({ baseURL: 'https://your-shopping-site.netlify.app' });
 
 export const signup = (userData) => API.post('/user/signup', userData);
 export const login = (loginData) => API.post('/user/login', loginData);
