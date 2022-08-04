@@ -20,7 +20,6 @@ import { deleteWishlistProduct } from '../../actions/Wishlist';
 
 function Wishlist() {
   const wishlistProductList = useSelector((state) => state.wishlistReducer);
-  console.log(wishlistProductList);
 
   var User = JSON.parse(localStorage.getItem('Profile'));
   const userId = User.result._id;
