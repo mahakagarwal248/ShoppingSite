@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import buffer from 'buffer';
 
 import './ProductDetails.css';
 import Navbar from '../Navbar/Navbar';
