@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 const wishlistReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'ADD_TO_WISHLIST':

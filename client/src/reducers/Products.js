@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 const productReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'FETCH_ALL_PRODUCTS':

@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 const cartReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':

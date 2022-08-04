@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 const imageReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'FILE':
