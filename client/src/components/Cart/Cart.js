@@ -122,8 +122,8 @@ function Cart() {
               <TableBody style={{ border: '2px solid #800000' }}>
                 {cartProductList.data.map(
                   (products) => (
-                    (image = `data:${products?.img?.contentType};base64, ${buffer.Buffer.from(
-                      products?.img?.data
+                    (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
+                      products.img.data
                     ).toString('base64')}`),
                     (
                       <TableRow
