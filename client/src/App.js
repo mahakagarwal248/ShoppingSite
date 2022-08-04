@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
@@ -19,8 +19,6 @@ function App() {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
-  var User = JSON.parse(localStorage.getItem('Profile'));
-
   return (
     <BrowserRouter>
       <Routes>
@@ -36,35 +34,11 @@ function App() {
           }
         />
         <Route exact path="/about" element={<About />} />
-        <Route
-          exact
-          path="/login"
-          element={User === null ? <Login /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/register"
-          element={User === null ? <Register /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/cart"
-          element={User !== null ? <Cart /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/wishlist"
-          element={User !== null ? <Wishlist /> : <Navigate to="/" replace />}
-        />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/wishlist" element={<Wishlist />} />
         <Route exact path="/productDetails/:id" element={<ProductDetails />} />
-        {/* <Route exact path="*" element={
-          <div className="App container">
-          <Navbar/>
-          <Home/>
-          <Footer/>
-        </div>
-        && <Navigate to="/" replace/>
-        }/> */}
       </Routes>
     </BrowserRouter>
   );
