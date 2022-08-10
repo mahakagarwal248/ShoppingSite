@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-// import panda from '../../../assets/panda.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import buffer from 'buffer';
@@ -13,7 +12,6 @@ import { getProductByCategory } from '../../../actions/Products';
 
 function Cards({ value }) {
   const productList = useSelector((state) => state.productReducer);
-  // const [image, setImage] = useState({});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -103,7 +101,6 @@ function Cards({ value }) {
                 products.img.data
               ).toString('base64')}`),
               (
-                // console.log(image),
                 <div style={{ margin: '18px', cursor: 'pointer' }} key={products._id}>
                   <Card
                     style={{
