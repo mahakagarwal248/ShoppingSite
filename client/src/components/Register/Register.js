@@ -7,6 +7,28 @@ import './Register.css';
 import { signup } from '../../actions/Users';
 import Navbar from '../Navbar/Navbar';
 
+const securityQuestions = [
+  {
+    quesNo: '1',
+    value: 'What is the name of street that you live in?',
+    question: 'What is the name of street that you live in?'
+  },
+  {
+    quesNo: '2',
+    value: 'What is the name of your pet?',
+    question: 'What is the name of your pet?'
+  },
+  {
+    quesNo: '3',
+    value: 'What is the name of your first school?',
+    question: 'What is the name of your first school?'
+  },
+  {
+    quesNo: '4',
+    value: 'Which is your favorite color?',
+    question: 'Which is your favorite color?'
+  }
+];
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -94,14 +116,11 @@ function Register() {
         <label>Security Question</label>
         <br />
         <select value={securityQues} onChange={handleSecurityQuestionInput}>
-          <option value="What is the name of street that you live in?">
-            What is the name of street that you live in?
-          </option>
-          <option value="What is the name of your pet?">What is the name of your pet?</option>
-          <option value="What is the name of your first school?">
-            What is the name of your first school?
-          </option>
-          <option value="Which is your favorite color?">Which is your favorite color?</option>
+          {securityQuestions.map((questions) => (
+            <option key={questions.quesNo} value={questions.value}>
+              {questions.question}
+            </option>
+          ))}
         </select>
         <br />
         <br />
