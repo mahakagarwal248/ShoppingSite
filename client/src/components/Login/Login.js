@@ -9,7 +9,7 @@ import Modal from '@mui/material/Modal';
 
 import './Login.css';
 import Navbar from '../Navbar/Navbar';
-import { forgotPassword, getSecurityQues, login, updatedPassword } from '../../actions/Users';
+import { forgotPassword, getSecurityQuestion, login, updatedPassword } from '../../actions/Users';
 
 const style = {
   position: 'absolute',
@@ -44,7 +44,7 @@ function Login() {
       alert('Enter Email First');
     } else {
       setOpen(true);
-      dispatch(getSecurityQues(email));
+      dispatch(getSecurityQuestion(email));
     }
   };
   const handleClose = () => setOpen(false);

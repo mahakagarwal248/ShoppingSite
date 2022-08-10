@@ -24,7 +24,7 @@ export const login = (loginData, navigate) => async (dispatch) => {
     }
   }
 };
-export const getSecurityQues = (email) => async (dispatch) => {
+export const getSecurityQuestion = (email) => async (dispatch) => {
   try {
     const data = await api.getSecurityQues(email);
     dispatch({ type: 'GET_SECURITY_QUES', data });
