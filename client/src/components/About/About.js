@@ -12,7 +12,6 @@ function About() {
   var User = JSON.parse(localStorage.getItem('Profile'));
   const userId = User?.result?._id;
   const dispatch = useDispatch();
-  // const API = axios.create({ baseURL: 'http://localhost:5000' });
   const [userProfileImage, setUserProfileImage] = useState({});
 
   useEffect(() => {
@@ -46,16 +45,16 @@ function About() {
       <Navbar />
       {User === null ? (
         <>
-          <h2 style={{ marginTop: '25px' }}>You Need to login first</h2>
+          <h2 style={{}}>You Need to login first</h2>
           <Link to="/login">
             <button className="about-login-btn">Login</button>
           </Link>
         </>
       ) : (
         <>
-          <div style={{ marginTop: '25px' }}>
+          <div>
             <h2>User Details</h2>
-            <div style={{ width: '50%', margin: 'auto', marginTop: '45px', display: 'flex' }}>
+            <div className="about-container-div">
               <div>
                 {userProfileImage === {} ? (
                   <>
@@ -66,7 +65,7 @@ function About() {
                           type="file"
                           name="file"
                           onChange={handleFile}
-                          style={{ marginLeft: '8px' }}
+                          className="about-file-input"
                         />
                         <button type="submit">Go</button>
                       </form>
