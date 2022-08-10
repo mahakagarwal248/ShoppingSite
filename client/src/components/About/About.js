@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './About.css';
-import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import buffer from 'buffer';
+
+import './About.css';
+import Navbar from '../Navbar/Navbar';
 import { postProfilePic } from '../../actions/Images';
 
 function About() {
