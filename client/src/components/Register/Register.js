@@ -21,6 +21,31 @@ function Register() {
 
   const [securityQues, setSecurityQues] = useState('');
 
+  const handleNameInput = (e) => {
+    setName(e.target.value);
+  };
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleShowPw = () => {
+    setShowPw(!showPw);
+  };
+  const handleMobileInput = (e) => {
+    setMobile(e.target.value);
+  };
+  const handleAddressInput = (e) => {
+    setAddress(e.target.value);
+  };
+  const handleSecurityQuestionInput = (e) => {
+    setSecurityQues(e.target.value);
+  };
+  const handleSecurityAnswerInput = (e) => {
+    setSecurityAns(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email) {
@@ -42,11 +67,11 @@ function Register() {
       <form className="register-form" onSubmit={handleSubmit}>
         <label>Name</label>
         <br />
-        <input type="name" placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
+        <input type="name" placeholder="Enter name" onChange={handleNameInput} />
         <br />
         <label>Email</label>
         <br />
-        <input type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" placeholder="Enter email" onChange={handleEmailInput} />
         <br />
         <label>Password</label>
         <br />
@@ -54,29 +79,21 @@ function Register() {
           type={showPw ? 'text' : 'password'}
           minLength="6"
           placeholder="Enter your password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordInput}
         />
-        <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{ marginLeft: '2px' }} />
+        <RemoveRedEyeIcon onClick={handleShowPw} style={{ marginLeft: '2px' }} />
         <br />
         <label>Mobile</label>
         <br />
-        <input
-          type="tel"
-          placeholder="Enter mobile number"
-          onChange={(e) => setMobile(e.target.value)}
-        />
+        <input type="tel" placeholder="Enter mobile number" onChange={handleMobileInput} />
         <br />
         <label>Address</label>
         <br />
-        <input
-          type="text"
-          placeholder="Enter address"
-          onChange={(e) => setAddress(e.target.value)}
-        />
+        <input type="text" placeholder="Enter address" onChange={handleAddressInput} />
         <br />
         <label>Security Question</label>
         <br />
-        <select value={securityQues} onChange={(e) => setSecurityQues(e.target.value)}>
+        <select value={securityQues} onChange={handleSecurityQuestionInput}>
           <option value="What is the name of street that you live in?">
             What is the name of street that you live in?
           </option>
@@ -88,11 +105,7 @@ function Register() {
         </select>
         <br />
         <br />
-        <input
-          type="text"
-          placeholder="Enter answer"
-          onChange={(e) => setSecurityAns(e.target.value)}
-        />
+        <input type="text" placeholder="Enter answer" onChange={handleSecurityAnswerInput} />
         <br />
         <button type="submit" className="register-form-btn">
           Register
