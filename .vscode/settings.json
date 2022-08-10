@@ -15,6 +15,7 @@
         "mozjpeg",
         "multipass",
         "pngquant",
-        "reduxjs"
+        "reduxjs",
+        "signup"
     ]
 }

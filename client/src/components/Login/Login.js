@@ -11,19 +11,6 @@ import './Login.css';
 import Navbar from '../Navbar/Navbar';
 import { forgotPassword, getSecurityQuestion, login, updatedPassword } from '../../actions/Users';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  textAlign: 'center'
-};
-
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,9 +66,9 @@ function Login() {
   return (
     <div className="login-container container">
       <Navbar />
-      <div style={{ marginTop: '80px' }}>
+      <div className="login-container-div">
         <h2>Login Here</h2>
-        <div style={{ marginTop: '25px' }}>
+        <div>
           <form className="login-form">
             <label>Email</label>
             <br />
@@ -105,9 +92,7 @@ function Login() {
               Login
             </button>
             <br />
-            <button
-              onClick={handleOpen}
-              style={{ background: 'transparent', border: 'none', color: 'white', padding: '0' }}>
+            <button className="forgot-password-btn" onClick={handleOpen}>
               Forgot Password?
             </button>
             <div>
@@ -125,28 +110,20 @@ function Login() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
-        <Box sx={style}>
+        <Box className="password-change-modal-box">
           {editPW ? (
             <>
-              <div style={{ display: 'flex', marginTop: '-15px', marginBottom: '45px' }}>
-                <h5 style={{ marginTop: '0' }}>Change Password</h5>
+              <div>
+                <h5>Change Password</h5>
                 <button onClick={handleClose} className="cross-btn">
                   X
                 </button>
               </div>
-              <p style={{ fontSize: '18px', fontWeight: '500', marginBottom: '0' }}>
-                Enter new password
-              </p>
+              <p>Enter new password</p>
               <input
                 onChange={(e) => setNewPW(e.target.value)}
                 type="text"
                 placeholder="Enter password"
-                style={{
-                  width: '90%',
-                  border: '2px solid black',
-                  borderRadius: '5px',
-                  marginBottom: '15px'
-                }}
               />
               <button className="submit-btn" onClick={handlePWSubmit}>
                 Submit
@@ -154,25 +131,17 @@ function Login() {
             </>
           ) : (
             <>
-              <div style={{ display: 'flex', marginTop: '-15px', marginBottom: '45px' }}>
-                <h5 style={{ marginTop: '0' }}>Security Question</h5>
+              <div>
+                <h5>Security Question</h5>
                 <button onClick={handleClose} className="cross-btn">
                   X
                 </button>
               </div>
-              <p style={{ fontSize: '18px', fontWeight: '500', marginBottom: '0' }}>
-                {securityData?.data?.data}
-              </p>
+              <p>{securityData?.data?.data}</p>
               <input
                 onChange={(e) => setAns(e.target.value)}
                 type="text"
                 placeholder="Enter security answer here"
-                style={{
-                  width: '90%',
-                  border: '2px solid black',
-                  borderRadius: '5px',
-                  marginBottom: '15px'
-                }}
               />
               <button className="submit-btn" onClick={handleModalSubmit}>
                 Submit
