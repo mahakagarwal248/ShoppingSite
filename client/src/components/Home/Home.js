@@ -3,7 +3,7 @@ import Cards from './Card/Cards';
 import './Home.css';
 
 function Home() {
-  const [value, setValue] = useState('all');
+  const [securityQuestionValue, setSecurityQuestionValue] = useState('all');
 
   return (
     <div className="home-container">
@@ -13,8 +13,8 @@ function Home() {
       <div>
         <p style={{ fontSize: '18px' }}>Search By Category</p>
         <select
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={securityQuestionValue}
+          onChange={(e) => setSecurityQuestionValue(e.target.value)}
           style={{ height: '28px', marginLeft: '8px' }}>
           <option value="" hidden>
             Select Category
@@ -27,7 +27,7 @@ function Home() {
         </select>
       </div>
       <div>
-        <Cards value={value} />
+        <Cards value={securityQuestionValue} />
       </div>
     </div>
   );

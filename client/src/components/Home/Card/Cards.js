@@ -10,15 +10,15 @@ import { addToCart } from '../../../actions/Cart';
 import { addToWishlist } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
 
-function Cards({ value }) {
+function Cards({ securityQuestionValue }) {
   const productList = useSelector((state) => state.productReducer);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getProductByCategory(value));
-  }, [dispatch, value]);
+    dispatch(getProductByCategory(securityQuestionValue));
+  }, [dispatch, securityQuestionValue]);
 
   const handleClick = (id) => {
     navigate(`/productDetails/${id}`);
