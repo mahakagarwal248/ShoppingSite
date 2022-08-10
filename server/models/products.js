@@ -13,6 +13,8 @@ const productSchema = mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    colors: [{ type: String }],
+    tags: [{ type: String }],
   },
   { timestamps: true }
 );
