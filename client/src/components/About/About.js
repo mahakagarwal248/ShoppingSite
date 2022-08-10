@@ -59,7 +59,7 @@ function About() {
                 {userProfileImage === {} ? (
                   <>
                     <div>
-                      <form encType="multipart/form-data" style={{ display: 'flex' }}>
+                      <form encType="multipart/form-data">
                         <h4>Upload Profile Pic:</h4>
                         <input
                           type="file"
@@ -76,38 +76,30 @@ function About() {
                 )}
 
                 <br />
-                <div style={{ display: 'flex' }}>
+                <div className="display-info-container">
                   <h4>Name:</h4>
-                  <span style={{ fontSize: '20px', marginLeft: '8px' }}>{User?.result?.name}</span>
+                  <span>{User?.result?.name}</span>
                 </div>
                 <br />
-                <div style={{ display: 'flex' }}>
+                <div className="display-info-container">
                   <h4>Email:</h4>
-                  <span style={{ fontSize: '20px', marginLeft: '8px' }}>{User?.result?.email}</span>
+                  <span>{User?.result?.email}</span>
                 </div>
                 <br />
-                <div style={{ display: 'flex' }}>
+                <div className="display-info-container">
                   <h4>Mobile:</h4>
-                  <span style={{ fontSize: '20px', marginLeft: '8px' }}>
-                    {User?.result?.mobile}
-                  </span>
+                  <span>{User?.result?.mobile}</span>
                 </div>
                 <br />
-                <div style={{ display: 'flex' }}>
+                <div className="display-info-container">
                   <h4>Address:</h4>
-                  <span style={{ fontSize: '20px', marginLeft: '8px' }}>
-                    {User?.result?.address}
-                  </span>
+                  <span s>{User?.result?.address}</span>
                 </div>
               </div>
               {userProfileImage !== {} ? (
                 <>
-                  <div style={{ marginLeft: 'auto', marginTop: '25px' }}>
-                    <img
-                      src={userProfileImage}
-                      alt="profile"
-                      style={{ width: '90px', height: '90px' }}
-                    />
+                  <div className="display-profile-image-container">
+                    <img src={userProfileImage} alt="profile" />
                   </div>
                 </>
               ) : (
