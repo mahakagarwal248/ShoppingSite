@@ -68,55 +68,33 @@ function Cart() {
           <h4>You have nothing in Cart</h4>
           <br />
           <Link to="/">
-            <button
-              style={{
-                border: 'none',
-                background: '#800000',
-                color: 'white',
-                height: '40px',
-                width: '150px',
-                borderRadius: '5px'
-              }}>
-              Shop Now
-            </button>
+            <button className="shop-now-btn">Shop Now</button>
           </Link>
         </>
       ) : (
         <>
-          <TableContainer
-            component={Paper}
-            style={{ width: '70%', margin: 'auto', marginTop: '25px' }}>
+          <TableContainer component={Paper} className="cart-table-container">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead style={{ border: '2px solid #800000', backgroundColor: 'darkgrey' }}>
                 <TableRow>
-                  <TableCell
-                    align="left"
-                    style={{ fontSize: '17px', fontWeight: '600', width: '28%' }}>
+                  <TableCell align="left" className="cart-table-cell1">
                     Name
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    style={{ fontSize: '17px', fontWeight: '600', width: '28%' }}>
+                  <TableCell align="left" className="cart-table-cell2">
                     Description
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    style={{ fontSize: '17px', fontWeight: '600', width: '15%' }}>
+                  <TableCell align="left" className="cart-table-cell3">
                     Quantity
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    style={{ fontSize: '17px', fontWeight: '600', width: '7%' }}>
+                  <TableCell align="left" className="cart-table-cell4">
                     Price
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    style={{ fontSize: '17px', fontWeight: '600', width: '22%' }}>
+                  <TableCell align="left" className="cart-table-cell5">
                     Action
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody style={{ border: '2px solid #800000' }}>
+              <TableBody className="cart-table-body">
                 {cartProductList.data.map(
                   (products) => (
                     (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
@@ -126,11 +104,11 @@ function Cart() {
                       <TableRow
                         key={products._id}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        style={{ borderBottom: '1px solid black', cursor: 'pointer' }}>
+                        className="cart-table-row">
                         <TableCell
                           component="th"
                           scope="row"
-                          style={{ width: '28%' }}
+                          className="cart-table-bcell1"
                           onClick={() => handleClick(products.productId)}>
                           <>
                             <img
@@ -141,10 +119,10 @@ function Cart() {
                             {products.name}
                           </>
                         </TableCell>
-                        <TableCell align="left" style={{ width: '28%' }}>
+                        <TableCell align="left" className="cart-table-bcell2">
                           {products.description}
                         </TableCell>
-                        <TableCell align="left" style={{ width: '15%' }}>
+                        <TableCell align="left" className="cart-table-bcell3">
                           <button
                             className="quantity-btn"
                             onClick={() => handleMinus(products._id, products.quantity)}>
@@ -157,15 +135,13 @@ function Cart() {
                             +
                           </button>
                         </TableCell>
-                        <TableCell align="left" style={{ width: '7%' }}>
+                        <TableCell align="left" className="cart-table-bcell4">
                           {products.quantity * products.price}
                         </TableCell>
-                        <TableCell align="left" style={{ width: '22%' }}>
-                          <button className="cart-btn" style={{ marginRight: '25px' }}>
-                            Buy Now
-                          </button>
+                        <TableCell align="left" className="cart-table-bcell5">
+                          <button className="cart-btn">Buy Now</button>
                           <button
-                            style={{ background: 'transparent', border: 'none' }}
+                            className="cart-delete-btn"
                             onClick={() => handleDelete(products._id)}>
                             <Tooltip title="Delete" placement="top">
                               <DeleteOutlinedIcon />
@@ -185,14 +161,14 @@ function Cart() {
                 </span>
               ))}
             </div>
-            <Table style={{ border: '2px solid #800000' }}>
+            <Table className="total-table">
               <TableBody>
                 <TableRow>
                   <TableCell>Total Amount</TableCell>
-                  <TableCell align="right" style={{ fontSize: '18px' }}>
+                  <TableCell align="right" className="total-table-cell1">
                     <b>{total}</b>
                   </TableCell>
-                  <TableCell align="center" style={{ width: '21%' }}>
+                  <TableCell align="center" className="total-table-cell2">
                     <button className="checkout-btn">Checkout</button>
                   </TableCell>
                 </TableRow>
@@ -200,18 +176,7 @@ function Cart() {
             </Table>
           </TableContainer>
           <Link to="/">
-            <button
-              style={{
-                border: 'none',
-                background: '#800000',
-                color: 'white',
-                height: '40px',
-                width: '200px',
-                borderRadius: '5px',
-                marginTop: '50px'
-              }}>
-              Add More Products
-            </button>
+            <button className="cart-add-products-btn">Add More Products</button>
           </Link>
         </>
       )}
