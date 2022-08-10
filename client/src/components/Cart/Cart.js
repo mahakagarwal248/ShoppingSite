@@ -23,9 +23,6 @@ function Cart() {
   const userId = User.result._id;
 
   var total = 0;
-  // {cartProductList?.data?.map((products) => (
-  //   total = total + products.price
-  // ))}
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
