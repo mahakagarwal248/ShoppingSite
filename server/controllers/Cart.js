@@ -38,7 +38,7 @@ export const getCartProduct = async (req, res) => {
   const { id } = req.params;
   try {
     const cartProductList = await cart.find();
-    const cartProducts = cartProductList.filter((cart) => cart.userId === id);
+    const cartProducts = cartProductList.filter((cart) => cart.userId.toString() === id);
     res.status(200).json(cartProducts);
   } catch (error) {
     console.log(error);

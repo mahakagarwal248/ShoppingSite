@@ -7,8 +7,8 @@ const cartSchema = mongoose.Schema(
     price: { type: Number, required: true },
     quantity: { type: Number, required: true },
     brand: { type: String },
-    userId: { type: String, required: true },
-    productId: { type: String, required: true },
+    userId: {  type: mongoose.Schema.Types.ObjectId, ref: 'user', default: null },
+    productId: {  type: mongoose.Schema.Types.ObjectId, ref: 'products', default: null },
     img: {
       data: Buffer,
       contentType: String,
