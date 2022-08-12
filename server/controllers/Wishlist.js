@@ -33,11 +33,11 @@ export const addToWishlist = async (req, res) => {
 };
 
 export const getWishlistProduct = async (req, res) => {
-  const { id } = req.params;
+  const { id: _id } = req.params;
   try {
     const wishlistProductList = await wishlist.find();
     const wishlistProducts = wishlistProductList.filter(
-      (wishlist) => wishlist.userId === id
+      (wishlist) => wishlist.userId.toString() === _id
     );
     res.status(200).json(wishlistProducts);
   } catch (error) {

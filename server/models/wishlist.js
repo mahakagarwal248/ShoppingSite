@@ -6,8 +6,8 @@ const wishlistSchema = mongoose.Schema(
     description: { type: String, required: true },
     price: { type: Number, required: true },
     brand: { type: String },
-    userId: { type: String, required: true },
-    productId: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user', default: null  },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'products', default: null  },
     img: {
       data: Buffer,
       contentType: String,
