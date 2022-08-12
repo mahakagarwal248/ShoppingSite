@@ -38,5 +38,36 @@ export default {
         email: joi.string().email().required(),
       newPW: joi.string().required(),
     }
+  }),
+  addToCart:joi.object({
+    params:{
+        id: joi.string().required()
+    },
+    body:{
+        name:joi.string().required(),
+        description:joi.string().required(),
+        brand:joi.string(),
+        price:joi.string().required(),
+        quantity:joi.number().required(),
+        userId:joi.string().required(),
+    }
+  }),
+  getCartProduct: joi.object({
+    params:{
+        id: joi.string().required()
+    },
+  }),
+  deleteCartProduct: joi.object({
+    params:{
+        id: joi.string().required()
+    },
+  }),
+  updateQuantity:joi.object({
+    params:{
+        id: joi.string().required()
+    },
+    body:{
+        quantity: joi.number().required()
+    }
   })
 };
