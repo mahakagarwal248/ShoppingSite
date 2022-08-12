@@ -6,7 +6,7 @@ const imageSchema = mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
-    userId: { type: String, required: true },
+    userId: {  type: mongoose.Schema.Types.ObjectId, ref: 'user', default: null  },
   },
   { timestamps: true }
 );

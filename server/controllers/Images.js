@@ -27,7 +27,7 @@ export const postImage = async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      // item.save();
+      item.save();
       res.redirect("/");
     }
   });
