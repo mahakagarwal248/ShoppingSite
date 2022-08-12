@@ -12,4 +12,4 @@ router.get('/getSecurityQues/:email',validate(paramValidation.getSecurityQuestio
 router.post('/forgotPassword',validate(paramValidation.forgotPassword), forgotPassword);
 router.patch('/changePassword',validate(paramValidation.changePassword), changePassword);
 
-export default router
+export default router;
