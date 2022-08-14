@@ -86,4 +86,28 @@ export default {
       quantity: joi.number().required(),
     },
   }),
+  addToWishlist: joi.object({
+    params: {
+      id: joi.string().required(),
+    },
+    body: {
+      productData: {
+        name: joi.string().required(),
+        description: joi.string().required(),
+        brand: joi.string(),
+        price: joi.number().required(),
+        userId: joi.string().required(),
+      },
+    },
+  }),
+  getWishlistProduct: joi.object({
+    params: {
+      id: joi.string().required(),
+    },
+  }),
+  deleteWishlistProduct: joi.object({
+    params: {
+      id: joi.string().required(),
+    },
+  }),
 };
