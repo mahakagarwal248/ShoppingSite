@@ -17,10 +17,7 @@ export default {
     },
   }),
   loginUser: joi.object({
-    body: {
-      email: joi.string().email().required(),
-      password: joi.string().min(6).required(),
-    },
+    body: joi.object().required(),
   }),
   getSecurityQuestion: joi.object({
     params: {
@@ -34,40 +31,59 @@ export default {
     },
   }),
   changePassword: joi.object({
-    body:{
-        email: joi.string().email().required(),
+    body: {
+      email: joi.string().email().required(),
       newPW: joi.string().required(),
+    },
+  }),
+  addProducts: joi.object({
+    body: {
+      productData: {
+        name: joi.string().required(),
+        description: joi.string().required(),
+        category: joi.string().required(),
+        price: joi.number().required(),
+        quantity: joi.number().required(),
+        brand: joi.string(),
+      },
     }
   }),
-  addToCart:joi.object({
+  getProductsByCategory: joi.object({
     params:{
-        id: joi.string().required()
-    },
-    body:{
-        name:joi.string().required(),
-        description:joi.string().required(),
-        brand:joi.string(),
-        price:joi.string().required(),
-        quantity:joi.number().required(),
-        userId:joi.string().required(),
+      id: joi.string().required()
     }
+  }),
+  addToCart: joi.object({
+    params: {
+      id: joi.string().required(),
+    },
+    body: {
+      productData: {
+        name: joi.string().required(),
+        description: joi.string().required(),
+        brand: joi.string(),
+        price: joi.number().required(),
+        quantity: joi.number().required(),
+        userId: joi.string().required(),
+      },
+    },
   }),
   getCartProduct: joi.object({
-    params:{
-        id: joi.string().required()
+    params: {
+      id: joi.string().required(),
     },
   }),
   deleteCartProduct: joi.object({
-    params:{
-        id: joi.string().required()
+    params: {
+      id: joi.string().required(),
     },
   }),
-  updateQuantity:joi.object({
-    params:{
-        id: joi.string().required()
+  updateQuantity: joi.object({
+    params: {
+      id: joi.string().required(),
     },
-    body:{
-        quantity: joi.number().required()
-    }
-  })
+    body: {
+      quantity: joi.number().required(),
+    },
+  }),
 };
