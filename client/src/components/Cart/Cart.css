@@ -3,7 +3,7 @@
 }
 .shop-now-btn {
   border: none;
-  background: #800000;
+  background: var(--primary-color);
   color: white;
   height: 40px;
   width: 150px;
@@ -36,10 +36,10 @@
   width: 22%;
 }
 .cart-table-body {
-  border: 2px solid #800000;
+  border: 2px solid var(--primary-color);
 }
 .cart-table-row {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--primary-color);
   cursor: pointer;
 }
 .cart-table-bcell1,
@@ -62,7 +62,7 @@
 .display-cart-items-container > div {
   display: flex;
   margin-bottom: 25px;
-  border: 1px solid black;
+  border: 1px solid var(--primary-color);
 }
 .display-cart-items-container-1 img {
   height: 150px;
@@ -74,7 +74,7 @@
 }
 .cart-btn {
   border: none;
-  background-color: brown;
+  background-color: var(--primary-color-medium);
   border-radius: 5px;
   color: white;
   padding: 5px 15px;
@@ -86,7 +86,7 @@
   border: none;
 }
 .total-table {
-  border: 2px solid #800000;
+  border: 2px solid var(--primary-color);
 }
 .total-table-cell1 {
   font-size: 18px !important;
@@ -96,8 +96,7 @@
 }
 .checkout-btn {
   border: none;
-  background: rgb(101, 0, 0);
-  background: radial-gradient(circle, rgba(101, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 100%);
+  background: var(--primary-color);
   color: white;
   padding: 10px 25px;
   border-radius: 5px;
@@ -111,7 +110,7 @@
 }
 .cart-add-products-btn {
   border: none;
-  background: #800000;
+  background: var(--primary-color-medium);
   color: white;
   height: 40px;
   width: 200px;

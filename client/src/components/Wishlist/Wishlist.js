@@ -89,7 +89,7 @@ function Wishlist() {
             <button
               style={{
                 border: 'none',
-                background: '#800000',
+                background: 'var(--primary-color)',
                 color: 'white',
                 height: '40px',
                 width: '150px',
@@ -107,7 +107,7 @@ function Wishlist() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead
                 style={{
-                  border: '2px solid #800000',
+                  border: '2px solid var(--primary-color)',
                   backgroundColor: 'darkgrey'
                 }}>
                 <TableRow>
@@ -137,7 +137,7 @@ function Wishlist() {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody style={{ border: '2px solid #800000' }}>
+              <TableBody style={{ border: '2px solid var(--primary-color)' }}>
                 {wishlistProductList.data.map(
                   (products) => (
                     (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(

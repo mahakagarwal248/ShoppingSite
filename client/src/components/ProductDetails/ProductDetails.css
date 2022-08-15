@@ -8,12 +8,12 @@
     width: 200px;
     font-size: 18px;
     color: white;
-    background-color: #800000;
+    background-color: var(--primary-color);
 }
 .add-to-wishlist-btn{
     margin: auto;
     margin-top: 15px;
     font-size: 16px;
     background-color: rgb(203, 203, 203);
-    border: 2px solid #800000;
+    border: 2px solid var(--primary-color);
 }

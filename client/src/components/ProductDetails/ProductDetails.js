@@ -12,7 +12,7 @@ function ProductDetails() {
 
   var image = {};
   return (
-    <div>
+    <div className="container">
       <Navbar />
       {productList?.data
         ?.filter((product) => product._id === id)
@@ -24,7 +24,7 @@ function ProductDetails() {
             (
               <div
                 key={product._id}
-                style={{ display: 'flex', width: '65%', margin: 'auto', marginTop: '25px' }}>
+                style={{ display: 'flex', width: '75%', margin: 'auto', marginTop: '25px' }}>
                 <div style={{ flex: '0.5' }}>
                   <img
                     src={image}

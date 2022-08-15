@@ -30,8 +30,8 @@
   height: 90px;
 }
 .about-login-btn {
-  background: #800000;
-  border: none;
+  background: var(--primary-color-medium);
+  border: 1px solid var(--primary-color);
   padding: 8px 15px;
   margin-top: 30px;
   border-radius: 5px;

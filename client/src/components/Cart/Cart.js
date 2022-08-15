@@ -75,7 +75,8 @@ function Cart() {
         <>
           <TableContainer component={Paper} className="cart-table-container">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead style={{ border: '2px solid #800000', backgroundColor: 'darkgrey' }}>
+              <TableHead
+                style={{ border: '2px solid var(--primary-color)', backgroundColor: 'darkgrey' }}>
                 <TableRow>
                   <TableCell align="left" className="cart-table-cell1">
                     Name

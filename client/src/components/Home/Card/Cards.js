@@ -105,7 +105,7 @@ function Cards({ securityQuestionValue }) {
                   <Card
                     style={{
                       width: '16rem',
-                      border: '2px solid rgb(101,0,0)',
+                      border: '2px solid var(--primary-color-medium)',
                       padding: '0',
                       margin: '0',
                       height: '400px'
@@ -127,7 +127,11 @@ function Cards({ securityQuestionValue }) {
 
                       <div style={{ position: 'absolute', left: '35px', bottom: '15px' }}>
                         <Button
-                          style={{ width: '150px', background: 'rgb(101,0,0,1)', border: 'none' }}
+                          style={{
+                            width: '150px',
+                            background: 'var(--primary-color-medium)',
+                            border: 'none'
+                          }}
                           onClick={(e) =>
                             handleAddToCart(
                               e,
