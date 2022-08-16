@@ -8,10 +8,8 @@ function Footer() {
   };
   return (
     <div className="footer">
-      <button
-        onClick={handleClick}
-        style={{ background: 'transparent', border: 'none', color: 'white' }}>
-        <GitHubIcon style={{ marginRight: '5px' }} />
+      <button onClick={handleClick}>
+        <GitHubIcon className="github-icon"/>
         mahakagarwal248
       </button>
     </div>
