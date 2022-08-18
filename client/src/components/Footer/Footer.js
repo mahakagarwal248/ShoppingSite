@@ -9,7 +9,7 @@ function Footer() {
   return (
     <div className="footer">
       <button onClick={handleClick}>
-        <GitHubIcon className="github-icon"/>
+        <GitHubIcon className="github-icon" />
         mahakagarwal248
       </button>
     </div>
