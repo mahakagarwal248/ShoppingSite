@@ -43,7 +43,7 @@ function Navbar() {
           Login
         </Link>
       ) : (
-        <div style={{ marginLeft: 'auto', display: 'flex' }}>
+        <div className="user-nav-icons">
           <Link to="/cart">
             <ShoppingCartOutlinedIcon className="nav-icons" />
           </Link>
@@ -51,13 +51,9 @@ function Navbar() {
             <FavoriteBorderOutlinedIcon className="nav-icons" />
           </Link>
           <Link to="/about" style={{ textDecoration: 'none' }}>
-            <Avatar style={{ height: '34px', width: '34px', color: 'black' }}>
-              {User.result.name.charAt(0).toUpperCase()}
-            </Avatar>
+            <Avatar className="user-avatar">{User.result.name.charAt(0).toUpperCase()}</Avatar>
           </Link>
-          <p style={{ margin: 'auto 70px auto 10px', fontSize: '22px' }}>
-            Hi, {User.result.name.split(' ').slice(0, -1).join(' ')}
-          </p>
+          <p>Hi, {User.result.name.split(' ').slice(0, -1).join(' ')}</p>
           <button type="button" className="logout-btn" onClick={handleLogout}>
             Logout
           </button>
