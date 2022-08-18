@@ -24,6 +24,16 @@ export const login = (loginData, navigate) => async (dispatch) => {
     }
   }
 };
+
+export const getUsers = () => async (dispatch) => {
+  try {
+    const { data } = await api.getUsers();
+    dispatch({ type: 'GET_ALL_USERS', data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getSecurityQuestion = (email) => async (dispatch) => {
   try {
     const data = await api.getSecurityQues(email);

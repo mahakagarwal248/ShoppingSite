@@ -15,11 +15,13 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import About from './components/About/About';
 
 import { fetchAllProducts } from './actions/Products';
+import { getUsers } from './actions/Users';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllProducts());
+    dispatch(getUsers());
   }, [dispatch]);
 
   var User = JSON.parse(localStorage.getItem('Profile'));

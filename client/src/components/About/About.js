@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import buffer from 'buffer';
 
 import './About.css';
@@ -10,25 +9,11 @@ import { postProfilePic } from '../../actions/Images';
 
 function About() {
   var User = JSON.parse(localStorage.getItem('Profile'));
+  const userList = useSelector((state) => state.userReducer);
+
   const userId = User?.result?._id;
   const dispatch = useDispatch();
-  const [userProfileImage, setUserProfileImage] = useState({});
-
-  useEffect(() => {
-    axios({
-      method: 'get',
-      url: `http://localhost:5000/images/getImage/${userId}`
-    }).then(function (response) {
-      let user = response.data;
-      if (user === null) {
-        setUserProfileImage({});
-      } else {
-        setUserProfileImage(
-          `data:${user.contentType};base64, ${buffer.Buffer.from(user.data).toString('base64')}`
-        );
-      }
-    });
-  }, []);
+  const currentProfile = userList?.data?.filter((user) => user._id === userId)[0];
 
   const handleFile = (e) => {
     e.preventDefault();
@@ -54,24 +39,26 @@ function About() {
             <h2>User Details</h2>
             <div className="about-container-div">
               <div>
-                {/* {userProfileImage === {} ? (
-                  <> */}
-                <div>
-                  <form encType="multipart/form-data">
-                    <h4>Upload Profile Pic:</h4>
-                    <input
-                      type="file"
-                      name="file"
-                      onChange={handleFile}
-                      className="about-file-input"
-                    />
-                    <button type="submit">Go</button>
-                  </form>
-                </div>
-                {/* </>
+                {currentProfile === undefined ? (
+                  ''
+                ) : !currentProfile.profilePicture ? (
+                  <>
+                    <div>
+                      <form encType="multipart/form-data">
+                        <h4>Upload Profile Pic:</h4>
+                        <input
+                          type="file"
+                          name="file"
+                          onChange={handleFile}
+                          className="about-file-input"
+                        />
+                        <button type="submit">Go</button>
+                      </form>
+                    </div>
+                  </>
                 ) : (
                   ''
-                )} */}
+                )}
 
                 <br />
                 <div className="display-info-container">
@@ -94,15 +81,24 @@ function About() {
                   <span>{User?.result?.address}</span>
                 </div>
               </div>
-              {/* {userProfileImage !== {} ? (
-                <> */}
-              <div className="display-profile-image-container">
-                <img src={userProfileImage} alt="profile" />
-              </div>
-              {/* </>
-              ) : (
+              {currentProfile === undefined ? (
                 ''
-              )} */}
+              ) : currentProfile.profilePicture ? (
+                <>
+                  <div className="display-profile-image-container">
+                    <img
+                      src={`data:${
+                        currentProfile.profilePicture.contentType
+                      };base64, ${buffer.Buffer.from(currentProfile.profilePicture.data).toString(
+                        'base64'
+                      )}`}
+                      alt="profile"
+                    />
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </>
