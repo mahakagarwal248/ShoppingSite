@@ -61,6 +61,14 @@ function Login() {
     dispatch(login(encodedText, navigate));
   };
 
+  const handleNewPW = (e) => {
+    setNewPW(e.target.value);
+  };
+
+  const handleSecurityAnswerInput = (e) => {
+    setAns(e.target.value);
+  };
+
   return (
     <div className="login-container container">
       <Navbar />
@@ -118,11 +126,7 @@ function Login() {
                 </button>
               </div>
               <p>Enter new password</p>
-              <input
-                onChange={(e) => setNewPW(e.target.value)}
-                type="text"
-                placeholder="Enter password"
-              />
+              <input onChange={handleNewPW} type="text" placeholder="Enter password" />
               <button className="submit-btn" onClick={handlePWSubmit}>
                 Submit
               </button>
@@ -137,7 +141,7 @@ function Login() {
               </div>
               <p>{securityData?.data?.data}</p>
               <input
-                onChange={(e) => setAns(e.target.value)}
+                onChange={handleSecurityAnswerInput}
                 type="text"
                 placeholder="Enter security answer here"
               />
