@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import buffer from 'buffer';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Tooltip from '@mui/material/Tooltip';
+
+import '../Home.css';
 import { addToCart } from '../../../actions/Cart';
 import { addToWishlist } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
@@ -101,19 +103,12 @@ function Cards({ securityQuestionValue }) {
                 products.img.data
               ).toString('base64')}`),
               (
-                <div style={{ margin: '18px', cursor: 'pointer' }} key={products._id}>
-                  <Card
-                    style={{
-                      width: '16rem',
-                      border: '2px solid var(--primary-color-medium)',
-                      padding: '0',
-                      margin: '0',
-                      height: '400px'
-                    }}>
+                <div className="card-div" key={products._id}>
+                  <Card className="cards">
                     <Card.Img
                       variant="top"
                       src={image}
-                      style={{ height: '200px', width: '100%' }}
+                      className="card-img"
                       onClick={() => handleClick(products._id)}
                     />
                     <Card.Body>
@@ -125,13 +120,9 @@ function Cards({ securityQuestionValue }) {
                         </Card.Text>
                       </div>
 
-                      <div style={{ position: 'absolute', left: '35px', bottom: '15px' }}>
+                      <div className="card-btn-div">
                         <Button
-                          style={{
-                            width: '150px',
-                            background: 'var(--primary-color-medium)',
-                            border: 'none'
-                          }}
+                          className="card-add-cart-btn"
                           onClick={(e) =>
                             handleAddToCart(
                               e,
@@ -146,8 +137,9 @@ function Cards({ securityQuestionValue }) {
                           Add to Cart
                         </Button>
                         <Button
+                          className="card-add-wishlist-btn"
                           size="sm"
-                          style={{ background: 'transparent', color: 'black', border: 'none' }}
+                          style={{}}
                           onClick={(e) =>
                             handleAddToWishlist(
                               e,
@@ -160,9 +152,7 @@ function Cards({ securityQuestionValue }) {
                             )
                           }>
                           <Tooltip title="Add to wishlist">
-                            <FavoriteBorderOutlinedIcon
-                              style={{ fontSize: '28px', marginLeft: '5px' }}
-                            />
+                            <FavoriteBorderOutlinedIcon className="wishlist-icon" />
                           </Tooltip>
                         </Button>
                       </div>
