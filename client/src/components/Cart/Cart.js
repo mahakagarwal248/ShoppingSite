@@ -75,8 +75,7 @@ function Cart() {
         <>
           <TableContainer component={Paper} className="cart-table-container">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead
-                style={{ border: '2px solid var(--primary-color)', backgroundColor: 'darkgrey' }}>
+              <TableHead className="cart-table-head">
                 <TableRow>
                   <TableCell align="left" className="cart-table-cell1">
                     Name
@@ -112,11 +111,7 @@ function Cart() {
                           className="cart-table-bcell1"
                           onClick={() => handleClick(products.productId)}>
                           <>
-                            <img
-                              src={image}
-                              alt="product"
-                              style={{ height: '70px', width: '70px', marginRight: '10px' }}
-                            />
+                            <img src={image} alt="product" />
                             {products.name}
                           </>
                         </TableCell>

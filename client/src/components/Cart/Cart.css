@@ -14,6 +14,10 @@
   margin: auto;
   margin-top: 25px;
 }
+.cart-table-head {
+  border: 2px solid var(--primary-color);
+  background-color: darkgrey;
+}
 .cart-table-cell1,
 .cart-table-cell2 {
   font-size: 17px;
@@ -45,6 +49,11 @@
 .cart-table-bcell1,
 .cart-table-bcell2 {
   width: 28%;
+}
+.cart-table-bcell1 img {
+  height: 70px;
+  width: 70px;
+  margin-right: 10px;
 }
 .cart-table-bcell3 {
   width: 15%;
