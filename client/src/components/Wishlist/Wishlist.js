@@ -86,58 +86,30 @@ function Wishlist() {
           <h4>You have nothing in wishlist</h4>
           <br />
           <Link to="/">
-            <button
-              style={{
-                border: 'none',
-                background: 'var(--primary-color)',
-                color: 'white',
-                height: '40px',
-                width: '150px',
-                borderRadius: '5px'
-              }}>
-              Shop Now
-            </button>
+            <button className="wishlist-shop-now-btn">Shop Now</button>
           </Link>
         </>
       ) : (
         <>
-          <TableContainer
-            component={Paper}
-            style={{ width: '70%', margin: 'auto', marginTop: '25px' }}>
+          <TableContainer className="wishlist-table-container" component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead
-                style={{
-                  border: '2px solid var(--primary-color)',
-                  backgroundColor: 'darkgrey'
-                }}>
+              <TableHead className="wishlist-table-head">
                 <TableRow>
-                  <TableCell
-                    align="left"
-                    style={{
-                      fontSize: '17px',
-                      fontWeight: '600',
-                      width: '27%'
-                    }}>
+                  <TableCell className="wishlist-table-cell1" align="left">
                     Name
                   </TableCell>
-                  <TableCell align="left" style={{ fontSize: '17px', fontWeight: '600' }}>
+                  <TableCell align="left" className="wishlist-table-cell2">
                     Description
                   </TableCell>
-                  <TableCell align="left" style={{ fontSize: '17px', fontWeight: '600' }}>
+                  <TableCell align="left" className="wishlist-table-cell3">
                     Price
                   </TableCell>
-                  <TableCell
-                    align="left"
-                    style={{
-                      fontSize: '17px',
-                      fontWeight: '600',
-                      width: '25%'
-                    }}>
+                  <TableCell className="wishlist-table-cell4" align="left">
                     Action
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody style={{ border: '2px solid var(--primary-color)' }}>
+              <TableBody className="wishlist-table-body">
                 {wishlistProductList.data.map(
                   (products) => (
                     (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
@@ -145,30 +117,22 @@ function Wishlist() {
                     ).toString('base64')}`),
                     (
                       <TableRow
+                        className="wishlist-table-row"
                         key={products._id}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        style={{ borderBottom: '1px solid black' }}>
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                         <TableCell
+                          className="wishlist-table-bcell1"
                           component="th"
                           scope="row"
-                          style={{ width: '27%' }}
                           onClick={() => handleClick(products.productId)}>
                           <>
-                            <img
-                              src={image}
-                              alt="product"
-                              style={{
-                                height: '70px',
-                                width: '70px',
-                                marginRight: '10px'
-                              }}
-                            />
+                            <img src={image} alt="product" />
                             {products.name}
                           </>
                         </TableCell>
                         <TableCell align="left">{products.description}</TableCell>
                         <TableCell align="left">{products.price}</TableCell>
-                        <TableCell align="left" style={{ width: '25%' }}>
+                        <TableCell align="left" className="wishlist-table-bcell4">
                           <button
                             className="cart-btn"
                             style={{ marginRight: '25px' }}
@@ -186,7 +150,7 @@ function Wishlist() {
                             Add To Cart
                           </button>
                           <button
-                            style={{ background: 'transparent', border: 'none' }}
+                            className="wishlist-delete-btn"
                             onClick={() => handleDelete(products._id)}>
                             <Tooltip title="Delete" placement="top">
                               <DeleteOutlinedIcon />
