@@ -22,7 +22,6 @@ function Login() {
   const [showPw, setShowPw] = useState(false);
 
   const [open, setOpen] = useState(false);
-
   const securityData = useSelector((state) => state.userReducer);
 
   const handleOpen = (e) => {
@@ -42,7 +41,6 @@ function Login() {
   const handleModalSubmit = (e) => {
     e.preventDefault();
     dispatch(forgotPassword({ email, ans }, setEditPw));
-    // setEditPw(true);
   };
 
   const handlePWSubmit = (e) => {
@@ -86,7 +84,7 @@ function Login() {
               placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} style={{ marginLeft: '2px' }} />
+            <RemoveRedEyeIcon onClick={() => setShowPw(!showPw)} className="eye-icon" />
             <br />
             <button onClick={handleSubmit} className="login-form-btn">
               Login
