@@ -22,28 +22,22 @@ function ProductDetails() {
               product.img.data
             ).toString('base64')}`),
             (
-              <div
-                key={product._id}
-                style={{ display: 'flex', width: '75%', margin: 'auto', marginTop: '25px' }}>
-                <div style={{ flex: '0.5' }}>
-                  <img
-                    src={image}
-                    alt="product"
-                    style={{ height: '380px', width: '460px', marginRight: '10px' }}
-                  />
+              <div className="product-div" key={product._id}>
+                <div className="product-div1">
+                  <img className="product-img" src={image} alt="product" />
                 </div>
-                <div style={{ flex: '0.5' }}>
+                <div className="product-div2">
                   <h2>{product.name}</h2>
-                  <p style={{ fontSize: '20px' }}>{product.description}</p>
+                  <p>{product.description}</p>
                   <br />
-                  <p style={{ fontSize: '20px' }}>
+                  <p>
                     <b>INR {product.price}</b>
                   </p>
                   <p>Available : {product.quantity}</p>
                   <br />
                   <br />
                   <br />
-                  <div style={{ width: '200px' }}>
+                  <div className="product-btn-div">
                     <button className="add-to-cart-btn">Add to cart</button>
                     <br />
                     <button className="add-to-wishlist-btn">Add to Wishlist</button>
