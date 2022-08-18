@@ -15,7 +15,7 @@
     padding: 5px 12px;
 }
 .nav-items:hover{
-    color: rgb(101,0,0);
+    color: var(--primary-color);
     background: white;
     border-radius: 5px;
     padding: 5px 12px;

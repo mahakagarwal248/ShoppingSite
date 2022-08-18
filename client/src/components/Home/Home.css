@@ -8,3 +8,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+.home-container div p {
+  font-size: 18px;
+}
+.home-container div select {
+  height: 28px;
+  margin-left: 8px;
+}

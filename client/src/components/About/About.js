@@ -24,9 +24,7 @@ function About() {
         setUserProfileImage({});
       } else {
         setUserProfileImage(
-          `data:${user.img.contentType};base64, ${buffer.Buffer.from(user.img.data).toString(
-            'base64'
-          )}`
+          `data:${user.contentType};base64, ${buffer.Buffer.from(user.data).toString('base64')}`
         );
       }
     });
@@ -56,24 +54,24 @@ function About() {
             <h2>User Details</h2>
             <div className="about-container-div">
               <div>
-                {userProfileImage === {} ? (
-                  <>
-                    <div>
-                      <form encType="multipart/form-data">
-                        <h4>Upload Profile Pic:</h4>
-                        <input
-                          type="file"
-                          name="file"
-                          onChange={handleFile}
-                          className="about-file-input"
-                        />
-                        <button type="submit">Go</button>
-                      </form>
-                    </div>
-                  </>
+                {/* {userProfileImage === {} ? (
+                  <> */}
+                <div>
+                  <form encType="multipart/form-data">
+                    <h4>Upload Profile Pic:</h4>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={handleFile}
+                      className="about-file-input"
+                    />
+                    <button type="submit">Go</button>
+                  </form>
+                </div>
+                {/* </>
                 ) : (
                   ''
-                )}
+                )} */}
 
                 <br />
                 <div className="display-info-container">
@@ -93,18 +91,18 @@ function About() {
                 <br />
                 <div className="display-info-container">
                   <h4>Address:</h4>
-                  <span s>{User?.result?.address}</span>
+                  <span>{User?.result?.address}</span>
                 </div>
               </div>
-              {userProfileImage !== {} ? (
-                <>
-                  <div className="display-profile-image-container">
-                    <img src={userProfileImage} alt="profile" />
-                  </div>
-                </>
+              {/* {userProfileImage !== {} ? (
+                <> */}
+              <div className="display-profile-image-container">
+                <img src={userProfileImage} alt="profile" />
+              </div>
+              {/* </>
               ) : (
                 ''
-              )}
+              )} */}
             </div>
           </div>
         </>

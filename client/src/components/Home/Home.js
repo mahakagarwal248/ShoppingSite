@@ -11,11 +11,10 @@ function Home() {
         Welcome to your <i>Shopping Site</i>
       </h2>
       <div>
-        <p style={{ fontSize: '18px' }}>Search By Category</p>
+        <p>Search By Category</p>
         <select
           value={securityQuestionValue}
-          onChange={(e) => setSecurityQuestionValue(e.target.value)}
-          style={{ height: '28px', marginLeft: '8px' }}>
+          onChange={(e) => setSecurityQuestionValue(e.target.value)}>
           <option value="" hidden>
             Select Category
           </option>
