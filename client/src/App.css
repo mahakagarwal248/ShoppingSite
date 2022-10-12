@@ -43,18 +43,18 @@
   --secondary-color: #db7f50;
   --secondary-color-medium: #e9a37f;
   --secondary-color-light: #f7cbad; */
-/* 
+
   --primary-color: #7a0000;
   --primary-color-medium: #8e0000;
   --primary-color-light: #8f4646;
   --secondary-color: #ffe6e6;
   --secondary-color-medium: #ffebeb;
-  --secondary-color-light: #ffeded; */
+  --secondary-color-light: #ffeded;
 
-  --primary-color: #666b55;
+  /* --primary-color: #666b55;
   --primary-color-medium: #b2ba97;
   --primary-color-light: #8f4646;
   --secondary-color: #ffe6e6;
   --secondary-color-medium: #ffebeb;
-  --secondary-color-light: 	#ececec;
+  --secondary-color-light: 	#ececec; */
 }

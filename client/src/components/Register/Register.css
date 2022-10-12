@@ -16,7 +16,7 @@
     width: 92%;
 }
 .register-form label{
-    color: var(--primary-color);
+    color: var(--secondary-color-light);
     font-size: 17px;
     font-weight: 600;
 }

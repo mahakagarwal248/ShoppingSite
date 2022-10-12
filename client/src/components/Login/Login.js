@@ -101,7 +101,7 @@ function Login() {
             <button className="forgot-password-btn" onClick={handleOpen}>
               Forgot Password?
             </button>
-            <div>
+            <div style={{ color: 'var(--secondary-color-light)' }}>
               <span>New User?</span>
               <Link to="/register">
                 <button className="signup-btn">Sign up</button>

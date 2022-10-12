@@ -22,7 +22,7 @@
   width: 88%;
 }
 .login-form label {
-  color: var(--primary-color);
+  color: var(--secondary-color-light);
   font-size: 17px;
   font-weight: 600;
 }
@@ -58,7 +58,7 @@
 .forgot-password-btn {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--secondary-color-light);
   padding: 0;
 }
 .submit-btn {

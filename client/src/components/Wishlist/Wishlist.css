@@ -27,7 +27,7 @@
   border-radius: 5px;
 }
 .wishlist-table-container {
-  width: 70%;
+  width: 70% !important;
   margin: auto;
   margin-top: 25px;
 }

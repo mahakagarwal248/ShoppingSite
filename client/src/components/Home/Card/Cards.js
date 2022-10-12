@@ -12,7 +12,7 @@ import { addToCart } from '../../../actions/Cart';
 import { addToWishlist } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
 
-function Cards({ securityQuestionValue }) {
+function Cards(securityQuestionValue) {
   const productList = useSelector((state) => state.productReducer);
 
   const dispatch = useDispatch();
@@ -97,7 +97,7 @@ function Cards({ securityQuestionValue }) {
         <h1>Loading...</h1>
       ) : (
         <>
-          {productList.data.map(
+          {productList.data?.data?.map(
             (products) => (
               (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
                 products.img.data
