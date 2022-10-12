@@ -8,8 +8,8 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import Tooltip from '@mui/material/Tooltip';
 
 import '../Home.css';
-import { addToCart } from '../../../actions/Cart';
-import { addToWishlist } from '../../../actions/Wishlist';
+import { addToCart, fetchCartProduct } from '../../../actions/Cart';
+import { addToWishlist, fetchWishlistProduct } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
 
 function Cards(securityQuestionValue) {
@@ -27,6 +27,7 @@ function Cards(securityQuestionValue) {
   };
 
   var User = JSON.parse(localStorage.getItem('Profile'));
+  const userId = User.result._id;
 
   const handleAddToCart = (
     e,
@@ -57,6 +58,7 @@ function Cards(securityQuestionValue) {
         navigate
       )
     );
+    dispatch(fetchCartProduct(userId));
     navigate('/cart');
   };
 
@@ -88,6 +90,7 @@ function Cards(securityQuestionValue) {
         navigate
       )
     );
+    dispatch(fetchWishlistProduct(userId));
     navigate('/wishlist');
   };
   var image = {};
@@ -139,7 +142,6 @@ function Cards(securityQuestionValue) {
                         <Button
                           className="card-add-wishlist-btn"
                           size="sm"
-                          style={{}}
                           onClick={(e) =>
                             handleAddToWishlist(
                               e,

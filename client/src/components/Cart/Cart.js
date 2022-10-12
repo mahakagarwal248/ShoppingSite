@@ -26,13 +26,12 @@ function Cart() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   useEffect(() => {
     dispatch(fetchCartProduct(userId));
   }, [dispatch, userId]);
 
   const handleDelete = (id) => {
-    dispatch(deleteCartProduct(id, navigate));
+    dispatch(deleteCartProduct(id, navigate)).then();
     dispatch(fetchCartProduct(userId));
   };
 
