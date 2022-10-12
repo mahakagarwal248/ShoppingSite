@@ -17,7 +17,7 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   var User = JSON.parse(localStorage.getItem('Profile'));
-  const userId = User.result._id;
+  const userId = User?.result?._id;
 
   const handleAddToCart = (
     e,
@@ -88,7 +88,7 @@ function ProductDetails() {
   return (
     <div className="container">
       <Navbar />
-      {productList.data?.data
+      {productList.data
         ?.filter((product) => product._id === id)
         .map(
           (product) => (

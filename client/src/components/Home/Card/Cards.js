@@ -27,7 +27,7 @@ function Cards(securityQuestionValue) {
   };
 
   var User = JSON.parse(localStorage.getItem('Profile'));
-  const userId = User.result._id;
+  const userId = User?.result?._id;
 
   const handleAddToCart = (
     e,
@@ -100,7 +100,7 @@ function Cards(securityQuestionValue) {
         <h1>Loading...</h1>
       ) : (
         <>
-          {productList.data?.data?.map(
+          {productList.data?.map(
             (products) => (
               (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
                 products.img.data
