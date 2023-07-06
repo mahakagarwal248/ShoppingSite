@@ -1,0 +1,128 @@
+.cart-container {
+  text-align: center;
+}
+.shop-now-btn {
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+}
+.cart-table-container {
+  width: 70% !important;
+  margin: auto;
+  margin-top: 25px;
+}
+.cart-table-head {
+  border: 2px solid var(--primary-color);
+  background-color: darkgrey;
+}
+.cart-table-cell1,
+.cart-table-cell2 {
+  font-size: 17px;
+  font-weight: 600;
+  width: 28% !important;
+}
+.cart-table-cell3 {
+  font-size: 17px;
+  font-weight: 600;
+  width: 15%;
+}
+.cart-table-cell4 {
+  font-size: 17px;
+  font-weight: 600;
+  width: 7%;
+}
+.cart-table-cell5 {
+  font-size: 17px;
+  font-weight: 600;
+  width: 22%;
+}
+.cart-table-body {
+  border: 2px solid var(--primary-color);
+}
+.cart-table-row {
+  border-bottom: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+.cart-table-bcell1,
+.cart-table-bcell2 {
+  width: 28%;
+}
+.cart-table-bcell1 img {
+  height: 70px;
+  width: 70px;
+  margin-right: 10px;
+}
+.cart-table-bcell3 {
+  width: 15%;
+}
+.cart-table-bcell4 {
+  width: 7%;
+}
+.cart-table-bcell5 {
+  width: 22%;
+}
+.display-cart-items-container {
+  width: 75%;
+  margin: auto;
+}
+.display-cart-items-container > div {
+  display: flex;
+  margin-bottom: 25px;
+  border: 1px solid var(--primary-color);
+}
+.display-cart-items-container-1 img {
+  height: 150px;
+  width: 150px;
+}
+.display-cart-items-container-2 {
+  padding-left: 10px;
+  text-align: left;
+}
+.cart-btn {
+  border: none;
+  background-color: var(--primary-color-medium);
+  border-radius: 5px;
+  color: white;
+  padding: 5px 15px;
+  font-size: 14px;
+  margin-right: 25px;
+}
+.cart-delete-btn {
+  background: transparent;
+  border: none;
+}
+.total-table {
+  border: 2px solid var(--primary-color);
+}
+.total-table-cell1 {
+  font-size: 18px !important;
+}
+.total-table-cell2 {
+  width: 21%;
+}
+.checkout-btn {
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+.quantity-btn {
+  margin: auto 7px;
+  padding: 0px 5px;
+  font-size: 18px;
+  border: none;
+  align-content: center;
+}
+.cart-add-products-btn {
+  border: none;
+  background: var(--primary-color-medium);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 50px;
+}

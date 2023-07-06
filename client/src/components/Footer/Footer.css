@@ -1,9 +1,17 @@
-.footer{
-    background-color: rgb(93, 93, 93);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    padding: 20px 0;
-    font-size: 18px;
+.footer {
+  background-color: var(--primary-color);
+  position: static;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding: 20px 0;
+  font-size: 18px;
+}
+.footer button {
+  background: transparent;
+  border: none;
+  color: white;
+}
+.github-icon {
+  margin-right: 5p;
 }

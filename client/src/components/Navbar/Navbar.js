@@ -1,21 +1,66 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import decode from 'jwt-decode';
+import Avatar from '@mui/material/Avatar';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 import './Navbar.css';
-import {Link} from 'react-router-dom'
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = useCallback(() => {
+    dispatch({ type: 'LOGOUT' });
+    navigate('/');
+  }, [dispatch, navigate]);
+
+  var User = JSON.parse(localStorage.getItem('Profile'));
+
+  useEffect(() => {
+    const token = User?.token;
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        handleLogout();
+      }
+    }
+  }, [User?.token, handleLogout]);
+
   return (
-    <div className='navbar'>
-        <Link to="/" className='nav-items'>
-            Home
+    <div className="navbar">
+      <Link to="/" className="nav-items">
+        Home
+      </Link>
+      <Link to="/about" className="nav-items">
+        About
+      </Link>
+      {localStorage.getItem('Profile') === null ? (
+        <Link to="/login" className="nav-items">
+          Login
         </Link>
-        <Link to="/" className='nav-items'>
-            About
-        </Link>
-        <Link to="/" className='nav-items'>
-            Login
-        </Link>
+      ) : (
+        <div className="user-nav-icons">
+          <Link to="/cart">
+            <ShoppingCartOutlinedIcon className="nav-icons" />
+          </Link>
+          <Link to="/wishlist">
+            <FavoriteBorderOutlinedIcon className="nav-icons" />
+          </Link>
+          <Link to="/about" style={{ textDecoration: 'none' }}>
+            <Avatar className="user-avatar">{User.result.name.charAt(0).toUpperCase()}</Avatar>
+          </Link>
+          <p>Hi, {User.result.name.split(' ').slice(0, -1).join(' ')}</p>
+          <button type="button" className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
