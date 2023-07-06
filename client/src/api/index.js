@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://your-shopping-site.herokuapp.com' });
+const API = axios.create({ baseURL: 'https://uninterested-erin-woodpecker.cyclic.app/' });
 // const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 export const signup = (userData) => API.post('/user/signup', userData);
