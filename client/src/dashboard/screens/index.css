@@ -1,0 +1,30 @@
+.delete-container,
+.edit-container {
+  padding: 10px;
+}
+.delete-container > p,
+.edit-container > p {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.delete-yes-btn,
+.delete-cancel-btn,
+.edit-yes-btn,
+.edit-cancel-btn {
+  margin-right: 15px;
+  margin-top: 20px;
+  padding: 5px;
+  width: 80px;
+  border-radius: 5px;
+}
+.delete-yes-btn,
+.edit-yes-btn {
+  background: red;
+  color: white;
+  border: 2px solid transparent;
+}
+.delete-cancel-btn,
+.edit-cancel-btn {
+  border: 2px solid var(--primary-color);
+}

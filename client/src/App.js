@@ -18,12 +18,23 @@ import Products from './dashboard/pages/Products';
 import AddProduct from './dashboard/pages/AddProduct';
 import Profile from './dashboard/pages/Profile';
 import Orders from './components/Orders/Orders';
+import EditProducts from './dashboard/screens/EditProducts';
+import { useSelector } from 'react-redux';
 
 function App() {
-  var User = JSON.parse(localStorage.getItem('Profile'));
+  const blankStep = <></>;
+  const steps = {
+    0: blankStep,
+    1: EditProducts
+  };
 
+  const currentStep = useSelector((state) => state.setModalStepReducer.data);
+  const Component = steps[currentStep];
+
+  var User = JSON.parse(localStorage.getItem('Profile'));
   return (
     <BrowserRouter>
+      {currentStep !== 0 ? <Component /> : ''}
       {User?.result?.role === 'merchant' ? <></> : <Navbar />}
       <Routes>
         <Route
