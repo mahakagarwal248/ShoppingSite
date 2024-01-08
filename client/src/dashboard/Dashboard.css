@@ -1,0 +1,173 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+.sidebar-container {
+  background-color: var(--primary-color);
+  width: 15%;
+  height: 100vh;
+  color: white;
+  box-shadow: 7px 0 5px -2px rgba(0, 0, 0, 0.3);
+  position: fixed;
+}
+.sidebar-logo {
+  text-align: center;
+  font-size: 26px;
+  padding: 20px 0px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.sidebar-btn {
+  width: 100%;
+  padding: 10px 0px;
+  padding-left: 8px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  color: rgb(62, 66, 69);
+  border-bottom: 2px solid var(--primary-color-medium);
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.3);
+}
+.summary-container {
+  padding: 10px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+}
+.add-product-container {
+  padding-top: 20px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+}
+.add-product-form {
+  margin-top: 50px !important;
+  width: 50%;
+  margin: auto;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+.add-product-form > input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.add-product-inner-div {
+  width: '100%';
+  text-align: left;
+  border: 1px solid black;
+  padding: 10px;
+  background: white;
+}
+.add-product-btn {
+  margin-top: 25px;
+  padding: 8px;
+  width: 100px;
+  border-radius: 15px;
+  border: none;
+  background: var(--primary-color-medium);
+  color: white;
+}
+.products-container {
+  padding: 20px;
+  width: 85%;
+  margin-left: auto;
+  text-align: left;
+}
+.cards {
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.card-img {
+  height: 200px;
+  width: 100%;
+  border-bottom: 1px solid var(--primary-color-medium);
+}
+.business-profile-container {
+  padding-top: 20px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+}
+.business-profile-div {
+  margin-top: 100px !important;
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  margin-left: auto;
+}
+.business-profile-display-div {
+  margin-top: 100px !important;
+  width: 50%;
+  margin: auto;
+  margin-left: auto;
+  padding-bottom: 25px;
+}
+.business-profile-display-div > div {
+  display: flex;
+  flex-direction: row;
+}
+.business-profile-div1,
+.business-profile-div2 {
+  padding: 10px;
+  font-size: 18px;
+  margin-right: 50px !important;
+  text-align: left;
+  width: 50%;
+}
+.business-profile-div1 > p {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.business-profile-div2 > p {
+  margin-bottom: 10px;
+}
+.business-profile-div > p {
+  font-size: 24px;
+  font-weight: 500;
+}
+.business-profile-div > button,
+.business-profile-display-div > button {
+  margin-top: 20px;
+  padding: 8px;
+  width: 150px;
+  border: none;
+  background-color: var(--primary-color-medium);
+  color: white;
+  border-radius: 15px;
+}
+.business-profile-form {
+  margin-top: 50px !important;
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  padding-bottom: 20px !important;
+}
+.business-profile-form > h3 {
+  margin-bottom: 20px !important;
+}
+.business-profile-form > input {
+  width: 60%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+}
+.business-profile-form > p {
+  font-size: 20px;
+}
+.business-profile-form > img {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+}
+.business-profile-form > button {
+  margin-right: 15px;
+  margin-top: 25px;
+  padding: 8px;
+  width: 150px;
+  border: none;
+  background-color: var(--primary-color-medium);
+  color: white;
+  border-radius: 15px;
+}

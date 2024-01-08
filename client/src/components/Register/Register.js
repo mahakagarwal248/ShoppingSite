@@ -5,7 +5,6 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 import './Register.css';
 import { signup } from '../../actions/Users';
-import Navbar from '../Navbar/Navbar';
 
 const securityQuestions = [
   {
@@ -38,6 +37,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
+  const [role, setRole] = useState('');
   const [securityAns, setSecurityAns] = useState('');
   const [showPw, setShowPw] = useState(false);
 
@@ -61,6 +61,9 @@ function Register() {
   const handleAddressInput = (e) => {
     setAddress(e.target.value);
   };
+  const handleRoleInput = (e) => {
+    setRole(e.target.value);
+  };
   const handleSecurityQuestionInput = (e) => {
     setSecurityQues(e.target.value);
   };
@@ -77,25 +80,16 @@ function Register() {
       alert('Enter a name to continue');
     }
     dispatch(
-      signup({ name, email, password, mobile, address, securityQues, securityAns }, navigate)
+      signup({ name, email, password, mobile, address, securityQues, securityAns, role }, navigate)
     );
   };
   return (
     <div className="register-container container">
-      <Navbar />
-      <br />
-      <h2>Register Here</h2>
-      <br />
+      <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
-        <label>Name</label>
-        <br />
         <input type="name" placeholder="Enter name" onChange={handleNameInput} />
         <br />
-        <label>Email</label>
-        <br />
         <input type="email" placeholder="Enter email" onChange={handleEmailInput} />
-        <br />
-        <label>Password</label>
         <br />
         <input
           type={showPw ? 'text' : 'password'}
@@ -103,19 +97,26 @@ function Register() {
           placeholder="Enter your password"
           onChange={handlePasswordInput}
         />
-        <RemoveRedEyeIcon onClick={handleShowPw} style={{ marginLeft: '2px' }} />
+        <RemoveRedEyeIcon onClick={handleShowPw} className="eye-icon" />
         <br />
-        <label>Mobile</label>
+        <input type="tel" placeholder="Enter Mobile Number" onChange={handleMobileInput} />
         <br />
-        <input type="tel" placeholder="Enter mobile number" onChange={handleMobileInput} />
+        <input type="text" placeholder="Enter Address" onChange={handleAddressInput} />
         <br />
-        <label>Address</label>
+        <select value={role} onChange={handleRoleInput}>
+          <option value="" disabled>
+            Select Role
+          </option>
+          <option value="customer">Customer</option>
+          <option value="merchant">Merchant</option>
+        </select>
         <br />
-        <input type="text" placeholder="Enter address" onChange={handleAddressInput} />
-        <br />
-        <label>Security Question</label>
-        <br />
+        {/* <label>Security Question</label>
+        <br /> */}
         <select value={securityQues} onChange={handleSecurityQuestionInput}>
+          <option value="" disabled>
+            Select Security Question
+          </option>
           {securityQuestions.map((questions) => (
             <option key={questions.quesNo} value={questions.value}>
               {questions.question}
@@ -123,8 +124,11 @@ function Register() {
           ))}
         </select>
         <br />
-        <br />
-        <input type="text" placeholder="Enter answer" onChange={handleSecurityAnswerInput} />
+        <input
+          type="text"
+          placeholder="Enter Security Answer"
+          onChange={handleSecurityAnswerInput}
+        />
         <br />
         <button type="submit" className="register-form-btn">
           Register

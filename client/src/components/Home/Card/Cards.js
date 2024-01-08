@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import buffer from 'buffer';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -13,8 +12,6 @@ import { addToWishlist, fetchWishlistProduct } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
 
 function Cards(securityQuestionValue) {
-  const productList = useSelector((state) => state.productReducer);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,89 +19,50 @@ function Cards(securityQuestionValue) {
     dispatch(getProductByCategory(securityQuestionValue));
   }, [dispatch, securityQuestionValue]);
 
-  const handleClick = (id) => {
-    navigate(`/productDetails/${id}`);
+  const productList = useSelector((state) => state.productReducer);
+  console.log(productList);
+
+  const handleClick = (productData) => {
+    navigate(`/productDetails/${productData._id}`, { state: productData });
   };
 
   var User = JSON.parse(localStorage.getItem('Profile'));
   const userId = User?.result?._id;
 
-  const handleAddToCart = (
-    e,
-    id,
-    productName,
-    productDescription,
-    productBrand,
-    productPrice,
-    productImg
-  ) => {
+  const handleAddToCart = (e, productId) => {
     e.preventDefault();
     if (localStorage.getItem('Profile') === null) {
       alert('You need to login first');
       navigate('/login');
     }
-    dispatch(
-      addToCart(
-        id,
-        {
-          userId: User.result._id,
-          name: productName,
-          description: productDescription,
-          brand: productBrand,
-          price: productPrice,
-          quantity: 1,
-          img: productImg
-        },
-        navigate
-      )
-    );
+    dispatch(addToCart(userId, productId, navigate));
     dispatch(fetchCartProduct(userId));
-    navigate('/cart');
   };
 
-  const handleAddToWishlist = (
-    e,
-    id,
-    productName,
-    productDescription,
-    productBrand,
-    productPrice,
-    productImg
-  ) => {
+  const handleAddToWishlist = (e, productId) => {
     e.preventDefault();
     if (localStorage.getItem('Profile') === null) {
       alert('You need to login first');
       navigate('/login');
     }
-    dispatch(
-      addToWishlist(
-        id,
-        {
-          userId: User.result._id,
-          name: productName,
-          description: productDescription,
-          brand: productBrand,
-          price: productPrice,
-          img: productImg
-        },
-        navigate
-      )
-    );
+    dispatch(addToWishlist(userId, productId, navigate));
     dispatch(fetchWishlistProduct(userId));
-    navigate('/wishlist');
   };
   var image = {};
   return (
     <>
       {productList.data === null ? (
         <h1>Loading...</h1>
+      ) : productList.data.length === 0 ? (
+        <div>
+          <h3>No Products Available Right Now</h3>
+          <p>Please come back after some time</p>
+        </div>
       ) : (
         <>
           {productList.data?.map(
             (products) => (
-              (image = `data:${products.img.contentType};base64, ${buffer.Buffer.from(
-                products.img.data
-              ).toString('base64')}`),
+              (image = `data:${products.img.contentType};base64, ${products.img.data}`),
               (
                 <div className="card-div" key={products._id}>
                   <Card className="cards">
@@ -112,47 +70,43 @@ function Cards(securityQuestionValue) {
                       variant="top"
                       src={image}
                       className="card-img"
-                      onClick={() => handleClick(products._id)}
+                      onClick={() => handleClick(products)}
                     />
-                    <Card.Body>
+                    <Card.Body style={{ display: 'flex', flexDirection: 'column' }}>
                       <div style={{ margin: 'auto' }}>
-                        <Card.Title>{products.name}</Card.Title>
-                        <Card.Text style={{ margin: '0' }}>{products.description}</Card.Text>
-                        <Card.Text>
-                          <b>INR {products.price}</b>
+                        <Card.Title style={{ margin: 0, fontSize: '20px' }}>
+                          {products.name}
+                        </Card.Title>
+                        {/* <Card.Text style={{ margin: '5px 0px', fontSize: '16px' }}>
+                          {products.description}
+                        </Card.Text> */}
+                        <Card.Text style={{ marginTop: '10px' }}>
+                          {products?.brand && (
+                            <span style={{ fontSize: '16px', marginBottom: 0 }}>
+                              Brand - {products?.brand}
+                            </span>
+                          )}
+                          <br />
+                          <span style={{ fontSize: '16px', marginBottom: 0, marginTop: 0 }}>
+                            Price - INR {products.price}
+                          </span>
+                          <br />
+                          <span style={{ fontSize: '16px', marginTop: 0 }}>
+                            Quantity Available - 5
+                          </span>
                         </Card.Text>
                       </div>
 
-                      <div className="card-btn-div">
+                      <div style={{ marginTop: '10px' }}>
                         <Button
                           className="card-add-cart-btn"
-                          onClick={(e) =>
-                            handleAddToCart(
-                              e,
-                              products._id,
-                              products.name,
-                              products.description,
-                              products.brand,
-                              products.price,
-                              products.img
-                            )
-                          }>
+                          onClick={(e) => handleAddToCart(e, products._id)}>
                           Add to Cart
                         </Button>
                         <Button
                           className="card-add-wishlist-btn"
                           size="sm"
-                          onClick={(e) =>
-                            handleAddToWishlist(
-                              e,
-                              products._id,
-                              products.name,
-                              products.description,
-                              products.brand,
-                              products.price,
-                              products.img
-                            )
-                          }>
+                          onClick={(e) => handleAddToWishlist(e, products._id)}>
                           <Tooltip title="Add to wishlist">
                             <FavoriteBorderOutlinedIcon className="wishlist-icon" />
                           </Tooltip>

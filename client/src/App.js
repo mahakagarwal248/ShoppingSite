@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Navbar/Navbar';
@@ -14,62 +13,41 @@ import Wishlist from './components/Wishlist/Wishlist';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import About from './components/About/About';
 
-import { fetchAllProducts } from './actions/Products';
-import { getUsers } from './actions/Users';
+import Dashboard from './dashboard';
+import Products from './dashboard/pages/Products';
+import AddProduct from './dashboard/pages/AddProduct';
+import Profile from './dashboard/pages/Profile';
+import Orders from './components/Orders/Orders';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-    dispatch(getUsers());
-  }, [dispatch]);
-
   var User = JSON.parse(localStorage.getItem('Profile'));
 
   return (
     <BrowserRouter>
+      {User?.result?.role === 'merchant' ? <></> : <Navbar />}
       <Routes>
         <Route
           exact
           path="/"
           element={
-            <div className="App container">
-              <Navbar />
+            <div className="App">
+              {User?.result?.role === 'merchant' ? <Navbar /> : <></>}
               <Home />
               <Footer />
             </div>
           }
         />
         <Route exact path="/about" element={<About />} />
-        <Route
-          exact
-          path="/login"
-          element={User === null ? <Login /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/register"
-          element={User === null ? <Register /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/cart"
-          element={User !== null ? <Cart /> : <Navigate to="/" replace />}
-        />
-        <Route
-          exact
-          path="/wishlist"
-          element={User !== null ? <Wishlist /> : <Navigate to="/" replace />}
-        />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/wishlist" element={<Wishlist />} />
+        <Route exact path="/orders" element={<Orders />} />
         <Route exact path="/productDetails/:id" element={<ProductDetails />} />
-        {/* <Route exact path="*" element={
-          <div className="App container">
-          <Navbar/>
-          <Home/>
-          <Footer/>
-        </div>
-        && <Navigate to="/" replace/>
-        }/> */}
+        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/dashboard/products" element={<Products />} />
+        <Route exact path="/dashboard/add-product" element={<AddProduct />} />
+        <Route exact path="/dashboard/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
