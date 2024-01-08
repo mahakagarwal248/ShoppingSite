@@ -4,18 +4,30 @@ import Card from 'react-bootstrap/Card';
 
 import Sidebar from '../Sidebar';
 import { getMerchantProducts } from '../../actions/Products';
+import { setModalProduct, setModalStep, showModal } from '../../actions/Common';
+
 function Products() {
-  const dispatch = useDispatch();
   const User = JSON.parse(localStorage.getItem('Profile'));
   const merchantId = User?.result?._id;
 
+  const dispatch = useDispatch();
   const getProducts = () => dispatch(getMerchantProducts(merchantId));
 
   useEffect(() => {
     getProducts();
   }, [merchantId]);
 
-  const productList = useSelector((state) => state.productReducer);
+  const customEqual = (oldValue, newValue) => {
+    return oldValue === newValue;
+  };
+
+  const productList = useSelector((state) => state.productReducer, customEqual);
+
+  const handleClick = (product) => {
+    dispatch(setModalStep(1));
+    dispatch(setModalProduct(product));
+    dispatch(showModal(true));
+  };
 
   let image;
   return (
@@ -33,7 +45,7 @@ function Products() {
                     variant="top"
                     src={image}
                     className="card-img"
-                    // onClick={() => handleClick(products._id)}
+                    onClick={() => handleClick(products)}
                   />
                   <Card.Body
                     style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>

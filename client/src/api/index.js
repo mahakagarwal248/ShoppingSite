@@ -48,6 +48,9 @@ export const addProduct = (product) =>
   });
 export const getMerchantProducts = (merchantId) =>
   API.get(`/products/getMerchantProducts?merchantId=${merchantId}`);
+export const updateProduct = (data) => API.put('/products/update', data);
+export const deleteProduct = (merchantId, productId) =>
+  API.delete(`/products/delete?merchantId=${merchantId}&productId=${productId}`);
 
 export const addProfile = (profileData) => API.post('/business-profile', profileData);
 export const getProfileById = (merchantId) => API.get(`/business-profile?merchantId=${merchantId}`);

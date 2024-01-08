@@ -20,7 +20,6 @@ function Cards(securityQuestionValue) {
   }, [dispatch, securityQuestionValue]);
 
   const productList = useSelector((state) => state.productReducer);
-  console.log(productList);
 
   const handleClick = (productData) => {
     navigate(`/productDetails/${productData._id}`, { state: productData });

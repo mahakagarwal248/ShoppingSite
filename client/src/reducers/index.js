@@ -6,6 +6,8 @@ import wishlistReducer from './Wishlist';
 import imageReducer from './Images';
 import businessProfileReducer from './BusinessProfile';
 import ordersReducer from './Orders';
+import { setModalStepReducer, showModalReducer, modalProductReducer } from './Common';
+
 export default combineReducers({
   userReducer,
   productReducer,
@@ -13,5 +15,8 @@ export default combineReducers({
   wishlistReducer,
   imageReducer,
   businessProfileReducer,
-  ordersReducer
+  ordersReducer,
+  setModalStepReducer,
+  showModalReducer,
+  modalProductReducer
 });
