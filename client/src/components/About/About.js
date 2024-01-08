@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import buffer from 'buffer';
 
 import './About.css';
-import Navbar from '../Navbar/Navbar';
 import { postProfilePic } from '../../actions/Images';
 
 function About() {
   var User = JSON.parse(localStorage.getItem('Profile'));
-  const userList = useSelector((state) => state.userReducer);
-
   const userId = User?.result?._id;
+  const currentProfile = User?.result;
   const dispatch = useDispatch();
-  const currentProfile = userList?.data?.filter((user) => user._id === userId)[0];
 
   const handleFile = (e) => {
     e.preventDefault();
-
     const fileData = new FormData();
     fileData.append('file', e.target.files[0]);
     dispatch(postProfilePic(userId, fileData));
@@ -25,7 +21,6 @@ function About() {
 
   return (
     <div className="about-container container">
-      <Navbar />
       {User === null ? (
         <>
           <h2 style={{}}>You Need to login first</h2>
@@ -63,7 +58,15 @@ function About() {
                 <br />
                 <div className="display-info-container">
                   <h4>Name:</h4>
-                  <span>{User?.result?.name}</span>
+                  <span>
+                    {User.result?.name.split(' ')[0].charAt(0).toUpperCase() +
+                      User.result?.name.split(' ')[0].slice(1) +
+                      (User.result?.name.split(' ')[1]
+                        ? ' ' +
+                          User.result?.name.split(' ')[1]?.charAt(0)?.toUpperCase() +
+                          User.result?.name.split(' ')[1]?.slice(1)
+                        : '')}
+                  </span>
                 </div>
                 <br />
                 <div className="display-info-container">
@@ -84,18 +87,25 @@ function About() {
               {currentProfile === undefined ? (
                 ''
               ) : currentProfile.profilePicture ? (
-                <>
-                  <div className="display-profile-image-container">
-                    <img
-                      src={`data:${
-                        currentProfile.profilePicture.contentType
-                      };base64, ${buffer.Buffer.from(currentProfile.profilePicture.data).toString(
-                        'base64'
-                      )}`}
-                      alt="profile"
-                    />
-                  </div>
-                </>
+                (console.log(
+                  `data:${currentProfile.profilePicture.contentType};base64, ${buffer.Buffer.from(
+                    currentProfile.profilePicture.data
+                  ).toString('base64')}`
+                ),
+                (
+                  <>
+                    <div className="display-profile-image-container">
+                      <img
+                        src={`data:${
+                          currentProfile.profilePicture.contentType
+                        };base64, ${buffer.Buffer.from(currentProfile.profilePicture.data).toString(
+                          'base64'
+                        )}`}
+                        alt="profile"
+                      />
+                    </div>
+                  </>
+                ))
               ) : (
                 <></>
               )}

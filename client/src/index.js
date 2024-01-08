@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import Reducers from './reducers';
 import './index.css';
 import App from './App';
+import { ToastContainer } from 'react-toastify';
 
 const store = configureStore(
   {
@@ -24,6 +25,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <App />
     </React.StrictMode>
   </Provider>

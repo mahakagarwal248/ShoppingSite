@@ -1,39 +1,43 @@
+import { toast } from 'react-toastify';
 import * as api from '../api';
 
-export const addToCart = (id, productData, navigate) => async (dispatch) => {
+export const addToCart = (userId, productId, navigate) => async (dispatch) => {
   try {
-    const { data } = api.addToCart(id, productData);
-    dispatch({ type: 'ADD_TO_CART', data });
+    const response = await api.addToCart(userId, productId);
+    dispatch({ type: 'ADD_TO_CART' });
     navigate('/cart');
+    return toast.success(response?.data);
   } catch (error) {
-    console.log(error);
+    return toast.error(error.response.data);
   }
 };
 
 export const fetchCartProduct = (userId) => async (dispatch) => {
   try {
-    const { data } = await api.getCartProducts(userId);
-    dispatch({ type: 'FETCH_CART_PRODUCTS', payload: data });
+    if (userId) {
+      const { data } = await api.getCartProducts(userId);
+      dispatch({ type: 'FETCH_CART_PRODUCTS', payload: data });
+    }
+    return;
   } catch (error) {
-    console.log(error);
+    return toast.error(error.response.data);
   }
 };
 
-export const deleteCartProduct = (id, navigate) => async (dispatch) => {
+export const deleteCartProduct = (userId, productId) => async () => {
   try {
-    api.deleteCartProducts(id);
-    dispatch(fetchCartProduct());
-    navigate('/cart');
+    await api.deleteCartProducts(userId, productId);
+    return toast.success('Product deleted successfully');
   } catch (error) {
-    console.log(error);
+    return toast.error(error.response.data);
   }
 };
 
-export const updateQuantity = (id, quantity) => async (dispatch) => {
+export const updateQuantity = (userId, productId, quantity) => async () => {
   try {
-    api.updateQuantity(id, quantity);
-    dispatch(fetchCartProduct());
+    await api.updateQuantity(userId, productId, quantity);
+    return;
   } catch (error) {
-    console.log(error);
+    return toast.error(error.response.data);
   }
 };

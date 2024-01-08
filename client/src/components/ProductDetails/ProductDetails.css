@@ -1,16 +1,23 @@
 .product-div {
   display: flex;
-  width: 75%;
+  /* width: 75%; */
   margin: auto;
   margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: center;
 }
 .product-div div {
   flex: 0.5;
+}
+.product-div1 {
+  text-align: right;
+  padding-right: 10px;
 }
 .product-img {
   height: 380px;
   width: 460px;
   margin-right: 10px;
+  border: 2px solid var(--primary-color-medium);
 }
 .product-div2 p {
   font-size: 20px;

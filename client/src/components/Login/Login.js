@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import './Login.css';
-import Navbar from '../Navbar/Navbar';
 import { forgotPassword, getSecurityQuestion, login, updatedPassword } from '../../actions/Users';
 
 function Login() {
@@ -71,20 +70,15 @@ function Login() {
 
   return (
     <div className="login-container container">
-      <Navbar />
       <div className="login-container-div">
-        <h2>Login Here</h2>
+        <h2>Login</h2>
         <div>
           <form className="login-form">
-            <label>Email</label>
-            <br />
             <input
               type="email"
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <br />
-            <label>Password</label>
             <br />
             <input
               type={showPw ? 'text' : 'password'}
@@ -101,7 +95,7 @@ function Login() {
             <button className="forgot-password-btn" onClick={handleOpen}>
               Forgot Password?
             </button>
-            <div style={{ color: 'var(--secondary-color-light)' }}>
+            <div style={{ color: 'black', marginTop: 0 }}>
               <span>New User?</span>
               <Link to="/register">
                 <button className="signup-btn">Sign up</button>
