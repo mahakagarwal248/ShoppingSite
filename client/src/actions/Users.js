@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import * as api from '../api';
+import { setModalStep, showModal } from './Common';
 
 export const signup = (userData, navigate) => async (dispatch) => {
   try {
@@ -61,15 +62,41 @@ export const forgotPassword = (answerData, setEditPw) => async (dispatch) => {
   }
 };
 
-export const updatedPassword = (updatedPassword) => async (dispatch) => {
+export const sendOtp = (email) => async (dispatch) => {
   try {
-    await api.changePassword(updatedPassword);
-    dispatch({ type: 'UPDATED_PASSWORD' });
-    window.alert('Success');
+    const response = await api.sendOtp(email);
+    if (response.status !== 200) return toast.error(response?.data);
+
+    dispatch({ type: 'FORGOT_PASSWORD', data: email });
+    dispatch(setModalStep(3));
+    return toast.success(response?.data);
   } catch (error) {
     console.log(error);
-    if (error.message === 'Request failed with status code 404') {
-      window.alert('User not registered');
-    }
+    return toast.error(error?.response?.data);
+  }
+};
+
+export const verifyOtp = (otpData) => async (dispatch) => {
+  try {
+    const response = await api.verifyOtp(otpData);
+    if (response.status !== 200) return toast.error(response?.data);
+    dispatch(setModalStep(4));
+    dispatch({ type: 'VERIFY_PASSWORD' });
+    return toast.success(response?.data);
+  } catch (error) {
+    return toast.error(error.response.data);
+  }
+};
+
+export const updatePassword = (updatePasswordObj) => async (dispatch) => {
+  try {
+    const response = await api.changePassword(updatePasswordObj);
+    if (response.status !== 200) return toast.error(response?.data);
+    dispatch(showModal(false));
+    dispatch(setModalStep(0));
+    dispatch({ type: 'UPDATED_PASSWORD' });
+    return toast.success(response?.data);
+  } catch (error) {
+    return toast.error(error.response.data);
   }
 };

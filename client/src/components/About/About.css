@@ -39,3 +39,17 @@
   color: white;
   width: 130px;
 }
+.change-password-btn {
+  width: 50%;
+  margin: auto;
+  margin-top: 25px;
+  text-align: left;
+}
+.change-password-btn > button {
+  padding: 5px;
+  border: none;
+  background: none;
+  color: blue;
+  text-decoration: underline;
+  font-size: 16px;
+}

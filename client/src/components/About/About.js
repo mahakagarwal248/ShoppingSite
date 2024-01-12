@@ -5,6 +5,7 @@ import buffer from 'buffer';
 
 import './About.css';
 import { postProfilePic } from '../../actions/Images';
+import { setModalStep, showModal } from '../../actions/Common';
 
 function About() {
   var User = JSON.parse(localStorage.getItem('Profile'));
@@ -19,6 +20,11 @@ function About() {
     dispatch(postProfilePic(userId, fileData));
   };
 
+  const handleChangePassword = (e) => {
+    e.preventDefault();
+    dispatch(setModalStep(2));
+    dispatch(showModal(true));
+  };
   return (
     <div className="about-container container">
       {User === null ? (
@@ -87,29 +93,25 @@ function About() {
               {currentProfile === undefined ? (
                 ''
               ) : currentProfile.profilePicture ? (
-                (console.log(
-                  `data:${currentProfile.profilePicture.contentType};base64, ${buffer.Buffer.from(
-                    currentProfile.profilePicture.data
-                  ).toString('base64')}`
-                ),
-                (
-                  <>
-                    <div className="display-profile-image-container">
-                      <img
-                        src={`data:${
-                          currentProfile.profilePicture.contentType
-                        };base64, ${buffer.Buffer.from(currentProfile.profilePicture.data).toString(
-                          'base64'
-                        )}`}
-                        alt="profile"
-                      />
-                    </div>
-                  </>
-                ))
+                <>
+                  <div className="display-profile-image-container">
+                    <img
+                      src={`data:${
+                        currentProfile.profilePicture.contentType
+                      };base64, ${buffer.Buffer.from(currentProfile.profilePicture.data).toString(
+                        'base64'
+                      )}`}
+                      alt="profile"
+                    />
+                  </div>
+                </>
               ) : (
                 <></>
               )}
             </div>
+          </div>
+          <div className="change-password-btn">
+            <button onClick={handleChangePassword}>Change Password</button>
           </div>
         </>
       )}

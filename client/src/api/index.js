@@ -8,8 +8,10 @@ export const login = (loginData) => API.post('/user/login', loginData);
 export const getUsers = () => API.get('/user/getAllUsers');
 export const getSecurityQues = (email) => API.get(`/user/getSecurityQues/${email}`);
 export const forgotPassword = (answerData) => API.post('/user/forgotPassword/', answerData);
-export const changePassword = (updatedPassword) =>
-  API.patch('user/changePassword', updatedPassword);
+export const changePassword = (updatePasswordObj) =>
+  API.put('user/changePassword', updatePasswordObj);
+export const sendOtp = (email) => API.get(`/otp-verification/?email=${email}`);
+export const verifyOtp = (otpData) => API.post('/otp-verification', otpData);
 
 export const getAllProducts = () => API.get('/products/getAllProducts');
 export const getProductsByCategory = (value) => API.get(`/products/getProductByCategory/${value}`);

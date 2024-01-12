@@ -20,12 +20,18 @@ import Profile from './dashboard/pages/Profile';
 import Orders from './components/Orders/Orders';
 import EditProducts from './dashboard/screens/EditProducts';
 import { useSelector } from 'react-redux';
+import ChangePassword from './components/screens/changePassword';
+import ForgotPassword from './components/screens/ForgotPassword';
+import VerifyOtp from './components/screens/VerifyOtp';
 
 function App() {
   const blankStep = <></>;
   const steps = {
     0: blankStep,
-    1: EditProducts
+    1: EditProducts,
+    2: ForgotPassword,
+    3: VerifyOtp,
+    4: ChangePassword
   };
 
   const currentStep = useSelector((state) => state.setModalStepReducer.data);
