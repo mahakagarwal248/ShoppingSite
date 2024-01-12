@@ -11,8 +11,12 @@ const userReducer = (state = { data: null }, action) => {
     case 'GET_SECURITY_QUES':
       return { ...state, data: action?.data };
     case 'FORGOT_PASSWORD':
+      localStorage.setItem('email', JSON.stringify({ email: action?.data }));
+      return { ...state, data: action?.data };
+    case 'VERIFY_PASSWORD':
       return { ...state };
     case 'UPDATED_PASSWORD':
+      localStorage.removeItem('email');
       return { ...state };
     default:
       return state;
