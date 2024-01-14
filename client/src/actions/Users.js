@@ -17,7 +17,6 @@ export const login = (loginData) => async (dispatch) => {
   try {
     const { data } = await api.login(loginData);
     dispatch({ type: 'AUTH', data });
-    // navigate(redirectionPath);
     toast.success('Logged In Successfully');
     return data;
   } catch (error) {
@@ -26,6 +25,17 @@ export const login = (loginData) => async (dispatch) => {
     } else if (error.message === 'Request failed with status code 404') {
       return toast.error("User doesn't exist");
     }
+  }
+};
+
+export const postProfilePic = (userId, formData) => async (dispatch) => {
+  try {
+    const response = await api.postProfilePic(userId, formData);
+    dispatch({ type: 'UPLOAD_PROFILE_PHOTO', data: response?.data });
+    toast.success('Profile Picture Updated');
+    return response;
+  } catch (error) {
+    return toast.error(error.response.data);
   }
 };
 
