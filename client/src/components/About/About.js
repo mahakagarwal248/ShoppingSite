@@ -50,7 +50,7 @@ function About() {
     <div className="about-container container">
       {!auth ? (
         <>
-          <h2 style={{}}>You Need to login first</h2>
+          <h2>You Need to login first</h2>
           <Link to="/login">
             <button className="about-login-btn">Login</button>
           </Link>
@@ -130,10 +130,6 @@ function About() {
                   <strong>Email : </strong>
                   {User?.result?.email}
                 </p>
-                <p className="name-p">
-                  <strong>Mobile : </strong>
-                  {User?.result?.mobile}
-                </p>
               </div>
               <div
                 style={{
@@ -141,17 +137,16 @@ function About() {
                   width: '100%',
                   borderLeft: '1px solid grey'
                 }}>
-                <div style={{ marginBottom: '15px' }}>
-                  <button className="change-password-btn" onClick={handleChangePassword}>
-                    Change Password
-                  </button>
-                </div>
-                <div style={{ marginBottom: '15px' }}>
-                  <button className="delete-account-btn" onClick={handleChangePassword}>
-                    Delete Account
-                  </button>
-                </div>
+                <p className="name-p">
+                  <strong>Mobile : </strong>
+                  {User?.result?.mobile}
+                </p>
               </div>
+            </div>
+            <div className="info-div">
+              <button className="change-password-btn" onClick={handleChangePassword}>
+                Change Password
+              </button>
             </div>
           </div>
         </>

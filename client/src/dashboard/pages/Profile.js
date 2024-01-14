@@ -18,7 +18,7 @@ function Profile() {
     getProfile();
   }, [merchantId]);
 
-  const profileData = useSelector((state) => state.businessProfileReducer);
+  const profileData = useSelector((state) => state?.businessProfileReducer?.data);
 
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState('');
@@ -66,31 +66,78 @@ function Profile() {
     <div className="dashboard-container">
       <Sidebar />
       <div className="business-profile-container">
-        <h3>Your Business Profile</h3>
-        {profileData && profileData?.data !== null ? (
+        {profileData && profileData !== null ? (
           <div className="business-profile-display-div">
-            <div>
-              <div className="business-profile-div1">
-                <p>Name</p>
-                <p>Description</p>
-                <p>Email</p>
-                <p>Contact Number</p>
-                <p>Social Media Links :-</p>
-                <p>Facebook</p>
-                <p>Instagram</p>
-                <p>Twitter</p>
-                <p>Youtube</p>
+            <div className="business-profile-div1">
+              <h2>Your Business Profile</h2>
+            </div>
+            <div className="info-div">
+              <p className="name-p">
+                <strong>Name : </strong>&nbsp;
+                {profileData?.name}
+              </p>
+            </div>
+            <div className="info-div">
+              <p className="name-p">
+                <strong>Description : </strong>&nbsp;
+                {profileData?.description}
+              </p>
+            </div>
+            <div className="info-div">
+              <div
+                style={{
+                  paddingRight: '10px',
+                  width: '100%',
+                  borderRight: '1px solid grey'
+                }}>
+                <p className="name-p">
+                  <strong>Email : </strong>&nbsp;
+                  {profileData?.contactDetails?.email}
+                </p>
               </div>
-              <div className="business-profile-div2">
-                <p>{profileData?.data?.name}</p>
-                <p>{profileData?.data?.description}</p>
-                <p>{profileData?.data?.contactDetails?.email}</p>
-                <p>{profileData?.data?.contactDetails?.mobile}</p>
-                <p>&nbsp;</p>
-                <p>{profileData?.data?.socialMediaLinks?.facebook}</p>
-                <p>{profileData?.data?.instagram}</p>
-                <p>{profileData?.data?.twitter}</p>
-                <p>{profileData?.data?.youtube}</p>
+              <div
+                style={{
+                  paddingLeft: '10px',
+                  width: '100%',
+                  borderLeft: '1px solid grey'
+                }}>
+                <p className="name-p">
+                  <strong>Mobile : </strong>&nbsp;
+                  {profileData?.contactDetails?.mobile}
+                </p>
+              </div>
+            </div>
+            <h5>Social Media Links : </h5>
+            <div className="info-div">
+              <div
+                style={{
+                  paddingRight: '10px',
+                  width: '100%',
+                  borderRight: '1px solid grey'
+                }}>
+                <p className="name-p">
+                  <img src="/assets/facebook.png" alt="fb" />
+                  {profileData?.socialMediaLinks?.facebook || 'No Link Added'}
+                </p>
+                <p className="name-p" style={{ marginTop: '20px' }}>
+                  <img src="/assets/twitter.png" alt="fb" />
+                  {profileData?.socialMediaLinks?.twitter || 'No Link Added'}
+                </p>
+              </div>
+              <div
+                style={{
+                  paddingLeft: '10px',
+                  width: '100%',
+                  borderLeft: '1px solid grey'
+                }}>
+                <p className="name-p">
+                  <img src="/assets/instagram.png" alt="fb" />
+                  {profileData?.socialMediaLinks?.instagram || 'No Link Added'}
+                </p>
+                <p className="name-p" style={{ marginTop: '20px' }}>
+                  <img src="/assets/youtube.png" alt="fb" />
+                  {profileData?.socialMediaLinks?.youtube || 'No Link Added'}
+                </p>
               </div>
             </div>
             <button onClick={handleDelete}>Delete Profile</button>

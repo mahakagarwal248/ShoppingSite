@@ -27,7 +27,6 @@ export const postImage = async (req, res) => {
   const updatedUser = await user.findByIdAndUpdate(_id, obj, { new: true });
   if (!updatedUser)
     return res.status(404).json("Failed to update profile picture");
-  console.log(updatedUser);
   return res.status(200).json(updatedUser);
 };
 
