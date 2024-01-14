@@ -128,11 +128,7 @@ function EditProducts() {
           </div>
         </div>
         {showDeleteWarning && (
-          <DeleteWarning
-            showWarning={showDeleteWarning}
-            setShowDeleteWarning={setShowDeleteWarning}
-            handleDelete={handleDelete}
-          />
+          <DeleteWarning setShowDeleteWarning={setShowDeleteWarning} handleDelete={handleDelete} />
         )}
         {showEditWarning && (
           <EditWarning

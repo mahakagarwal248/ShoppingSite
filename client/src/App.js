@@ -23,6 +23,8 @@ import { useSelector } from 'react-redux';
 import ChangePassword from './components/screens/changePassword';
 import ForgotPassword from './components/screens/ForgotPassword';
 import VerifyOtp from './components/screens/VerifyOtp';
+import ProtectedRoutes from './components/general/ProtectedRoutes';
+import ContactUs from './dashboard/screens/ContactUs';
 
 function App() {
   const blankStep = <></>;
@@ -31,13 +33,14 @@ function App() {
     1: EditProducts,
     2: ForgotPassword,
     3: VerifyOtp,
-    4: ChangePassword
+    4: ChangePassword,
+    5: ContactUs
   };
 
   const currentStep = useSelector((state) => state.setModalStepReducer.data);
   const Component = steps[currentStep];
 
-  var User = JSON.parse(localStorage.getItem('Profile'));
+  const User = JSON.parse(localStorage.getItem('Profile'));
   return (
     <BrowserRouter>
       {currentStep !== 0 ? <Component /> : ''}
@@ -54,17 +57,25 @@ function App() {
             </div>
           }
         />
-        <Route exact path="/about" element={<About />} />
+        <Route exact path="/about" element={<ProtectedRoutes component={About} />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/wishlist" element={<Wishlist />} />
-        <Route exact path="/orders" element={<Orders />} />
+        <Route exact path="/cart" element={<ProtectedRoutes component={Cart} />} />
+        <Route exact path="/wishlist" element={<ProtectedRoutes component={Wishlist} />} />
+        <Route exact path="/orders" element={<ProtectedRoutes component={Orders} />} />
         <Route exact path="/productDetails/:id" element={<ProductDetails />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/dashboard/products" element={<Products />} />
-        <Route exact path="/dashboard/add-product" element={<AddProduct />} />
-        <Route exact path="/dashboard/profile" element={<Profile />} />
+        <Route exact path="/dashboard" element={<ProtectedRoutes component={Dashboard} />} />
+        <Route
+          exact
+          path="/dashboard/products"
+          element={<ProtectedRoutes component={Products} />}
+        />
+        <Route
+          exact
+          path="/dashboard/add-product"
+          element={<ProtectedRoutes component={AddProduct} />}
+        />
+        <Route exact path="/dashboard/profile" element={<ProtectedRoutes component={Profile} />} />
       </Routes>
     </BrowserRouter>
   );

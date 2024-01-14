@@ -13,12 +13,13 @@ export const signup = (userData, navigate) => async (dispatch) => {
   }
 };
 
-export const login = (loginData, navigate) => async (dispatch) => {
+export const login = (loginData) => async (dispatch) => {
   try {
     const { data } = await api.login(loginData);
     dispatch({ type: 'AUTH', data });
-    navigate('/');
-    return toast.success('Logged In Successfully');
+    // navigate(redirectionPath);
+    toast.success('Logged In Successfully');
+    return data;
   } catch (error) {
     if (error.message === 'Request failed with status code 400') {
       return toast.error('Invalid Password');

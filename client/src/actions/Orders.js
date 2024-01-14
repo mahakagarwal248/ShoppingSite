@@ -12,3 +12,15 @@ export const fetchUserOrders = (userId) => async (dispatch) => {
     return toast.error(error.response.data);
   }
 };
+
+export const fetchMerchantOrders = (merchantId) => async (dispatch) => {
+  try {
+    if (merchantId) {
+      const { data } = await api.getMerchantOrders(merchantId);
+      dispatch({ type: 'FETCH_MERCHANT_ORDERS', payload: data });
+    }
+    return;
+  } catch (error) {
+    return toast.error(error.response.data);
+  }
+};

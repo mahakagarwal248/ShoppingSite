@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import buffer from 'buffer';
@@ -8,10 +8,11 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import './Login.css';
 import { login } from '../../actions/Users';
 import { setModalStep, showModal } from '../../actions/Common';
-
+import { addCookie } from '../../helpers/Cookies';
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +24,7 @@ function Login() {
     dispatch(showModal(true));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email && !password) {
       alert('Invalid credentials');
@@ -31,7 +32,13 @@ function Login() {
     const data = { email, password };
     const loginData = JSON.stringify(data);
     const encodedText = buffer.Buffer.from(loginData).toString('base64');
-    dispatch(login(encodedText, navigate));
+    const redirectionPath = location.state?.from?.pathname || '/';
+    const response = await dispatch(login(encodedText)).then((res) => {
+      return res;
+    });
+    addCookie('auth', true);
+    addCookie('role', response?.result?.role);
+    navigate(redirectionPath);
   };
 
   return (
