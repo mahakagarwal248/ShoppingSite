@@ -8,6 +8,7 @@ import Reducers from './reducers';
 import './index.css';
 import App from './App';
 import { ToastContainer } from 'react-toastify';
+import { CookiesProvider } from 'react-cookie';
 
 const store = configureStore(
   {
@@ -24,10 +25,11 @@ const store = configureStore(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    <CookiesProvider>
+      {/* <React.StrictMode> */}
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -38,6 +40,7 @@ root.render(
         theme="light"
       />
       <App />
-    </React.StrictMode>
+      {/* </React.StrictMode> */}
+    </CookiesProvider>
   </Provider>
 );

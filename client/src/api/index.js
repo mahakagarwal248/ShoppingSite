@@ -48,6 +48,8 @@ export const addProduct = (product) =>
       'Content-Type': `multipart/form-data; boundary=---WebKitFormBoundary7MA4YWxkTrZu0gW`
     }
   });
+export const getMerchantOrders = (merchantId) =>
+  API.get(`/orders/merchant?merchantId=${merchantId}`);
 export const getMerchantProducts = (merchantId) =>
   API.get(`/products/getMerchantProducts?merchantId=${merchantId}`);
 export const updateProduct = (data) => API.put('/products/update', data);

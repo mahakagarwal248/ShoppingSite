@@ -67,7 +67,7 @@ function Profile() {
       <Sidebar />
       <div className="business-profile-container">
         <h3>Your Business Profile</h3>
-        {profileData && profileData?.data?.length > 0 ? (
+        {profileData && profileData?.data !== null ? (
           <div className="business-profile-display-div">
             <div>
               <div className="business-profile-div1">
@@ -82,15 +82,15 @@ function Profile() {
                 <p>Youtube</p>
               </div>
               <div className="business-profile-div2">
-                <p>{profileData?.data[0]?.name}</p>
-                <p>{profileData?.data[0]?.description}</p>
-                <p>{profileData?.data[0]?.contactDetails?.email}</p>
-                <p>{profileData?.data[0]?.contactDetails?.mobile}</p>
+                <p>{profileData?.data?.name}</p>
+                <p>{profileData?.data?.description}</p>
+                <p>{profileData?.data?.contactDetails?.email}</p>
+                <p>{profileData?.data?.contactDetails?.mobile}</p>
                 <p>&nbsp;</p>
-                <p>{profileData?.data[0]?.socialMediaLinks?.facebook}</p>
-                <p>{profileData?.data[0]?.instagram}</p>
-                <p>{profileData?.data[0]?.twitter}</p>
-                <p>{profileData?.data[0]?.youtube}</p>
+                <p>{profileData?.data?.socialMediaLinks?.facebook}</p>
+                <p>{profileData?.data?.instagram}</p>
+                <p>{profileData?.data?.twitter}</p>
+                <p>{profileData?.data?.youtube}</p>
               </div>
             </div>
             <button onClick={handleDelete}>Delete Profile</button>

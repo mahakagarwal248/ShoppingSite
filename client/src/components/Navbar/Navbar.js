@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './Navbar.css';
+import { removeCookie } from '../../helpers/Cookies';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ function Navbar() {
 
   const handleLogout = useCallback(() => {
     dispatch({ type: 'LOGOUT' });
+    removeCookie('auth');
+    removeCookie('role');
     navigate('/');
   }, []);
 
