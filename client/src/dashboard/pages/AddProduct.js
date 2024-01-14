@@ -43,47 +43,55 @@ function AddProduct() {
     <div className="dashboard-container">
       <Sidebar />
       <div className="add-product-container">
-        <h3>Add New Product</h3>
-        <div className="add-product-form">
-          <input type="text" placeholder="Product Name" onChange={(e) => setName(e.target.value)} />
-          <br />
-          <input
-            type="text"
-            placeholder="Product Description"
-            onChange={(e) => setDesc(e.target.value)}
-          />
-          <br />
-          <input
-            type="number"
-            placeholder="Product Quantity"
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Product Category"
-            onChange={(e) => setCategory(e.target.value)}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Product Brand"
-            onChange={(e) => setBrand(e.target.value)}
-          />
-          <br />
-          <input
-            type="text"
-            placeholder="Product Price"
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          <br />
-          <div className="add-product-inner-div">
-            <label style={{ marginRight: '10px', color: 'gray' }}>Upload Thumbnail :</label>
-            <input type="file" placeholder="Product Name" onChange={(e) => handleFileInput(e)} />
+        <div className="add-product-div">
+          <div className="add-product-heading-div">
+            <h3>Add New Product</h3>
           </div>
-          <button className="add-product-btn" onClick={handleSubmit}>
-            Submit
-          </button>
+          <div className="add-product-form">
+            <input
+              type="text"
+              placeholder="Product Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Product Description"
+              onChange={(e) => setDesc(e.target.value)}
+            />
+            <br />
+            <input
+              type="number"
+              placeholder="Product Quantity"
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Product Category"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Product Brand"
+              onChange={(e) => setBrand(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              placeholder="Product Price"
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <br />
+            <div className="add-product-inner-div">
+              <label style={{ marginRight: '10px', color: 'gray' }}>Upload Thumbnail :</label>
+              <input type="file" placeholder="Product Name" onChange={(e) => handleFileInput(e)} />
+            </div>
+            <button className="add-product-btn" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

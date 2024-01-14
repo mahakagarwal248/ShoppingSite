@@ -64,36 +64,9 @@
   padding: 10px 15px;
   font-size: 18px;
   width: 100%;
+  margin: 0;
 }
-
-.display-info-container,
-.about-container-div > div > div > form {
-  display: flex;
-}
-.display-info-container span {
-  font-size: 20px;
-  margin-left: 8px;
-}
-.display-profile-image-container {
-  margin-left: auto;
-  margin-top: 25px;
-}
-.display-profile-image-container img {
-  width: 90px;
-  height: 90px;
-}
-.about-login-btn {
-  background: var(--primary-color-medium);
-  border: 1px solid var(--primary-color);
-  padding: 8px 15px;
-  margin-top: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  width: 130px;
-}
-.change-password-btn,
-.delete-account-btn {
+.change-password-btn {
   padding: 10px 15px;
   font-size: 18px;
   border: none;
@@ -101,7 +74,8 @@
   color: white;
   border-radius: 15px;
   text-decoration: underline;
-  width: 100%;
+  width: 30%;
+  margin: auto;
 }
 
 @media only screen and (max-width: 730px) {
