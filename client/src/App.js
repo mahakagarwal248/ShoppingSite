@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +26,13 @@ import VerifyOtp from './components/screens/VerifyOtp';
 import ProtectedRoutes from './components/general/ProtectedRoutes';
 import ContactUs from './dashboard/screens/ContactUs';
 
+function NavbarWrapper() {
+  const location = useLocation();
+  const isDashboardPage = location.pathname.startsWith('/dashboard');
+
+  return isDashboardPage ? null : <Navbar />;
+}
+
 function App() {
   const blankStep = <></>;
   const steps = {
@@ -40,18 +47,16 @@ function App() {
   const currentStep = useSelector((state) => state.setModalStepReducer.data);
   const Component = steps[currentStep];
 
-  const User = JSON.parse(localStorage.getItem('Profile'));
   return (
     <BrowserRouter>
       {currentStep !== 0 ? <Component /> : ''}
-      {User?.result?.role === 'merchant' ? <></> : <Navbar />}
+      <NavbarWrapper />
       <Routes>
         <Route
           exact
           path="/"
           element={
             <div className="App">
-              {User?.result?.role === 'merchant' ? <Navbar /> : <></>}
               <Home />
               <Footer />
             </div>

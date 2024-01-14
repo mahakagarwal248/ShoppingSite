@@ -4,7 +4,6 @@ const userReducer = (state = { data: null }, action) => {
   switch (action.type) {
     case 'AUTH':
       localStorage.setItem('Profile', JSON.stringify({ ...action?.data }));
-      // AddCookie('auth', true);
       return { ...state, data: action?.data };
     case 'LOGOUT':
       localStorage.clear();
@@ -21,6 +20,12 @@ const userReducer = (state = { data: null }, action) => {
     case 'UPDATED_PASSWORD':
       localStorage.removeItem('email');
       return { ...state };
+    case 'UPLOAD_PROFILE_PHOTO':
+      var existingData = localStorage.getItem('Profile');
+      existingData = JSON.parse(existingData);
+      existingData.result.profilePicture = action?.data?.profilePicture;
+      localStorage.setItem('Profile', JSON.stringify(existingData));
+      return { ...state, data: action?.data };
     default:
       return state;
   }

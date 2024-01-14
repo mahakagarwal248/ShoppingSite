@@ -48,7 +48,7 @@ function Navbar() {
         </Link>
       ) : (
         <div className="user-nav-icons">
-          {User.result.role === 'merchant' && (
+          {User?.result?.role === 'merchant' && (
             <Link to="/dashboard" className="nav-items-right">
               Dashboard
             </Link>

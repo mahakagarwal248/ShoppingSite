@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import buffer from 'buffer';
 
 import './About.css';
-import { postProfilePic } from '../../actions/Images';
+import { postProfilePic } from '../../actions/Users';
 import { setModalStep, showModal } from '../../actions/Common';
+import { CameraAlt } from '@mui/icons-material';
+import { Tooltip } from '@mui/material';
+import { getCookie } from '../../helpers/Cookies';
 
 function About() {
-  var User = JSON.parse(localStorage.getItem('Profile'));
-  const userId = User?.result?._id;
-  const currentProfile = User?.result;
+  const auth = getCookie('auth');
   const dispatch = useDispatch();
 
-  const handleFile = (e) => {
+  const [User, setUser] = useState({});
+
+  const getUser = () => {
+    const user = JSON.parse(localStorage.getItem('Profile'));
+    setUser(user);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const userId = User?.result?._id;
+  const currentProfile = User?.result;
+  const fileInputRef = useRef(null);
+
+  const triggerFileInput = () => {
+    fileInputRef?.current?.click();
+  };
+
+  const handleFile = async (e) => {
     e.preventDefault();
     const fileData = new FormData();
     fileData.append('file', e.target.files[0]);
-    dispatch(postProfilePic(userId, fileData));
+    const response = await dispatch(postProfilePic(userId, fileData)).then((res) => res);
+    if (response.status === 200) getUser();
   };
 
   const handleChangePassword = (e) => {
@@ -27,7 +48,7 @@ function About() {
   };
   return (
     <div className="about-container container">
-      {User === null ? (
+      {!auth ? (
         <>
           <h2 style={{}}>You Need to login first</h2>
           <Link to="/login">
@@ -36,65 +57,11 @@ function About() {
         </>
       ) : (
         <>
-          <div>
-            <h2>User Details</h2>
-            <div className="about-container-div">
-              <div>
-                {currentProfile === undefined ? (
-                  ''
-                ) : !currentProfile.profilePicture ? (
-                  <>
-                    <div>
-                      <form encType="multipart/form-data">
-                        <h4>Upload Profile Pic:</h4>
-                        <input
-                          type="file"
-                          name="file"
-                          onChange={handleFile}
-                          className="about-file-input"
-                        />
-                        <button type="submit">Go</button>
-                      </form>
-                    </div>
-                  </>
-                ) : (
-                  ''
-                )}
-
-                <br />
-                <div className="display-info-container">
-                  <h4>Name:</h4>
-                  <span>
-                    {User.result?.name.split(' ')[0].charAt(0).toUpperCase() +
-                      User.result?.name.split(' ')[0].slice(1) +
-                      (User.result?.name.split(' ')[1]
-                        ? ' ' +
-                          User.result?.name.split(' ')[1]?.charAt(0)?.toUpperCase() +
-                          User.result?.name.split(' ')[1]?.slice(1)
-                        : '')}
-                  </span>
-                </div>
-                <br />
-                <div className="display-info-container">
-                  <h4>Email:</h4>
-                  <span>{User?.result?.email}</span>
-                </div>
-                <br />
-                <div className="display-info-container">
-                  <h4>Mobile:</h4>
-                  <span>{User?.result?.mobile}</span>
-                </div>
-                <br />
-                <div className="display-info-container">
-                  <h4>Address:</h4>
-                  <span>{User?.result?.address}</span>
-                </div>
-              </div>
-              {currentProfile === undefined ? (
-                ''
-              ) : currentProfile.profilePicture ? (
-                <>
-                  <div className="display-profile-image-container">
+          <div className="about-container-div">
+            <div className="about-container-div1">
+              <div className="about-container-div2">
+                <div className="profile-photo-div">
+                  {currentProfile?.profilePicture ? (
                     <img
                       src={`data:${
                         currentProfile.profilePicture.contentType
@@ -103,15 +70,89 @@ function About() {
                       )}`}
                       alt="profile"
                     />
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
+                  ) : (
+                    <div
+                      style={{
+                        width: '100%',
+                        background: 'lightgrey',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                      }}>
+                      <Tooltip title="Upload Photo">
+                        <CameraAlt
+                          htmlFor="fileInput"
+                          onClick={triggerFileInput}
+                          style={{ fontSize: '44px', color: 'black', cursor: 'pointer' }}
+                        />
+                      </Tooltip>
+                      <input
+                        type="file"
+                        id="fileInput"
+                        style={{ display: 'none' }}
+                        ref={fileInputRef}
+                        onChange={handleFile}
+                      />
+                    </div>
+                  )}
+                </div>
+                <h2>User Details</h2>
+              </div>
             </div>
-          </div>
-          <div className="change-password-btn">
-            <button onClick={handleChangePassword}>Change Password</button>
+            <hr style={{ margin: 0 }} />
+            <div className="info-div">
+              <p className="name-p">
+                <strong>Name : </strong>
+                {User.result?.name.split(' ')[0].charAt(0).toUpperCase() +
+                  User.result?.name.split(' ')[0].slice(1) +
+                  (User.result?.name.split(' ')[1]
+                    ? ' ' +
+                      User.result?.name.split(' ')[1]?.charAt(0)?.toUpperCase() +
+                      User.result?.name.split(' ')[1]?.slice(1)
+                    : '')}
+              </p>
+            </div>
+            <div className="info-div">
+              <p className="name-p">
+                <strong>Address : </strong>
+                {User.result?.address}
+              </p>
+            </div>
+            <div className="info-div" style={{ display: 'flex', flexDirection: 'row' }}>
+              <div
+                style={{
+                  paddingRight: '10px',
+                  width: '100%',
+                  borderRight: '1px solid grey'
+                }}>
+                <p className="name-p">
+                  <strong>Email : </strong>
+                  {User?.result?.email}
+                </p>
+                <p className="name-p">
+                  <strong>Mobile : </strong>
+                  {User?.result?.mobile}
+                </p>
+              </div>
+              <div
+                style={{
+                  paddingLeft: '10px',
+                  width: '100%',
+                  borderLeft: '1px solid grey'
+                }}>
+                <div style={{ marginBottom: '15px' }}>
+                  <button className="change-password-btn" onClick={handleChangePassword}>
+                    Change Password
+                  </button>
+                </div>
+                <div style={{ marginBottom: '15px' }}>
+                  <button className="delete-account-btn" onClick={handleChangePassword}>
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       )}

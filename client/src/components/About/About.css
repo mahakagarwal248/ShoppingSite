@@ -1,18 +1,71 @@
 .about-container {
   text-align: center;
 }
-.about-container h2 {
-  margin-top: 25px;
-}
 .about-container-div {
-  width: 50%;
+  width: 60%;
+  height: 75vh;
   margin: auto;
-  margin-top: 45px;
+  margin-top: 30px;
+  box-shadow: 0px 0px 12px 12px rgba(107, 107, 107, 0.5);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+.about-container-div1 {
+  height: 40%;
+  color: white;
+  text-align: right;
+  align-items: center;
+}
+.about-container-div2 {
+  background-color: var(--primary-color-medium);
+  position: relative;
+  height: 50%;
+  width: 100%;
+  margin: 0;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-.about-file-input {
-  margin-left: 8px;
+.about-container-div2 > h2 {
+  font-size: 44px;
+  margin-left: 20%;
 }
+.profile-photo-div {
+  border-radius: 50%;
+  height: 150%;
+  width: auto;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  top: 25%;
+  left: 5%;
+  box-shadow: 0px 0px 2px 2px rgba(107, 107, 107, 0.2);
+}
+.profile-photo-div > img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+.info-div {
+  width: 90%;
+  margin: auto;
+  text-align: left;
+  margin-top: 20px !important;
+  margin-bottom: 20px;
+}
+.name-p {
+  background: var(--primary-color-medium);
+  color: white;
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-size: 18px;
+  width: 100%;
+}
+
 .display-info-container,
 .about-container-div > div > div > form {
   display: flex;
@@ -39,17 +92,26 @@
   color: white;
   width: 130px;
 }
-.change-password-btn {
-  width: 50%;
-  margin: auto;
-  margin-top: 25px;
-  text-align: left;
-}
-.change-password-btn > button {
-  padding: 5px;
+.change-password-btn,
+.delete-account-btn {
+  padding: 10px 15px;
+  font-size: 18px;
   border: none;
-  background: none;
-  color: blue;
+  background: var(--primary-color-medium);
+  color: white;
+  border-radius: 15px;
   text-decoration: underline;
-  font-size: 16px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 730px) {
+  .about-container-div {
+    width: 95%;
+  }
+}
+
+@media (min-width: 731px) and (max-width: 999px) {
+  .about-container-div {
+    width: 80%;
+  }
 }
