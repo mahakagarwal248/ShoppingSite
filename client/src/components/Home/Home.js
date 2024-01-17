@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Cards from './Card/Cards';
 import './Home.css';
 import { fetchAllProducts } from '../../actions/Products';
+import PaginationComp from '../general/Pagination';
+import { PRODUCT_LIMIT } from '../../Constants';
 
 function Home() {
-  const [securityQuestionValue, setSecurityQuestionValue] = useState('all');
+  const [category, setCategory] = useState('all');
 
   const dispatch = useDispatch();
   const fetchProducts = () => {
-    dispatch(fetchAllProducts());
+    dispatch(fetchAllProducts({ page: 1, limit: PRODUCT_LIMIT }));
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  const productCount = useSelector((state) => state?.productReducer?.data?.productCount);
+
+  const handlePageChange = (page) => {
+    dispatch(fetchAllProducts({ page: page, limit: PRODUCT_LIMIT }));
+  };
 
   return (
     <div className="home-container">
@@ -31,9 +39,7 @@ function Home() {
       </section>
       <div style={{ marginTop: '10px' }}>
         <p>Search By Category</p>
-        <select
-          value={securityQuestionValue}
-          onChange={(e) => setSecurityQuestionValue(e.target.value)}>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="" hidden>
             Select Category
           </option>
@@ -45,8 +51,13 @@ function Home() {
         </select>
       </div>
       <div>
-        <Cards value={securityQuestionValue} />
+        <Cards category={category} />
       </div>
+      {productCount && (
+        <div>
+          <PaginationComp count={productCount} handlePageChange={handlePageChange} />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://uninterested-erin-woodpecker.cyclic.app/' });
-// const API = axios.create({ baseURL: 'http://localhost:5000' });
+// const API = axios.create({ baseURL: 'https://uninterested-erin-woodpecker.cyclic.app/' });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 export const signup = (userData) => API.post('/user/signup', userData);
 export const login = (loginData) => API.post('/user/login', loginData);
@@ -13,7 +13,8 @@ export const changePassword = (updatePasswordObj) =>
 export const sendOtp = (email) => API.get(`/otp-verification/?email=${email}`);
 export const verifyOtp = (otpData) => API.post('/otp-verification', otpData);
 
-export const getAllProducts = () => API.get('/products/getAllProducts');
+export const getAllProducts = (page, limit) =>
+  API.get(`/products/getAllProducts?page=${page}&limit=${limit}`);
 export const getProductsByCategory = (value) => API.get(`/products/getProductByCategory/${value}`);
 
 export const addToCart = (userId, productId) => {

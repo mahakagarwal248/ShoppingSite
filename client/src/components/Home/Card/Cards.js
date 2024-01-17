@@ -11,15 +11,17 @@ import { addToCart, fetchCartProduct } from '../../../actions/Cart';
 import { addToWishlist, fetchWishlistProduct } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
 
-function Cards(securityQuestionValue) {
+function Cards({ category }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getProductByCategory(securityQuestionValue));
-  }, [dispatch, securityQuestionValue]);
+    if (category !== 'all') {
+      dispatch(getProductByCategory(category));
+    }
+  }, [dispatch, category]);
 
-  const productList = useSelector((state) => state.productReducer);
+  const productList = useSelector((state) => state?.productReducer?.data?.productList);
 
   const handleClick = (productData) => {
     navigate(`/productDetails/${productData._id}`, { state: productData });
@@ -50,16 +52,16 @@ function Cards(securityQuestionValue) {
   var image = {};
   return (
     <>
-      {productList.data === null ? (
+      {!productList ? (
         <h1>Loading...</h1>
-      ) : productList.data.length === 0 ? (
+      ) : productList.length === 0 ? (
         <div>
           <h3>No Products Available Right Now</h3>
           <p>Please come back after some time</p>
         </div>
       ) : (
         <>
-          {productList.data?.map(
+          {productList?.map(
             (products) => (
               (image = `data:${products.img.contentType};base64, ${products.img.data}`),
               (
