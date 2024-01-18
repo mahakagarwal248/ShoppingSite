@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import decode from 'jwt-decode';
+import buffer from 'buffer';
 import Avatar from '@mui/material/Avatar';
 // import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 // import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import './Navbar.css';
-import { removeCookie } from '../../helpers/Cookies';
+import { getCookie, removeCookie } from '../../helpers/Cookies';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ function Navbar() {
   }, []);
 
   var User = JSON.parse(localStorage.getItem('Profile'));
+  const auth = getCookie('auth');
+  const role = getCookie('role');
 
   useEffect(() => {
     const token = User?.token;
@@ -42,37 +45,35 @@ function Navbar() {
       <Link to="/about" className="nav-items">
         About
       </Link>
-      {localStorage.getItem('Profile') === null ? (
+      {!auth ? (
         <Link to="/login" className="nav-items">
           Login
         </Link>
       ) : (
         <div className="user-nav-icons">
-          {User?.result?.role === 'merchant' && (
+          {auth && role === 'merchant' && (
             <Link to="/dashboard" className="nav-items-right">
               Dashboard
             </Link>
           )}
-          {/* <Link to="/cart" className="nav-items-right">
-            <ShoppingCartOutlinedIcon className="nav-icons" />
-          </Link>
-          <Link to="/wishlist" className="nav-items-right">
-            <FavoriteBorderOutlinedIcon className="nav-icons" />
-          </Link>
-          <Link className="nav-items-right" to="/about" style={{ textDecoration: 'none' }}>
-            <Avatar className="user-avatar">{User?.result?.name.charAt(0).toUpperCase()}</Avatar>
-          </Link>
-          <p className="nav-items-right">
-            Hi,{' '}
-            {User.result?.name.split(' ')[0].charAt(0).toUpperCase() +
-              User.result?.name.split(' ')[0].slice(1)}
-          </p> */}
           <NavDropdown
             title={
               <Avatar
                 className="user-avatar"
-                style={{ display: 'inline-flex', marginRight: '5px' }}>
-                {User?.result?.name.charAt(0).toUpperCase()}
+                style={{ display: '-webkit-inline-box', marginRight: '5px' }}>
+                {User?.result?.profilePicture ? (
+                  <img
+                    src={`data:${
+                      User?.result?.profilePicture.contentType
+                    };base64, ${buffer.Buffer.from(User?.result?.profilePicture.data).toString(
+                      'base64'
+                    )}`}
+                    alt="profile"
+                    style={{ height: '36px', width: '36px' }}
+                  />
+                ) : (
+                  User?.result?.name.charAt(0).toUpperCase()
+                )}
               </Avatar>
             }
             style={{
@@ -96,9 +97,6 @@ function Navbar() {
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
           </NavDropdown>
-          {/* <button type="button" className="logout-btn nav-items" onClick={handleLogout}>
-            Logout
-          </button> */}
         </div>
       )}
     </div>

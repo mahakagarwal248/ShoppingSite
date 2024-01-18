@@ -8,7 +8,7 @@ function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [activeBtn, setActiveBtn] = useState(location?.state || '');
+  const [activeBtn, setActiveBtn] = useState(location?.state || 'overview');
   const handleBtnClick = (btn) => {
     setActiveBtn(btn);
   };
