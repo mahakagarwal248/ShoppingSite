@@ -15,7 +15,8 @@ export const verifyOtp = (otpData) => API.post('/otp-verification', otpData);
 
 export const getAllProducts = (page, limit) =>
   API.get(`/products/getAllProducts?page=${page}&limit=${limit}`);
-export const getProductsByCategory = (value) => API.get(`/products/getProductByCategory/${value}`);
+export const getProductsByCategory = (value, page, limit) =>
+  API.get(`/products/getProductByCategory?category=${value}&page=${page}&limit=${limit}`);
 
 export const addToCart = (userId, productId) => {
   return API.get(`/cart/addToCart?userId=${userId}&productId=${productId}`);

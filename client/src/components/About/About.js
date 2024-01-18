@@ -103,7 +103,7 @@ function About() {
             <hr style={{ margin: 0 }} />
             <div className="info-div">
               <p className="name-p">
-                <strong>Name : </strong>
+                <strong>Name : </strong>&nbsp;
                 {User.result?.name.split(' ')[0].charAt(0).toUpperCase() +
                   User.result?.name.split(' ')[0].slice(1) +
                   (User.result?.name.split(' ')[1]
@@ -115,7 +115,7 @@ function About() {
             </div>
             <div className="info-div">
               <p className="name-p">
-                <strong>Address : </strong>
+                <strong>Address : </strong>&nbsp;
                 {User.result?.address}
               </p>
             </div>
@@ -127,7 +127,7 @@ function About() {
                   borderRight: '1px solid grey'
                 }}>
                 <p className="name-p">
-                  <strong>Email : </strong>
+                  <strong>Email : </strong>&nbsp;
                   {User?.result?.email}
                 </p>
               </div>
@@ -138,7 +138,7 @@ function About() {
                   borderLeft: '1px solid grey'
                 }}>
                 <p className="name-p">
-                  <strong>Mobile : </strong>
+                  <strong>Mobile : </strong>&nbsp;
                   {User?.result?.mobile}
                 </p>
               </div>

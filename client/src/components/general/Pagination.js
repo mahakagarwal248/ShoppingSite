@@ -24,17 +24,15 @@ function PaginationComp({ count, handlePageChange }) {
       <Pagination.Prev onClick={() => handleChange(currentPage - 1)} />
       {pages.map((item) => {
         const showNumber =
-          item <= 2 ||
-          item > pageCount - 2 ||
-          item === currentPage ||
-          item === currentPage + 1 ||
-          item === currentPage - 1;
+          (item <= currentPage + 1 && item >= currentPage - 1) ||
+          // item === pageCount ||
+          (item <= pageCount && pageCount <= 3);
 
-        // if ellipsis is true, ... will be visible
         const isEllipsis =
-          item > 2 && //true
-          item <= pageCount - 2 && //true
-          (item === currentPage - 2 || item === currentPage + 2);
+          (item === currentPage - 2 || item === currentPage + 2) &&
+          pageCount > 3 &&
+          item >= 1 &&
+          item <= pageCount;
 
         return showNumber ? (
           <Pagination.Item

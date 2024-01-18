@@ -10,15 +10,14 @@ import '../Home.css';
 import { addToCart, fetchCartProduct } from '../../../actions/Cart';
 import { addToWishlist, fetchWishlistProduct } from '../../../actions/Wishlist';
 import { getProductByCategory } from '../../../actions/Products';
+import { PRODUCT_LIMIT } from '../../../Constants';
 
 function Cards({ category }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (category !== 'all') {
-      dispatch(getProductByCategory(category));
-    }
+    dispatch(getProductByCategory({ category, page: 1, limit: PRODUCT_LIMIT }));
   }, [dispatch, category]);
 
   const productList = useSelector((state) => state?.productReducer?.data?.productList);

@@ -12,15 +12,17 @@ export const fetchAllProducts =
       return toast.error(error.response.data);
     }
   };
-export const getProductByCategory = (value) => async (dispatch) => {
-  try {
-    const { data } = await api.getProductsByCategory(value.value);
-    dispatch({ type: 'FETCH_PRODUCTS_BY_CATEGORY', payload: data });
-    return;
-  } catch (error) {
-    return toast.error(error.response.data);
-  }
-};
+export const getProductByCategory =
+  ({ category, page, limit }) =>
+  async (dispatch) => {
+    try {
+      const { data } = await api.getProductsByCategory(category, page, limit);
+      dispatch({ type: 'FETCH_PRODUCTS_BY_CATEGORY', payload: data });
+      return;
+    } catch (error) {
+      return toast.error(error.response.data);
+    }
+  };
 export const addProduct = (product) => async () => {
   try {
     const { data } = await api.addProduct(product);
